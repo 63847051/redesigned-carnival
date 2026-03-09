@@ -1,0 +1,14 @@
+name: "test-task-001"
+status: "completed"
+session_lineage: ["1772668041"]
+created_at: "1772668041"
+completed_at: "1772668041"
+request: "测试算法循环"
+phases:
+  - OBSERVE
+  - THINK
+  - PLAN
+  - BUILD
+  - EXECUTE
+  - VERIFY
+  - LEARN
