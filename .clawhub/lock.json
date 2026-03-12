@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "skills": {
+    "tavily-search": {
+      "version": "1.0.0",
+      "installedAt": 1773241221536
+    },
+    "summarize": {
+      "version": "1.0.0",
+      "installedAt": 1773241223044
+    },
+    "agent-browser": {
+      "version": "0.2.0",
+      "installedAt": 1773241225236
+    },
+    "find-skills": {
+      "version": "0.1.0",
+      "installedAt": 1773241226901
+    },
+    "github": {
+      "version": "1.0.0",
+      "installedAt": 1773241229646
+    },
+    "obsidian": {
+      "version": "1.0.0",
+      "installedAt": 1773241231596
+    },
+    "notion": {
+      "version": "1.0.0",
+      "installedAt": 1772948794804
+    },
+    "weather": {
+      "version": "1.0.0",
+      "installedAt": 1773241233354
+    },
+    "tencentcloud-lighthouse-skill": {
+      "version": "1.0.0",
+      "installedAt": 1772948797946
+    },
+    "tencent-docs": {
+      "version": "1.0.1",
+      "installedAt": 1772948801564
+    },
+    "proactive-agent-skill": {
+      "version": "1.0.0",
+      "installedAt": 1772969582684
+    },
+    "self-improving": {
+      "version": "1.1.3",
+      "installedAt": 1772969938228
+    },
+    "agent-team-orchestration": {
+      "version": "1.0.0",
+      "installedAt": 1772970948982
+    },
+    "cursor-agent": {
+      "version": "2.1.0",
+      "installedAt": 1773069852808
+    },
+    "multi-search-engine": {
+      "version": "2.0.1",
+      "installedAt": 1773239942670
+    },
+    "wechat-reader": {
+      "version": "1.0.0",
+      "installedAt": 1773289538664
+    },
+    "shadows-mcp-forge": {
+      "version": "1.1.0",
+      "installedAt": 1773289542542
+    },
+    "pdf": {
+      "version": "",
+      "installedAt": 1773313897090
+    },
+    "word-docx": {
+      "version": "1.0.2",
+      "installedAt": 1773313901480
+    }
+  }
+}

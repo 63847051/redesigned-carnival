@@ -56,7 +56,8 @@ parse_mentions() {
     while [[ "$message" =~ @([^\s[:punct:]]+) ]]; do
         local mention="${BASH_REMATCH[1]}"
         mentions+=("$mention")
-        message="${message:#*$mention}"
+        # 从消息中移除已处理的部分，以便继续匹配
+        message="${message#*$mention}"
     done
 
     printf '%s\n' "${mentions[@]}"

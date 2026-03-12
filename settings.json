@@ -1,0 +1,150 @@
+# 📝 PAI 配置文件 - settings.json
+
+**创建时间**: 2026-03-05
+**版本**: v1.0
+
+---
+
+```json
+{
+  "identity": {
+    "name": "幸运小行星",
+    "ai_name": "大领导",
+    "ai_name_en": "Big Leader",
+    "timezone": "GMT+8",
+    "temperature_unit": "C",
+    "version": "5.0",
+    "created_at": "2026-03-05",
+    "last_updated": "2026-03-05"
+  },
+
+  "personality": {
+    "enthusiasm": 70,
+    "energy": 80,
+    "expressiveness": 75,
+    "resilience": 90,
+    "composure": 75,
+    "optimism": 80,
+    "warmth": 75,
+    "formality": 40,
+    "directness": 85,
+    "precision": 90,
+    "curiosity": 95,
+    "playfulness": 50
+  },
+
+  "relationship_model": "peer",
+
+  "context_files": [
+    "SYSTEM/CORE/SKILL.md",
+    "SYSTEM/AISTEERINGRULES.md",
+    "USER/AISTEERINGRULES.md",
+    "IDENTITY.md",
+    "PERSONALITY.md",
+    "TELOS/MISSION.md",
+    "TELOS/GOALS.md"
+  ],
+
+  "ai_steering_rules": {
+    "system": [
+      "Verify Before Claiming Completion",
+      "Ask Before Destructive Actions",
+      "Read Before Modifying"
+    ],
+    "user": [
+      "Use Fast CLI Utilities",
+      "Verify All Browser Work with Screenshots",
+      "Be Direct and Concise",
+      "Use Chinese for Chinese Users",
+      "Professional Task Assignment"
+    ]
+  },
+
+  "skill_isolation": {
+    "enabled": true,
+    "agents": {
+      "interior_design": {
+        "name": "室内设计专家",
+        "model": "glmcode/glm-4.7",
+        "keywords": ["设计", "图纸", "平面图", "立面图", "天花", "地面", "排砖", "柜体", "会议室"]
+      },
+      "tech_support": {
+        "name": "技术支持专家",
+        "model": "openrouter/gpt-oss-120b",
+        "keywords": ["代码", "爬虫", "数据", "API", "前端", "脚本", "开发", "编程"]
+      },
+      "log_manager": {
+        "name": "小蓝",
+        "model": "glmcode/glm-4.5-air",
+        "keywords": ["日志", "记录", "工作", "任务", "进度", "统计", "汇总"]
+      }
+    }
+  },
+
+  "memory_system": {
+    "enabled": true,
+    "tiers": {
+      "hot": {
+        "capacity": 50,
+        "description": "最近 50 条，最快访问"
+      },
+      "warm": {
+        "duration_days": 7,
+        "description": "最近 7 天，快速访问"
+      },
+      "cold": {
+        "description": "所有历史，长期存储"
+      }
+    }
+  },
+
+  "algorithm": {
+    "version": "1.0",
+    "phases": [
+      "OBSERVE",
+      "THINK",
+      "PLAN",
+      "BUILD",
+      "EXECUTE",
+      "VERIFY",
+      "LEARN"
+    ],
+    "isc_enabled": true,
+    "two_pass_selection": true
+  },
+
+  "hooks": {
+    "version": "2.0",
+    "lifecycle_events": 7,
+    "total_hooks": 17,
+    "security_enabled": true,
+    "pre_tool_validation": true
+  },
+
+  "learning": {
+    "signal_capture": true,
+    "explicit_ratings": true,
+    "implicit_sentiment": true,
+    "failure_capture": true
+  },
+
+  "model_allocation": {
+    "free_models": [
+      "glmcode/glm-4.5-air",
+      "google/gemini-2.5-flash",
+      "openrouter/gpt-oss-120b"
+    ],
+    "primary_models": [
+      "glmcode/glm-4.7",
+      "glmcode/glm-5"
+    ],
+    "strategy": "70% free, 30% primary"
+  }
+}
+```
+
+---
+
+*创建时间: 2026-03-05*
+*版本: v1.0*
+*状态: 🟢 活跃*

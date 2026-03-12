@@ -1,0 +1,16 @@
+=== PreToolUse ===
+Time: Thu Mar  5 12:31:33 AM CST 2026
+Tool: exec
+Args: ls -la
+
+✅ 命令安全检查通过
+
+✅ PreToolUse Hook 执行完成
+=== PreToolUse ===
+Time: Thu Mar  5 12:31:33 AM CST 2026
+Tool: exec
+Args: invalid-command
+
+✅ 命令安全检查通过
+
+✅ PreToolUse Hook 执行完成

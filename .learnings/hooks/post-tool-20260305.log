@@ -1,0 +1,20 @@
+=== PostToolUse ===
+Time: Thu Mar  5 12:31:33 AM CST 2026
+Tool: exec
+Args: ls -la
+Exit Code: 0
+
+✅ 执行成功
+成功命令: ls -la
+
+✅ PostToolUse Hook 执行完成
+=== PostToolUse ===
+Time: Thu Mar  5 12:31:33 AM CST 2026
+Tool: exec
+Args: invalid-command
+Exit Code: 127
+
+❌ 执行失败
+退出码: 127
+
+✅ PostToolUse Hook 执行完成
