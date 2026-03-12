@@ -1,0 +1,101 @@
+{
+  "sessions": [
+    {
+      "sessionKey": "agent:main:feishu:direct:ou_e356e8a931ed343100de9c449020964b",
+      "agentId": "main",
+      "lastMessageAt": "2026-03-12T13:48:18.893Z",
+      "state": "running"
+    },
+    {
+      "sessionKey": "agent:main:main",
+      "agentId": "main",
+      "lastMessageAt": "2026-03-12T13:37:10.301Z",
+      "state": "running"
+    },
+    {
+      "sessionKey": "agent:main:feishu:group:oc_65a1c1459bcf9126ad362bffac588e34",
+      "agentId": "main",
+      "lastMessageAt": "2026-03-11T23:32:39.244Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:tech:main",
+      "agentId": "tech",
+      "lastMessageAt": "2026-03-11T01:07:22.433Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:assistant:main",
+      "agentId": "assistant",
+      "lastMessageAt": "2026-03-11T01:06:58.502Z",
+      "state": "idle"
+    }
+  ],
+  "statuses": [
+    {
+      "sessionKey": "agent:main:feishu:direct:ou_e356e8a931ed343100de9c449020964b",
+      "model": "glm-4.7",
+      "tokensIn": 129944,
+      "tokensOut": 1462,
+      "updatedAt": "2026-03-12T13:51:58.686Z"
+    },
+    {
+      "sessionKey": "agent:main:main",
+      "model": "glm-4.7",
+      "tokensIn": 23728,
+      "tokensOut": 252,
+      "updatedAt": "2026-03-12T13:51:58.686Z"
+    },
+    {
+      "sessionKey": "agent:main:feishu:group:oc_65a1c1459bcf9126ad362bffac588e34",
+      "model": "glm-4.7",
+      "tokensIn": 14322,
+      "tokensOut": 328,
+      "updatedAt": "2026-03-12T13:51:58.686Z"
+    },
+    {
+      "sessionKey": "agent:tech:main",
+      "model": "glm-4.7",
+      "tokensIn": 14734,
+      "tokensOut": 122,
+      "updatedAt": "2026-03-12T13:51:58.686Z"
+    },
+    {
+      "sessionKey": "agent:assistant:main",
+      "model": "glm-4.7",
+      "tokensIn": 15256,
+      "tokensOut": 435,
+      "updatedAt": "2026-03-12T13:51:58.686Z"
+    }
+  ],
+  "cronJobs": [],
+  "approvals": [],
+  "projects": {
+    "projects": [],
+    "updatedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "projectSummaries": [],
+  "tasks": {
+    "tasks": [],
+    "agentBudgets": [],
+    "updatedAt": "1970-01-01T00:00:00.000Z"
+  },
+  "tasksSummary": {
+    "projects": 0,
+    "tasks": 0,
+    "todo": 0,
+    "inProgress": 0,
+    "blocked": 0,
+    "done": 0,
+    "owners": 0,
+    "artifacts": 0
+  },
+  "budgetSummary": {
+    "total": 0,
+    "ok": 0,
+    "warn": 0,
+    "over": 0,
+    "evaluations": []
+  },
+  "generatedAt": "2026-03-12T13:52:05.292Z"
+}

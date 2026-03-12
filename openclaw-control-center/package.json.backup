@@ -1,0 +1,31 @@
+{
+  "name": "openclaw-control-center",
+  "version": "1.0.0",
+  "description": "OpenClaw Control Center - Web UI 控制面板",
+  "installDate": "2026-03-12",
+  "status": "running",
+  "config": {
+    "gatewayUrl": "http://127.0.0.1:18789",
+    "openclawHome": "/root/.openclaw",
+    "uiHost": "0.0.0.0",
+    "uiPort": 4310,
+    "readonlyMode": true,
+    "localTokenAuthRequired": true
+  },
+  "access": {
+    "local": "http://127.0.0.1:4310",
+    "external": "http://43.134.63.176:4310"
+  },
+  "changelog": [
+    {
+      "version": "1.0.0",
+      "date": "2026-03-12",
+      "changes": [
+        "初始安装",
+        "外网访问配置",
+        "只读模式启用",
+        "安全配置完成"
+      ]
+    }
+  ]
+}
