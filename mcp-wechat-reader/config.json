@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "wechat-reader": {
+      "command": "python3",
+      "args": ["server.py"],
+      "cwd": "/root/.openclaw/workspace/mcp-wechat-reader",
+      "env": {}
+    }
+  }
+}
