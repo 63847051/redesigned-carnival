@@ -1,0 +1,18 @@
+=== Success Captured ===
+Time: Thu Mar  5 12:31:33 AM CST 2026
+Tool: exec
+Args: ls -la
+
+成功命令模式: ls -la
+模式记录: /root/.openclaw/workspace/.learnings/success/patterns-20260305.md
+
+✅ Success Hook 执行完成
+=== Success Captured ===
+Time: Thu Mar  5 12:31:33 AM CST 2026
+Tool: exec
+Args: ls -la
+
+成功命令模式: ls -la
+模式记录: /root/.openclaw/workspace/.learnings/success/patterns-20260305.md
+
+✅ Success Hook 执行完成

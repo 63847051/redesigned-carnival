@@ -1,0 +1,24 @@
+{
+  "timestamp": 1772641893,
+  "date": "2026-03-05",
+  "time": "00:31:33",
+  "tool": "exec",
+  "args": "ls -la",
+  "exit_code": 0,
+  "rating": 4,
+  "sentiment": "positive",
+  "outcome": "success",
+  "learning": "成功执行 exec: ls -la"
+}
+{
+  "timestamp": 1772641893,
+  "date": "2026-03-05",
+  "time": "00:31:33",
+  "tool": "exec",
+  "args": "invalid-command",
+  "exit_code": 127,
+  "rating": 1,
+  "sentiment": "negative",
+  "outcome": "failure",
+  "learning": "失败 exec (退出码 127): invalid-command"
+}

@@ -1,0 +1,20 @@
+=== Error Captured ===
+Time: Thu Mar  5 12:31:33 AM CST 2026
+Tool: exec
+Args: invalid-command
+Exit Code: 127
+
+错误类型: 命令未找到
+学习记录: /root/.openclaw/workspace/.learnings/errors/error-20260305-003133.md
+
+✅ Error Hook 执行完成
+=== Error Captured ===
+Time: Thu Mar  5 12:31:33 AM CST 2026
+Tool: exec
+Args: invalid-command
+Exit Code: 127
+
+错误类型: 命令未找到
+学习记录: /root/.openclaw/workspace/.learnings/errors/error-20260305-003133.md
+
+✅ Error Hook 执行完成
