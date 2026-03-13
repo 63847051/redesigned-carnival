@@ -1,28 +1,38 @@
 #!/bin/bash
-# 关键规则检查 - 自主进化系统 5.7
+# 关键规则检查 - 自主进化系统 5.9
+
+WORKSPACE="/root/.openclaw/workspace"
 
 echo "🚨 关键规则检查"
 echo "================"
 echo ""
-echo "📋 RULE-001: 重要操作必须等待确认"
+
+# 检查 RULE-001
+echo "🔍 检查 RULE-001: 重要操作必须等待确认"
+if [ -f "$WORKSPACE/.learnings/rules/critical-rule-001-wait-confirmation.md" ]; then
+    echo "✅ RULE-001 文件存在"
+    echo ""
+    cat "$WORKSPACE/.learnings/rules/critical-rule-001-wait-confirmation.md" | grep -A 5 "规则内容" || true
+else
+    echo "❌ RULE-001 文件缺失"
+    exit 1
+fi
+
 echo ""
-echo "⚠️ 以下操作必须等待用户明确确认："
-echo "  - Git 推送"
-echo "  - 文件删除"
-echo "  - 系统配置修改"
-echo "  - 任何不可逆的操作"
-echo "  - 用户说'确认后再...'的操作"
+echo "---"
 echo ""
-echo "✅ 执行流程："
-echo "  1. 生成报告/计划"
-echo "  2. 明确询问：请确认"
-echo "  3. 等待明确回复'确认'或'可以'"
-echo "  4. 只有收到确认后，才执行操作"
+
+# 检查 RULE-002
+echo "🔍 检查 RULE-002: 版本号跟踪"
+if [ -f "$WORKSPACE/.learnings/rules/critical-rule-002-version-tracking.md" ]; then
+    echo "✅ RULE-002 文件存在"
+    echo "   状态: 已激活"
+    echo "   要求: 每次升级后必须更新版本号"
+else
+    echo "❌ RULE-002 文件缺失"
+    exit 1
+fi
+
 echo ""
-echo "❌ 违规后果："
-echo "  - 严重错误"
-echo "  - 用户失去信任"
-echo "  - 必须道歉并纠正"
-echo ""
-echo "💡 记住：用户说'确认后' = 必须等待确认！"
-echo ""
+echo "================"
+echo "✅ 所有关键规则检查通过"

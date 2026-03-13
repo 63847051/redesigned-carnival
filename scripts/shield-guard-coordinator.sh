@@ -4,10 +4,20 @@
 
 set -e
 
-# API Keys
-GOOGLE_KEY="AIzaSyAcMMIXeaM7Or0Z2HA20z00VgWG8RxXHyg"
-GROQ_KEY="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"
-OPENROUTER_KEY="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"
+# API Keys - 从环境变量或配置文件读取
+GOOGLE_KEY="${GOOGLE_API_KEY:-}"
+GROQ_KEY="${GROQ_API_KEY:-}"
+OPENROUTER_KEY="${OPENROUTER_API_KEY:-}"
+
+# 检查必需的环境变量
+if [[ -z "$GOOGLE_KEY" || -z "$GROQ_KEY" || -z "$OPENROUTER_KEY" ]]; then
+    echo "❌ 错误: 缺少必需的 API Keys"
+    echo "请设置以下环境变量:"
+    echo "  export GOOGLE_API_KEY='your-key'"
+    echo "  export GROQ_API_KEY='your-key'"
+    echo "  export OPENROUTER_API_KEY='your-key'"
+    exit 1
+fi
 
 # 颜色定义
 ECHO_GREEN='\033[0;32m'
