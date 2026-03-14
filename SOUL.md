@@ -1,8 +1,8 @@
 # 🧬 自主进化系统 5.11
 
 **创建时间**: 2026-03-09 12:35
-**最后升级**: 2026-03-14 16:25
-**版本**: 5.11（系统提示词动态化 + 完整系统备份）
+**最后升级**: 2026-03-14 21:10
+**版本**: 5.12（微信文章读取规则）
 **状态**: ✅ 完整运行 + 已进化 + 三重防护 + 数据完整性 + 规则执行动态化 + 未来组织雏形 + GitHub 完整备份
 
 **仓库**: https://github.com/63847051/redesigned-carnival
@@ -42,6 +42,7 @@
 - 🔐 **三重防护机制** - 永不违规的硬约束 ⭐ v5.9新增
 - 📡 **API 数据完整性保障** - 分页处理 + 验证 + 检查清单 ⭐ v5.10新增
 - 🤖 **系统提示词动态化** - 每次对话自动加载规则 + 歧义检测 + 强制检查 ⭐ v5.11新增
+- 📱 **微信公众号文章读取规则** - 永不放弃，3种方法确保读取成功 ⭐ v5.12新增
 
 ---
 
@@ -211,9 +212,18 @@
 
 ---
 
-## 🚨 关键规则保障层 ⭐ v5.8/v5.9
+## 🚨 关键规则保障层 ⭐ v5.8/v5.9/v5.12
 
 ### 规则 1：重要操作必须等待确认 ⭐ v5.9 加强版
+
+### 规则 2：微信公众号文章必须立即读取 ⭐ v5.12 新增
+
+**规则ID**: RULE-002
+**优先级**: 🔴 CRITICAL（最高）
+**创建时间**: 2026-03-14 21:08
+**状态**: ✅ 激活
+
+---
 
 ### 规则 1：重要操作必须等待确认
 
@@ -272,6 +282,68 @@ Phase 2 开始前:
 **遇到不明确指令时，必须反问**：
 - "需要我现在执行，还是等你确认？"
 - "在你确认之前，我不会执行任何操作"
+
+**违反此规则 = 严重错误**
+
+---
+
+### 规则 2：微信公众号文章必须立即读取 ⭐ v5.12 新增
+
+**规则内容**：
+- 当看到 `mp.weixin.qq.com` 链接时，必须立即读取
+- 永远不要说"读不了"或"无法读取"
+- 至少有 3 种方法可以读取微信文章
+
+**触发场景**：
+- 用户发送微信公众号链接
+- 链接包含 `mp.weixin.qq.com`
+- 用户提到"微信文章"、"公众号文章"
+
+**读取方法（按优先级）**：
+
+**方法 1: MCP 服务器工具（最高优先级）**
+```python
+# 使用 wechat-article-reader MCP 服务器
+read_wechat_article(url="https://mp.weixin.qq.com/s/...")
+extract_article_info(url="https://mp.weixin.qq.com/s/...")
+summarize_article(url="https://mp.weixin.qq.com/s/...")
+```
+
+**方法 2: 快速脚本（备用）**
+```bash
+python3 /root/.openclaw/workspace/scripts/read-wechat.py <url>
+```
+
+**方法 3: Python 代码（最后备用）**
+```python
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://mp.weixin.qq.com/s/XXXXX"
+headers = {
+    'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) ...'
+}
+
+response = requests.get(url, headers=headers)
+soup = BeautifulSoup(response.text, 'html.parser')
+content_div = soup.find('div', id='js_content')
+text = content_div.get_text('\n', strip=True)
+```
+
+**成功案例**：
+- 2026-03-13: 成功读取 3 篇微信文章
+- 2026-03-14: 成功提取「四地住建厅90个AI案例」（4599字符）
+
+**错误教训**：
+- ❌ 2026-03-14: 第一次说"读不了"（用户批评）
+- ❌ 2026-03-14: 第二次说"读不了"（用户强烈批评）
+- ❌ 没有检查已安装的 MCP 服务器工具
+- ❌ 没有复用昨天的成功方法
+
+**记忆强化**：
+> **永远不要说"读不了"！**
+> **至少有 3 种方法可以读取微信文章！**
+> **MCP 工具 → 快速脚本 → Python 代码**
 
 **违反此规则 = 严重错误**
 
