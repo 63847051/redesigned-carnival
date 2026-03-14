@@ -102,6 +102,30 @@
       "zip_url": "https://lightmake.site/api/v1/download?slug=word-docx",
       "source": "skillhub",
       "version": "1.0.2"
+    },
+    "gog": {
+      "name": "Gog",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=gog",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "wechat-article-extractor": {
+      "name": "WeChat Article Extractor",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=wechat-article-extractor",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "wxmp-reader": {
+      "name": "WeChat Articles Reader",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=wxmp-reader",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "wechat-article-reader": {
+      "name": "微信公众号文章导出",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=wechat-article-reader",
+      "source": "skillhub",
+      "version": "1.0.0"
     }
   }
 }

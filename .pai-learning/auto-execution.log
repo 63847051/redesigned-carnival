@@ -3901,3 +3901,545 @@ awk: cmd. line:1:                ^ syntax error
 结束时间: 2026-03-13 06:00:01
 ======================================
 
+
+======================================
+
+🔍 任务 1: 检查系统健康...
+   ✅ Gateway: 运行中
+   📊 内存: 51.9
+   📚 学习信号: 7 条
+
+🚀 任务 2: 运行完整 PAI 工作流...
+🚀 PAI 完整工作流
+======================================
+开始时间: 2026-03-13 12:00:02
+
+📊 步骤 1: 分层学习信号...
+🧠 PAI 三层记忆管理系统
+======================================
+📊 分层学习信号: /root/.openclaw/workspace/.pai-learning/signals/2026-03-13-signals.jsonl
+✅ 分层完成:
+   Hot Memory: 2 条
+   Warm Memory: 0 条
+   Cold Memory: 0 条
+   总计: 2 条
+
+🔬 步骤 2: 生成分析报告...
+🔬 PAI 智能分析引擎 v2
+======================================
+📊 快速分析...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速分析完成: /root/.openclaw/workspace/.pai-learning/analysis-reports/quick-analysis-2026-03-13.md
+
+💡 步骤 3: 智能建议 + 集成...
+💡 PAI 智能建议系统 v2
+======================================
+💡 生成快速建议...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速建议完成: /root/.openclaw/workspace/.pai-learning/advice-reports/quick-advice-2026-03-13.md
+
+🔄 集成超级进化大脑...
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 61: local: can only be used in a function
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 62: local: can only be used in a function
+awk: cmd. line:1: BEGIN {printf "%.1f", (/)*100}
+awk: cmd. line:1:                         ^ unterminated regexp
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 63: local: can only be used in a function
+   成功率: %
+awk: cmd. line:1: BEGIN {exit !( < 80)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 成功率良好，继续正常工作
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 80: local: can only be used in a function
+   内存: %
+awk: cmd. line:1: BEGIN {exit !( > 85)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 内存使用健康
+
+📊 步骤 4: 更新可视化仪表板...
+🎨 生成 PAI 可视化仪表板...
+📊 收集学习信号数据...
+✅ 可视化仪表板已生成: /root/.openclaw/workspace/public/pai-dashboard/index.html
+   访问地址: http://43.134.63.176/pai-dashboard/
+
+📊 步骤 5: 记忆统计...
+🧠 PAI 三层记忆管理系统
+======================================
+📊 PAI 记忆统计
+======================================
+🔥 Hot Memory: 2 条
+🌡️  Warm Memory: 0 条
+❄️  Cold Memory: 0 条
+📦 总计: 2 条
+
+💡 步骤 6: 智能建议...
+🧠 PAI 三层记忆管理系统
+======================================
+💡 PAI 智能建议
+======================================
+📊 近期表现:
+   成功率: 0.00.0%
+   平均复杂度: 5.05.0/5
+/root/.openclaw/workspace/scripts/pai-memory-manager.sh: line 191: ((: 0
+1 : syntax error in expression (error token is "1 ")
+/root/.openclaw/workspace/scripts/pai-memory-manager.sh: line 198: ((: 5
+0 : syntax error in expression (error token is "0 ")
+
+======================================
+完成时间: 2026-03-13 12:00:02
+🎉 PAI 完整工作流执行完毕！
+   ✅ 工作流完成
+
+📝 任务 3: 生成每日总结...
+   📊 今日统计:
+- **总任务数**: 2
+- **成功率**: 0.0%
+- **平均复杂度**: 5
+- ⚠️  成功率低于 70%，建议降低复杂度
+
+💡 任务 4: 检查智能建议...
+   ⚠️  建议: 成功率低于 80%，建议降低任务复杂度
+
+✅ 自动化执行完成
+结束时间: 2026-03-13 12:00:02
+======================================
+
+
+======================================
+
+🔍 任务 1: 检查系统健康...
+   ✅ Gateway: 运行中
+   📊 内存: 54.7
+   📚 学习信号: 7 条
+
+🚀 任务 2: 运行完整 PAI 工作流...
+🚀 PAI 完整工作流
+======================================
+开始时间: 2026-03-13 18:00:01
+
+📊 步骤 1: 分层学习信号...
+🧠 PAI 三层记忆管理系统
+======================================
+📊 分层学习信号: /root/.openclaw/workspace/.pai-learning/signals/2026-03-13-signals.jsonl
+✅ 分层完成:
+   Hot Memory: 3 条
+   Warm Memory: 0 条
+   Cold Memory: 0 条
+   总计: 3 条
+
+🔬 步骤 2: 生成分析报告...
+🔬 PAI 智能分析引擎 v2
+======================================
+📊 快速分析...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速分析完成: /root/.openclaw/workspace/.pai-learning/analysis-reports/quick-analysis-2026-03-13.md
+
+💡 步骤 3: 智能建议 + 集成...
+💡 PAI 智能建议系统 v2
+======================================
+💡 生成快速建议...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速建议完成: /root/.openclaw/workspace/.pai-learning/advice-reports/quick-advice-2026-03-13.md
+
+🔄 集成超级进化大脑...
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 61: local: can only be used in a function
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 62: local: can only be used in a function
+awk: cmd. line:1: BEGIN {printf "%.1f", (/)*100}
+awk: cmd. line:1:                         ^ unterminated regexp
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 63: local: can only be used in a function
+   成功率: %
+awk: cmd. line:1: BEGIN {exit !( < 80)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 成功率良好，继续正常工作
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 80: local: can only be used in a function
+   内存: %
+awk: cmd. line:1: BEGIN {exit !( > 85)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 内存使用健康
+
+📊 步骤 4: 更新可视化仪表板...
+🎨 生成 PAI 可视化仪表板...
+📊 收集学习信号数据...
+✅ 可视化仪表板已生成: /root/.openclaw/workspace/public/pai-dashboard/index.html
+   访问地址: http://43.134.63.176/pai-dashboard/
+
+📊 步骤 5: 记忆统计...
+🧠 PAI 三层记忆管理系统
+======================================
+📊 PAI 记忆统计
+======================================
+🔥 Hot Memory: 3 条
+🌡️  Warm Memory: 0 条
+❄️  Cold Memory: 0 条
+📦 总计: 3 条
+
+💡 步骤 6: 智能建议...
+🧠 PAI 三层记忆管理系统
+======================================
+💡 PAI 智能建议
+======================================
+📊 近期表现:
+   成功率: 0.00.00.0%
+   平均复杂度: 5.05.05.0/5
+/root/.openclaw/workspace/scripts/pai-memory-manager.sh: line 191: ((: 0
+0
+1 : syntax error in expression (error token is "0
+1 ")
+/root/.openclaw/workspace/scripts/pai-memory-manager.sh: line 198: ((: 5
+5
+0 : syntax error in expression (error token is "5
+0 ")
+
+======================================
+完成时间: 2026-03-13 18:00:02
+🎉 PAI 完整工作流执行完毕！
+   ✅ 工作流完成
+
+📝 任务 3: 生成每日总结...
+   📊 今日统计:
+- **总任务数**: 3
+- **成功率**: 0.0%
+- **平均复杂度**: 5
+- ⚠️  成功率低于 70%，建议降低复杂度
+
+💡 任务 4: 检查智能建议...
+   ⚠️  建议: 成功率低于 80%，建议降低任务复杂度
+
+✅ 自动化执行完成
+结束时间: 2026-03-13 18:00:02
+======================================
+
+
+======================================
+
+🔍 任务 1: 检查系统健康...
+   ✅ Gateway: 运行中
+   📊 内存: 58.7
+   📚 学习信号: 7 条
+
+🚀 任务 2: 运行完整 PAI 工作流...
+🚀 PAI 完整工作流
+======================================
+开始时间: 2026-03-14 00:00:01
+
+📊 步骤 1: 分层学习信号...
+⚠️  今日无学习信号，跳过分层
+
+🔬 步骤 2: 生成分析报告...
+🔬 PAI 智能分析引擎 v2
+======================================
+📊 快速分析...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速分析完成: /root/.openclaw/workspace/.pai-learning/analysis-reports/quick-analysis-2026-03-14.md
+
+💡 步骤 3: 智能建议 + 集成...
+💡 PAI 智能建议系统 v2
+======================================
+💡 生成快速建议...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速建议完成: /root/.openclaw/workspace/.pai-learning/advice-reports/quick-advice-2026-03-14.md
+
+🔄 集成超级进化大脑...
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 61: local: can only be used in a function
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 62: local: can only be used in a function
+awk: cmd. line:1: BEGIN {printf "%.1f", (/)*100}
+awk: cmd. line:1:                         ^ unterminated regexp
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 63: local: can only be used in a function
+   成功率: %
+awk: cmd. line:1: BEGIN {exit !( < 80)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 成功率良好，继续正常工作
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 80: local: can only be used in a function
+   内存: %
+awk: cmd. line:1: BEGIN {exit !( > 85)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 内存使用健康
+
+📊 步骤 4: 更新可视化仪表板...
+🎨 生成 PAI 可视化仪表板...
+📊 收集学习信号数据...
+✅ 可视化仪表板已生成: /root/.openclaw/workspace/public/pai-dashboard/index.html
+   访问地址: http://43.134.63.176/pai-dashboard/
+
+📊 步骤 5: 记忆统计...
+🧠 PAI 三层记忆管理系统
+======================================
+📊 PAI 记忆统计
+======================================
+🔥 Hot Memory: 5 条
+🌡️  Warm Memory: 0 条
+❄️  Cold Memory: 0 条
+📦 总计: 5 条
+
+💡 步骤 6: 智能建议...
+🧠 PAI 三层记忆管理系统
+======================================
+💡 PAI 智能建议
+======================================
+📊 近期表现:
+   成功率: 0.00.00.00.00.0%
+   平均复杂度: 5.05.05.05.05.0/5
+/root/.openclaw/workspace/scripts/pai-memory-manager.sh: line 191: ((: 0
+0
+0
+0
+1 : syntax error in expression (error token is "0
+0
+0
+1 ")
+/root/.openclaw/workspace/scripts/pai-memory-manager.sh: line 198: ((: 5
+5
+5
+5
+0 : syntax error in expression (error token is "5
+5
+5
+0 ")
+
+======================================
+完成时间: 2026-03-14 00:00:02
+🎉 PAI 完整工作流执行完毕！
+   ✅ 工作流完成
+
+📝 任务 3: 生成每日总结...
+   📊 今日统计:
+- **总任务数**: 5
+- **成功率**: 0.0%
+- **平均复杂度**: 5
+- ⚠️  成功率低于 70%，建议降低复杂度
+
+💡 任务 4: 检查智能建议...
+   ⚠️  建议: 成功率低于 80%，建议降低任务复杂度
+
+✅ 自动化执行完成
+结束时间: 2026-03-14 00:00:02
+======================================
+
+
+======================================
+
+🔍 任务 1: 检查系统健康...
+   ✅ Gateway: 运行中
+   📊 内存: 60.3
+   📚 学习信号: 7 条
+
+🚀 任务 2: 运行完整 PAI 工作流...
+🚀 PAI 完整工作流
+======================================
+开始时间: 2026-03-14 06:00:01
+
+📊 步骤 1: 分层学习信号...
+⚠️  今日无学习信号，跳过分层
+
+🔬 步骤 2: 生成分析报告...
+🔬 PAI 智能分析引擎 v2
+======================================
+📊 快速分析...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速分析完成: /root/.openclaw/workspace/.pai-learning/analysis-reports/quick-analysis-2026-03-14.md
+
+💡 步骤 3: 智能建议 + 集成...
+💡 PAI 智能建议系统 v2
+======================================
+💡 生成快速建议...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速建议完成: /root/.openclaw/workspace/.pai-learning/advice-reports/quick-advice-2026-03-14.md
+
+🔄 集成超级进化大脑...
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 61: local: can only be used in a function
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 62: local: can only be used in a function
+awk: cmd. line:1: BEGIN {printf "%.1f", (/)*100}
+awk: cmd. line:1:                         ^ unterminated regexp
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 63: local: can only be used in a function
+   成功率: %
+awk: cmd. line:1: BEGIN {exit !( < 80)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 成功率良好，继续正常工作
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 80: local: can only be used in a function
+   内存: %
+awk: cmd. line:1: BEGIN {exit !( > 85)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 内存使用健康
+
+📊 步骤 4: 更新可视化仪表板...
+🎨 生成 PAI 可视化仪表板...
+📊 收集学习信号数据...
+✅ 可视化仪表板已生成: /root/.openclaw/workspace/public/pai-dashboard/index.html
+   访问地址: http://43.134.63.176/pai-dashboard/
+
+📊 步骤 5: 记忆统计...
+🧠 PAI 三层记忆管理系统
+======================================
+📊 PAI 记忆统计
+======================================
+🔥 Hot Memory: 5 条
+🌡️  Warm Memory: 0 条
+❄️  Cold Memory: 0 条
+📦 总计: 5 条
+
+💡 步骤 6: 智能建议...
+🧠 PAI 三层记忆管理系统
+======================================
+💡 PAI 智能建议
+======================================
+📊 近期表现:
+   成功率: 0.00.00.00.00.0%
+   平均复杂度: 5.05.05.05.05.0/5
+/root/.openclaw/workspace/scripts/pai-memory-manager.sh: line 191: ((: 0
+0
+0
+0
+1 : syntax error in expression (error token is "0
+0
+0
+1 ")
+/root/.openclaw/workspace/scripts/pai-memory-manager.sh: line 198: ((: 5
+5
+5
+5
+0 : syntax error in expression (error token is "5
+5
+5
+0 ")
+
+======================================
+完成时间: 2026-03-14 06:00:01
+🎉 PAI 完整工作流执行完毕！
+   ✅ 工作流完成
+
+📝 任务 3: 生成每日总结...
+   📊 今日统计:
+- **总任务数**: 5
+- **成功率**: 0.0%
+- **平均复杂度**: 5
+- ⚠️  成功率低于 70%，建议降低复杂度
+
+💡 任务 4: 检查智能建议...
+   ⚠️  建议: 成功率低于 80%，建议降低任务复杂度
+
+✅ 自动化执行完成
+结束时间: 2026-03-14 06:00:01
+======================================
+
+
+======================================
+
+🔍 任务 1: 检查系统健康...
+   ✅ Gateway: 运行中
+   📊 内存: 56.5
+   📚 学习信号: 7 条
+
+🚀 任务 2: 运行完整 PAI 工作流...
+🚀 PAI 完整工作流
+======================================
+开始时间: 2026-03-14 12:00:01
+
+📊 步骤 1: 分层学习信号...
+⚠️  今日无学习信号，跳过分层
+
+🔬 步骤 2: 生成分析报告...
+🔬 PAI 智能分析引擎 v2
+======================================
+📊 快速分析...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速分析完成: /root/.openclaw/workspace/.pai-learning/analysis-reports/quick-analysis-2026-03-14.md
+
+💡 步骤 3: 智能建议 + 集成...
+💡 PAI 智能建议系统 v2
+======================================
+💡 生成快速建议...
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+awk: cmd. line:2: BEGIN {exit !(5
+awk: cmd. line:2:                ^ unexpected newline or end of string
+✅ 快速建议完成: /root/.openclaw/workspace/.pai-learning/advice-reports/quick-advice-2026-03-14.md
+
+🔄 集成超级进化大脑...
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 61: local: can only be used in a function
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 62: local: can only be used in a function
+awk: cmd. line:1: BEGIN {printf "%.1f", (/)*100}
+awk: cmd. line:1:                         ^ unterminated regexp
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 63: local: can only be used in a function
+   成功率: %
+awk: cmd. line:1: BEGIN {exit !( < 80)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 成功率良好，继续正常工作
+/root/.openclaw/workspace/scripts/pai-workflow.sh: line 80: local: can only be used in a function
+   内存: %
+awk: cmd. line:1: BEGIN {exit !( > 85)}
+awk: cmd. line:1:                ^ syntax error
+   ✅ 内存使用健康
+
+📊 步骤 4: 更新可视化仪表板...
+🎨 生成 PAI 可视化仪表板...
+📊 收集学习信号数据...
+✅ 可视化仪表板已生成: /root/.openclaw/workspace/public/pai-dashboard/index.html
+   访问地址: http://43.134.63.176/pai-dashboard/
+
+📊 步骤 5: 记忆统计...
+🧠 PAI 三层记忆管理系统
+======================================
+📊 PAI 记忆统计
+======================================
+🔥 Hot Memory: 1 条
+🌡️  Warm Memory: 0 条
+❄️  Cold Memory: 0 条
+📦 总计: 1 条
+
+💡 步骤 6: 智能建议...
+🧠 PAI 三层记忆管理系统
+======================================
+💡 PAI 智能建议
+======================================
+📊 近期表现:
+   成功率: 0.0%
+   平均复杂度: 5.0/5
+
+⚠️  建议:
+   - 成功率较低，建议降低任务复杂度
+   - 检查失败任务的共同模式
+
+======================================
+完成时间: 2026-03-14 12:00:01
+🎉 PAI 完整工作流执行完毕！
+   ✅ 工作流完成
+
+📝 任务 3: 生成每日总结...
+   📊 今日统计:
+- **总任务数**: 1
+- **成功率**: 0.0%
+- **平均复杂度**: 5/5
+- ⚠️  成功率低于 70%，建议降低复杂度
+
+💡 任务 4: 检查智能建议...
+   ⚠️  建议: 成功率低于 80%，建议降低任务复杂度
+
+✅ 自动化执行完成
+结束时间: 2026-03-14 12:00:01
+======================================
+

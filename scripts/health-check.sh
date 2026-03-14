@@ -1,89 +1,74 @@
 #!/bin/bash
-# 健康检查脚本 - 使用验证有效的 API 调用格式
+# 系统健康检查脚本
+# 快速诊断系统状态
 
-set -e
-
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m'
-
-echo "🔍 子 Agent 健康检查..."
+echo "🔍 系统健康检查"
+echo "══════════════════════════════════"
+echo "📅 检查时间: $(date '+%Y-%m-%d %H:%M:%S')"
 echo ""
 
-# API Keys
-GROQ_KEY="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"
-GOOGLE_KEY="AIzaSyAcMMIXeaM7Or0Z2HA20z00VgWG8RxXHyg"
-OPENROUTER_KEY="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"
-
-# 1. 测试 Groq（技术专家）
-echo "💻 测试 Groq（技术专家）..."
-groq_response=$(curl -s -X POST "https://api.groq.com/openai/v1/chat/completions" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $GROQ_KEY" \
-  -d '{"model": "llama-3.3-70b-versatile", "messages": [{"role": "user", "content": "测试"}], "max_tokens": 10}' 2>/dev/null)
-
-if echo "$groq_response" | grep -q '"error"'; then
-    echo -e "${RED}❌ 技术专家（Groq）: 不可用${NC}"
-    groq_status=1
+# 1. 内存使用
+echo "📊 内存使用:"
+free -h | grep Mem
+MEMORY_USAGE=$(free | awk '/Mem/{printf("%.1f"), $3/$2*100}')
+if [ $(echo "$MEMORY_USAGE > 80" | bc -l) -eq 1 ]; then
+  echo "  ⚠️ 内存使用过高"
 else
-    echo -e "${GREEN}✅ 技术专家（Groq）: 正常${NC}"
-    groq_status=0
+  echo "  ✅ 内存使用正常"
 fi
-
-# 2. 测试 OpenRouter（日志专家）
 echo ""
-echo "📋 测试 OpenRouter（日志专家）..."
-or_response=$(curl -s -X POST "https://openrouter.ai/api/v1/chat/completions" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENROUTER_KEY" \
-  -H "HTTP-Referer: http://43.134.63.176:18789" \
-  -H "X-Title: OpenClaw" \
-  -d '{"model": "google/gemma-3-4b-it:free", "messages": [{"role": "user", "content": "测试"}], "max_tokens": 10}' 2>/dev/null)
 
-if echo "$or_response" | grep -q '"error"'; then
-    echo -e "${RED}❌ 日志专家（OpenRouter）: 不可用${NC}"
-    or_status=1
+# 2. 磁盘使用
+echo "💾 磁盘使用:"
+df -h | grep -E "(Filesystem|/$|/home)"
+DISK_USAGE=$(df -h / | awk 'NR==2 {print $5}' | sed 's/%//')
+if [ $DISK_USAGE -gt 80 ]; then
+  echo "  ⚠️ 磁盘使用过高"
 else
-    echo -e "${GREEN}✅ 日志专家（OpenRouter）: 正常${NC}"
-    or_status=0
+  echo "  ✅ 磁盘使用正常"
 fi
-
-# 3. 测试 Google（设计专家）- 使用 call-llm.sh 验证有效的格式
 echo ""
-echo "🏠 测试 Google（设计专家）..."
-google_response=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$GOOGLE_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"contents": [{"parts":[{"text": "测试"}]}]}' 2>/dev/null)
 
-if echo "$google_response" | grep -q '"error"' || [ -z "$google_response" ]; then
-    echo -e "${RED}❌ 设计专家（Google）: 不可用${NC}"
-    google_status=1
+# 3. 服务状态
+echo "🚀 服务状态:"
+if systemctl --user is-active --quiet openclaw-gateway; then
+  GATEWAY_STATUS="✅ 运行中"
+  GATEWAY_RESTART=$(journalctl --user -u openclaw-gateway --no-pager | grep "Scheduled restart job" | wc -l)
 else
-    echo -e "${GREEN}✅ 设计专家（Google）: 正常${NC}"
-    google_status=0
+  GATEWAY_STATUS="❌ 未运行"
 fi
+echo "  Gateway: $GATEWAY_STATUS"
 
-echo ""
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-
-# 总结
-echo "📊 状态总结:"
-echo "   Groq（技术）: $([ $groq_status -eq 0 ] && echo "✅ 正常" || echo "❌ 不可用")"
-echo "   OpenRouter（日志）: $([ $or_status -eq 0 ] && echo "✅ 正常" || echo "❌ 不可用")"
-echo "   Google（设计）: $([ $google_status -eq 0 ] && echo "✅ 正常" || echo "❌ 不可用")"
-
-echo ""
-
-# 返回退出码
-if [ $groq_status -ne 0 ] || [ $or_status -ne 0 ] || [ $google_status -ne 0 ]; then
-    echo "⚠️ 有专家不可用，建议："
-    echo "   1. 检查 API Key 是否正确"
-    echo "   2. 检查网络连接"
-    echo "   3. 使用可用的专家继续工作"
-    exit 1
+if systemctl is-active --quiet ai-dashboard.service; then
+  DASHBOARD_STATUS="✅ 运行中"
+else
+  DASHBOARD_STATUS="❌ 未运行"
 fi
+echo "  Dashboard: $DASHBOARD_STATUS"
+echo ""
 
-echo "✅ 所有专家正常 - 系统完全可用！"
-exit 0
+# 4. 最近错误
+echo "📝 最近错误（1 小时内）:"
+ERRORS=$(journalctl --user -u openclaw-gateway --since "1 hour ago" --no-pager | grep -i "error\|failed" | tail -3)
+if [ -z "$ERRORS" ]; then
+  echo "  ✅ 无错误"
+else
+  echo "$ERRORS" | sed 's/^/  /'
+fi
+echo ""
+
+# 5. 进程状态
+echo "⚙️  进程状态:"
+NODE_COUNT=$(ps aux | grep "node server.js" | grep -v grep | wc -l)
+echo "  Node.js 进程: $NODE_COUNT 个"
+echo ""
+
+# 6. 总结
+echo "══════════════════════════════════"
+echo "📋 总结:"
+if systemctl --user is-active --quiet openclaw-gateway && systemctl is-active --quiet ai-dashboard.service; then
+  echo "  ✅ 系统运行正常"
+else
+  echo "  ⚠️ 部分服务未运行，请检查"
+fi
+echo ""

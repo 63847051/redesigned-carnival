@@ -76,6 +76,22 @@
     "word-docx": {
       "version": "1.0.2",
       "installedAt": 1773313901480
+    },
+    "gog": {
+      "version": "1.0.0",
+      "installedAt": 1773370223408
+    },
+    "wechat-article-extractor": {
+      "version": "1.0.0",
+      "installedAt": 1773375693116
+    },
+    "wxmp-reader": {
+      "version": "1.0.0",
+      "installedAt": 1773375810472
+    },
+    "wechat-article-reader": {
+      "version": "1.0.0",
+      "installedAt": 1773396051186
     }
   }
 }

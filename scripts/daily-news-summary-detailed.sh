@@ -1,12 +1,12 @@
 #!/bin/bash
-# 每日新闻摘要脚本 - 超详细版（含飞书推送）
-# 使用 hot-news-with-content.py 脚本生成新闻并推送到飞书
+# 每日新闻摘要脚本 - 真实热点 + AI 摘要版（含飞书推送）
+# 使用 real-hot-news-with-ai-summary.py 脚本生成新闻并推送到飞书
 
 cd /root/.openclaw/workspace
 
-# 1. 采集新闻
-echo "📰 开始采集新闻..."
-python3 /root/.openclaw/workspace/scripts/detailed-news-ultra.py >> /root/.openclaw/workspace/logs/news-summary.log 2>&1
+# 1. 采集新闻（使用真实爬虫 + AI 摘要）
+echo "📰 开始采集真实热点新闻 + AI 摘要生成..."
+python3 /root/.openclaw/workspace/scripts/real-hot-news-with-ai-summary.py > /tmp/latest_real_news.txt
 
 # 2. 推送到飞书
 echo "📤 开始推送到飞书..."
