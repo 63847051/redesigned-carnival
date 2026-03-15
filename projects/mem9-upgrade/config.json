@@ -1,0 +1,28 @@
+{
+  "solution": "B",
+  "description": "使用专用 mem9 表格",
+  "feishu": {
+    "app_token": "Vg0CbokIeaTUAqsjolVcH1Xpnlg",
+    "table_id": "tblfs59X2SkzHRwN",
+    "table_name": "mem9 专用表格",
+    "access_link": "https://ux7aumj3ud.feishu.cn/base/Vg0CbokIeaTUAqsjolVcH1Xpnlg?table=tblfs59X2SkzHRwN"
+  },
+  "existing_fields": {
+    "文本": "fldLqkFHUS",
+    "单选": "fldCtNyoMh",
+    "日期": "fldO3ErmOI",
+    "附件": "fldz04YKAm",
+    "content": "fldKFhyWkq"
+  },
+  "field_mappings": {
+    "content": "content",
+    "importance": "单选",
+    "created_at": "日期",
+    "attachments": "附件",
+    "notes": "文本"
+  },
+  "status": "configured",
+  "tested": true,
+  "total_records": 10,
+  "test_date": "2026-03-15"
+}

@@ -1,0 +1,25 @@
+# FinanceDatabase 集成模块 - Python 依赖包
+# 自主进化系统 5.13.0
+
+# 核心数据处理
+pandas>=2.0.0
+numpy>=1.24.0
+
+# 金融数据（可选，如果需要从 FinanceDatabase 获取数据）
+financetoolkit>=1.0.0
+
+# 报告生成
+reportlab>=4.0.0
+openpyxl>=3.1.0
+
+# 数据可视化（可选）
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# PDF 生成备选方案（可选）
+fpdf>=1.7.0
+
+# 说明：
+# - 必需：pandas, numpy, reportlab, openpyxl
+# - 可选：financetoolkit（如果需要直接从 FinanceDatabase 获取数据）
+# - 可选：matplotlib, seaborn（如果需要数据可视化）
