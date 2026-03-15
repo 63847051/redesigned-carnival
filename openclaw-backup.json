@@ -1,0 +1,282 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.8",
+    "lastTouchedAt": "2026-03-15T08:59:38.677Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-15T08:59:38.568Z",
+    "lastRunVersion": "2026.3.8",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "glmcode": {
+        "baseUrl": "https://open.bigmodel.cn/api/anthropic",
+        "apiKey": "YOUR_GLMCODE_API_KEY_HERE",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "glm-5",
+            "name": "GLM-5"
+          },
+          {
+            "id": "glm-4.7",
+            "name": "GLM-4.7"
+          },
+          {
+            "id": "glm-4.6",
+            "name": "GLM-4.6"
+          },
+          {
+            "id": "glm-4.5-air",
+            "name": "GLM-4.5-Air"
+          },
+          {
+            "id": "glm-4.5",
+            "name": "GLM-4.5"
+          }
+        ]
+      },
+      "groq": {
+        "baseUrl": "https://api.groq.com/openai/v1",
+        "apiKey": "YOUR_GROQ_API_KEY_HERE",
+        "models": [
+          {
+            "id": "llama-3.3-70b-versatile",
+            "name": "Llama-3.3-70B"
+          },
+          {
+            "id": "mixtral-8x7b-32768",
+            "name": "Mixtral-8x7B"
+          }
+        ]
+      },
+      "google": {
+        "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+        "apiKey": "YOUR_GOOGLE_API_KEY_HERE",
+        "api": "google-generative-ai",
+        "models": [
+          {
+            "id": "gemini-2.5-flash",
+            "name": "Gemini-2.5-Flash"
+          }
+        ]
+      },
+      "nvidia-gpt-oss": {
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "YOUR_NVIDIA_API_KEY_HERE",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "openai/gpt-oss-120b",
+            "name": "GPT-OSS-120B",
+            "compat": {
+              "supportsStore": false
+            }
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "glmcode/glm-4.7",
+        "fallback": [
+          "glmcode/glm-4.6",
+          "google/gemini-2.5-flash",
+          "groq/llama-3.3-70b-versatile"
+        ]
+      },
+      "workspace": "/root/.openclaw/workspace",
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "heartbeat": {
+        "every": "30m"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "default": true,
+        "name": "Lucky"
+      },
+      {
+        "id": "assistant",
+        "name": "助理",
+        "workspace": "/root/.openclaw/workspace-assistant",
+        "model": "glmcode/glm-4.6"
+      },
+      {
+        "id": "tech",
+        "name": "技术",
+        "workspace": "/root/.openclaw/workspace-tech",
+        "model": "nvidia-gpt-oss/gpt-oss-120b"
+      },
+      {
+        "id": "opencode",
+        "name": "OpenCode",
+        "workspace": "/root/.openclaw/workspace-opencode",
+        "model": "opencode/minimax-m2.5-free"
+      }
+    ]
+  },
+  "bindings": [
+    {
+      "agentId": "main",
+      "match": {
+        "channel": "feishu",
+        "accountId": "default"
+      }
+    },
+    {
+      "agentId": "opencode",
+      "match": {
+        "channel": "feishu",
+        "accountId": "opencode"
+      }
+    }
+  ],
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-account-channel-peer"
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "appId": "YOUR_FEISHU_APP_ID_HERE",
+      "appSecret": "YOUR_FEISHU_APP_SECRET_HERE",
+      "domain": "feishu",
+      "groupPolicy": "open",
+      "streaming": false,
+      "threadSession": true,
+      "requireMention": true,
+      "accounts": {
+        "default": {},
+        "opencode": {
+          "appId": "YOUR_FEISHU_APP_ID_OPENCODE_HERE",
+          "appSecret": "YOUR_FEISHU_APP_SECRET_OPENCODE_HERE",
+          "botName": "编程小幸运",
+          "dmPolicy": "open",
+          "allowFrom": [
+            "*"
+          ]
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowedOrigins": [
+        "http://YOUR_SERVER_IP:18789"
+      ],
+      "dangerouslyAllowHostHeaderOriginFallback": true,
+      "allowInsecureAuth": false,
+      "dangerouslyDisableDeviceAuth": false
+    },
+    "auth": {
+      "mode": "token",
+      "token": "GENERATE_RANDOM_TOKEN_HERE"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "plugins": {
+    "entries": {
+      "feishu": {
+        "enabled": false
+      },
+      "qqbot": {
+        "enabled": true
+      },
+      "ddingtalk": {
+        "enabled": true
+      },
+      "wecom": {
+        "enabled": true
+      },
+      "adp-openclaw": {
+        "enabled": true
+      },
+      "skillhub": {
+        "enabled": true,
+        "config": {
+          "primaryCli": "skillhub",
+          "fallbackCli": "clawhub",
+          "primaryLabel": "cn-optimized",
+          "fallbackLabel": "public-registry"
+        }
+      },
+      "openclaw-lark": {
+        "enabled": true
+      }
+    },
+    "installs": {
+      "qqbot": {
+        "source": "npm",
+        "spec": "@sliverp/qqbot@1.5.1",
+        "installPath": "/root/.openclaw/extensions/qqbot",
+        "version": "1.5.1",
+        "installedAt": "2026-03-11T14:59:23.000Z"
+      },
+      "ddingtalk": {
+        "source": "npm",
+        "spec": "@largezhou/ddingtalk",
+        "installPath": "/root/.openclaw/extensions/ddingtalk",
+        "version": "1.4.0",
+        "installedAt": "2026-03-11T14:59:34.000Z"
+      },
+      "wecom": {
+        "source": "npm",
+        "spec": "@mocrane/wecom",
+        "installPath": "/root/.openclaw/extensions/wecom",
+        "version": "2026.3.9",
+        "installedAt": "2026-03-11T14:59:46.000Z"
+      },
+      "adp-openclaw": {
+        "source": "npm",
+        "spec": "adp-openclaw",
+        "installPath": "/root/.openclaw/extensions/adp-openclaw",
+        "version": "0.0.65",
+        "installedAt": "2026-03-11T14:59:48.000Z"
+      },
+      "openclaw-lark": {
+        "source": "npm",
+        "spec": "@larksuite/openclaw-lark",
+        "installPath": "/root/.openclaw/extensions/openclaw-lark",
+        "version": "2026.3.15",
+        "resolvedName": "@larksuite/openclaw-lark",
+        "resolvedVersion": "2026.3.15",
+        "resolvedSpec": "@larksuite/openclaw-lark@2026.3.15",
+        "integrity": "sha512-YGk63CgYG+YDUO2+TxdSPJZA6km52OpqAqf26vZHMUqawEKhiT4bcfD5JHh6VGazjUwRk5Bze1UyVKncc0csBA==",
+        "shasum": "997cb8ee9cf66dcd3a24477cb5f59f5fb1a57fff",
+        "resolvedAt": "2026-03-15T07:01:49.212Z",
+        "installedAt": "2026-03-15T07:01:59.112Z"
+      }
+    }
+  }
+}
