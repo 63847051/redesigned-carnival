@@ -1,0 +1,15 @@
+{
+  "id": "mem8",
+  "content": "用户对猫过敏，所以不能养宠物",
+  "memory_type": "long_term",
+  "importance": 4,
+  "tags": [
+    "健康",
+    "偏好"
+  ],
+  "source_turn_id": null,
+  "created_at": "2026-03-15T14:07:27.444603",
+  "last_accessed": "2026-03-15T14:12:36.481267",
+  "access_count": 4,
+  "metadata": {}
+}

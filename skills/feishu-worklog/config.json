@@ -1,0 +1,40 @@
+{
+  "name": "feishu-worklog",
+  "version": "1.0.0",
+  "description": "Intelligent Feishu worklog assistant with natural language understanding. Automatically records, queries, and updates work logs in Feishu Bitable with smart intent recognition.",
+  "author": "OpenClaw Community",
+  "homepage": "https://github.com/63847051/redesigned-carnival",
+  "keywords": ["feishu", "bitable", "worklog", "日志", "工作日志", "飞书"],
+  "capabilities": {
+    "intents": ["record", "query", "update", "delete"],
+    "features": [
+      "natural-language-understanding",
+      "automatic-parameter-extraction",
+      "multi-dimensional-filtering",
+      "statistics-generation"
+    ],
+    "integrations": {
+      "feishu-bitable": {
+        "app_token": "BISAbNgYXa7Do1sc36YcBChInnS",
+        "table_id": "tbl5s8TEZ0tKhEm7"
+      }
+    }
+  },
+  "requirements": {
+    "python": ">=3.6",
+    "dependencies": [
+      "requests>=2.31.0",
+      "beautifulsoup4>=4.12.0"
+    ]
+  },
+  "install": {
+    "pip": "pip install requests beautifulsoup4"
+  },
+  "triggers": [
+    "Record work log",
+    "Query work logs",
+    "工作日志",
+    "飞书日志",
+    "记录任务"
+  ]
+}

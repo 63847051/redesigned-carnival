@@ -92,6 +92,18 @@
     "wechat-article-reader": {
       "version": "1.0.0",
       "installedAt": 1773396051186
+    },
+    "excalidraw-diagram-generator": {
+      "version": "1.0.0",
+      "installedAt": 1773536637005
+    },
+    "feishu-doc-write": {
+      "version": "1.0.0",
+      "installedAt": 1773536640700
+    },
+    "document-handler": {
+      "version": "1.0.0",
+      "installedAt": 1773536642728
     }
   }
 }

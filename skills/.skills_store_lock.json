@@ -126,6 +126,24 @@
       "zip_url": "https://lightmake.site/api/v1/download?slug=wechat-article-reader",
       "source": "skillhub",
       "version": "1.0.0"
+    },
+    "excalidraw-diagram-generator": {
+      "name": "Excalidraw Diagram Generator",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=excalidraw-diagram-generator",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "feishu-doc-write": {
+      "name": "feishu-doc-write",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=feishu-doc-write",
+      "source": "skillhub",
+      "version": "1.0.0"
+    },
+    "document-handler": {
+      "name": "Document Handler",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=document-handler",
+      "source": "skillhub",
+      "version": "1.0.0"
     }
   }
 }

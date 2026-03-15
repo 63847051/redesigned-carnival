@@ -1,0 +1,15 @@
+{
+  "id": "mem5",
+  "content": "用户计划下个月去日本旅游，需要提前订酒店",
+  "memory_type": "long_term",
+  "importance": 3,
+  "tags": [
+    "计划",
+    "旅行"
+  ],
+  "source_turn_id": null,
+  "created_at": "2026-03-15T14:07:27.444593",
+  "last_accessed": "2026-03-15T14:12:36.480802",
+  "access_count": 4,
+  "metadata": {}
+}

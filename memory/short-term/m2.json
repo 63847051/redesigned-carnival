@@ -1,0 +1,12 @@
+{
+  "id": "m2",
+  "content": "记住我最喜欢的框架是 FastAPI",
+  "memory_type": "short_term",
+  "importance": 4,
+  "tags": [],
+  "source_turn_id": null,
+  "created_at": "2026-03-15T14:12:36.478975",
+  "last_accessed": "2026-03-15T14:12:36.478976",
+  "access_count": 0,
+  "metadata": {}
+}

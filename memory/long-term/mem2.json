@@ -1,0 +1,15 @@
+{
+  "id": "mem2",
+  "content": "用户的工作是软件工程师，主要使用Python和JavaScript",
+  "memory_type": "long_term",
+  "importance": 4,
+  "tags": [
+    "职业",
+    "技能"
+  ],
+  "source_turn_id": null,
+  "created_at": "2026-03-15T14:07:27.444582",
+  "last_accessed": "2026-03-15T14:12:36.480502",
+  "access_count": 4,
+  "metadata": {}
+}

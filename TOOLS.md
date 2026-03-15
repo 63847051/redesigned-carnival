@@ -39,3 +39,43 @@
 ## 开发工具
 
 _（待添加常用工具和命令）_
+
+---
+
+## 📱 微信公众号文章读取工具 ⭐
+
+**快速读取工具**: `/root/.openclaw/workspace/scripts/read-wechat.py`
+
+**使用方法**:
+```bash
+python3 /root/.openclaw/workspace/scripts/read-wechat.py <微信文章URL>
+```
+
+**原理**:
+- 使用 iPhone User-Agent 绕过反爬虫
+- 通过 BeautifulSoup 解析 HTML
+- 提取 `#js_content` 区域的正文
+
+**成功案例**:
+- 2026-03-13: 成功读取 3 篇微信文章
+- 2026-03-14: 成功提取「四地住建厅90个AI案例」（4599字符）
+
+**关键规则**:
+> 当用户发送微信公众号链接时，永远不要说"读不了"。
+> 直接使用 iPhone UA + BeautifulSoup 方法提取内容！
+
+**示例**:
+```python
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://mp.weixin.qq.com/s/XXXXX"
+headers = {
+    'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) ...'
+}
+
+response = requests.get(url, headers=headers)
+soup = BeautifulSoup(response.text, 'html.parser')
+content_div = soup.find('div', id='js_content')
+text = content_div.get_text('\n', strip=True)
+```

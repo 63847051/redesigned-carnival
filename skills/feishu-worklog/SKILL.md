@@ -1,84 +1,133 @@
 ---
 name: feishu-worklog
-description: 小蓝 - 蓝色光标工作日志智能助手。当用户说"小蓝"或提到工作日志时触发。像语音助手一样简单,支持自然语言记录、查询、修改、删除、更新状态等所有表格操作。自动推断意图和参数,无需用户手动指定字段。
+description: 蓝色光标工作日志智能助手。支持自然语言记录、查询、修改、删除工作日志，自动推断意图和参数，无需手动指定字段。
 ---
 
-# 小蓝 - 工作日志智能助手
+# 飞书工作日志智能助手
 
-## 你是小蓝
+一个基于飞书多维表格的智能工作日志管理 skill，支持自然语言处理和智能意图识别。
 
-你是用户的**语音助手式工作日志管家**,通过自然语言理解用户意图,自动执行表格操作。
+## 触发条件
 
-## 核心原则
+当用户提到以下内容时触发：
+- "工作日志"、"日志"、"记一下"、"记录"
+- "小蓝"（语音助手式触发）
+- 查询任务、统计、查看进度
 
-1. **像语音助手一样简单** - 自然语言交互,不需要记忆命令
-2. **自动推断意图** - 从用户话语中识别操作类型
-3. **智能填充参数** - 自动判断项目类型、优先级、状态
-4. **确认后执行** - 涉及删除/修改时先确认再操作
+## 核心功能
 
-## 表格信息
+- **自然语言记录** - 用日常语言描述工作内容
+- **智能意图识别** - 自动识别操作类型（记录/查询/更新/删除）
+- **参数自动推断** - 自动判断项目类型、优先级、状态
+- **统计报表** - 实时获取工作统计和今日摘要
 
-- **表格**: 蓝色光标上海办公室工作日志
-- **app_token**: BISAbNgYXa7Do1sc36YcBChInnS
-- **table_id**: tbl5s8TEZ0tKhEm7
+## 快速开始
+
+### 初始化
+
+```python
+from worklog_assistant import WorklogAssistant
+
+app_token = "BISAbNgYXa7Do1sc36YcBChInnS"
+table_id = "tbl5s8TEZ0tKhEm7"
+
+assistant = WorklogAssistant(app_token, table_id)
+assistant.set_access_token("your_access_token")
+```
+
+### 处理用户输入
+
+```python
+result = assistant.process("记录一下：完成了3F会议室平面图设计")
+print(result)
+```
+
+## 工作流程
+
+### Step 1: 意图分析
+
+用户输入自然语言后，系统首先进行意图分析：
+
+```python
+from intent_analyzer import IntentAnalyzer
+
+analyzer = IntentAnalyzer()
+result = analyzer.analyze("紧急任务，完成设计图")
+
+# 返回结果
+# IntentResult(
+#     intent='record',
+#     content='完成设计图',
+#     project_type='室内设计',
+#     priority='高',
+#     status='待确认',
+#     note='',
+#     confidence=0.9
+# )
+```
+
+### Step 2: 参数提取
+
+系统自动提取以下参数：
+
+| 参数 | 来源 | 默认值 |
+|------|------|--------|
+| content | 用户输入内容 | - |
+| project_type | 关键词匹配 | 技术开发 |
+| priority | 关键词匹配 | 中 |
+| status | 关键词匹配 | 待确认 |
+| note | 括号内容 | "" |
+
+### Step 3: 执行操作
+
+根据意图类型调用相应接口：
+
+- **record** → `bitable_manager.add_record()`
+- **query** → `bitable_manager.query_records()`
+- **update** → `bitable_manager.update_status()`
+- **delete** → `bitable_manager.delete_record()`
 
 ## 意图识别
 
-### 1. 记录/添加 (最常见)
+### 1. 记录意图 (record)
 
-**触发词**: "记录""添加""新建""记一下""今天做了""完成"
+**触发词**: 记录、添加、新建、创建、写下、提交、录入
 
+**示例**:
 ```
-用户: "小蓝,记录整理茶水柜"
-→ 创建记录,内容="整理茶水柜",类型=现场,状态=待完成
-
-用户: "小蓝,今天完成了电路维修"
-→ 创建记录,内容="电路维修",类型=机电,状态=已完成
-```
-
-### 2. 查询/搜索
-
-**触发词**: "查询""搜索""看看""有没有""找到""列出"
-
-```
-用户: "小蓝,查询今天的任务"
-→ 列出今天创建的所有记录
-
-用户: "小蓝,搜索茶水柜相关的记录"
-→ 搜索内容包含"茶水柜"的记录
-
-用户: "小蓝,看看有哪些待完成的任务"
-→ 筛选状态=待完成的记录
+输入: "记录一下：完成了3F会议室平面图设计"
+输出: intent=record, content=完成了3F会议室平面图设计, 
+      project_type=室内设计, priority=中, status=已完成
 ```
 
-### 3. 更新/修改
+### 2. 查询意图 (query)
 
-**触发词**: "更新""修改""改成""标记为""状态改为"
+**触发词**: 查询、查看、显示、统计、多少、看看、有哪些
 
+**示例**:
 ```
-用户: "小蓝,把茶水柜任务标记为已完成"
-→ 搜索→找到记录→更新状态=已完成,添加完成时间
-
-用户: "小蓝,修改第一条记录的优先级为重要"
-→ 列出记录→找到第一条→更新优先级=重要
+输入: "今天完成了多少任务？"
+输出: intent=query, filters={status: 已完成, date: 今天}
 ```
 
-### 4. 删除
+### 3. 更新意图 (update)
 
-**触发词**: "删除""移除""去掉"
+**触发词**: 更新、修改、标记、完成、改成
 
+**示例**:
 ```
-用户: "小蓝,删除茶水柜那条记录"
-→ 搜索→找到→确认→删除
+输入: "把ID=rec123任务标记为完成"
+输出: intent=update, record_id=rec123, status=已完成
 ```
 
-### 5. 添加备注
+### 4. 删除意图 (delete)
 
-**触发词**: "备注""说明""注释"
+**触发词**: 删除、移除、去掉、清掉
 
+**示例**:
 ```
-用户: "小蓝,给茶水柜任务加个备注:已清洁完成"
-→ 搜索→找到→添加备注字段
+输入: "删除ID=rec123这条记录"
+输出: intent=delete, record_id=rec123
 ```
 
 ## 智能推断规则
@@ -87,123 +136,163 @@ description: 小蓝 - 蓝色光标工作日志智能助手。当用户说"小蓝
 
 | 关键词 | 类型 |
 |--------|------|
-| 设计、图纸、效果图、方案、 drafting | 设计 |
-| 施工、装修、材料、拆除、油漆 | 施工 |
-| 电工、电路、弱电、强电、网络 | 机电 |
-| 其他/无关键词 | 现场 |
+| 设计、图纸、平面图、立面图、天花、排砖、效果图、CAD、施工图 | 室内设计 |
+| 代码、开发、爬虫、API、脚本、前端、后端、bug、修复 | 技术开发 |
+| 文档、手册、说明、报告、方案、总结 | 文档编写 |
+| 现场、工地、施工、验收、巡查 | 现场 |
+| 机电、电气、弱电、智能化 | 机电 |
 
 ### 优先级识别
 
 | 关键词 | 优先级 |
 |--------|--------|
-| 紧急、马上、立刻、第一优先、重要 | 第一优先/重要 |
-| 普通、日常 | 普通重要 |
+| 紧急、重要、优先、高、急、加急、马上、立即 | 高 |
+| 普通、中、正常、常规、日常 | 中 |
+| 低、不急、稍后、有空、后面 | 低 |
 
 ### 状态识别
 
 | 关键词 | 状态 |
 |--------|------|
-| 完成、搞定、弄好、完毕 | 已完成 |
-| 进行中、正在做 | 待完成 |
-| 待确认、还不确定 | 待确认 |
+| 完成、done、做好了、结束、完结 | 已完成 |
+| 进行中、doing、正在、做、处理中 | 进行中 |
+| 待确认、待办、todo、未开始、待处理 | 待确认 |
 
-## 操作流程
+## 代码示例
 
-### 添加记录
+### 基本使用
 
-```
-1. 提取工作内容
-2. 识别项目类型/优先级/状态
-3. 调用 feishu_bitable_create_record
-4. 简洁回复确认
-```
+```python
+from worklog_assistant import WorklogAssistant
 
-### 查询记录
+assistant = WorklogAssistant(
+    app_token="BISAbNgYXa7Do1sc36YcBChInnS",
+    table_id="tbl5s8TEZ0tKhEm7"
+)
+assistant.set_access_token("your_token")
 
-```
-1. 识别查询条件 (今天/关键词/状态)
-2. 调用 feishu_bitable_list_records
-3. 格式化输出 (简洁列表)
-```
+# 记录任务
+result = assistant.process("记录紧急任务：完成API开发")
+print(result)
 
-### 更新记录
+# 查询任务
+result = assistant.process("查询今天已完成的任务")
+print(result)
 
-```
-1. 识别目标记录 (关键词/序号)
-2. 搜索找到 record_id
-3. 识别更新字段 (状态/优先级/备注)
-4. 调用 feishu_bitable_update_record
-5. 确认更新结果
+# 获取统计
+result = assistant.get_statistics()
+print(result)
 ```
 
-### 删除记录
+### 直接使用 BitableManager
 
-```
-1. 识别目标记录
-2. 搜索找到 record_id
-3. **确认用户**: "找到记录: xxx,确认删除吗?"
-4. 调用 feishu_bitable_delete_block (如果支持)
-5. 确认删除结果
-```
+```python
+from bitable_manager import BitableManager
 
-## 时间处理
+manager = BitableManager(
+    app_token="BISAbNgYXa7Do1sc36YcBChInnS",
+    table_id="tbl5s8TEZ0tKhEm7"
+)
+manager.set_access_token("your_token")
 
-- **今天**: `new Date().setHours(0,0,0,0)`
-- **完成时间**: `Date.now()`
-- **日期格式**: 毫秒时间戳
+# 添加记录
+result = manager.add_record(
+    content="完成设计方案",
+    project_type="室内设计",
+    priority="高",
+    status="已完成"
+)
 
-## 回复格式
+# 查询记录
+records = manager.query_records(filters={"status": "已完成"})
 
-### 添加成功
-```
-✅ 已记录: [工作内容]
-   类型: [类型] | 优先级: [优先级] | 状态: [状态]
-```
+# 更新状态
+manager.update_status("rec123", "已完成")
 
-### 查询结果
-```
-📋 找到 X 条记录:
-1. [内容] - [类型] - [状态]
-2. [内容] - [类型] - [状态]
-...
+# 获取统计
+stats = manager.get_statistics()
 ```
 
-### 更新成功
+### 直接使用 IntentAnalyzer
+
+```python
+from intent_analyzer import IntentAnalyzer
+
+analyzer = IntentAnalyzer()
+result = analyzer.analyze("记录重要任务：完成项目方案")
+
+print(f"意图: {result.intent}")
+print(f"内容: {result.content}")
+print(f"类型: {result.project_type}")
+print(f"优先级: {result.priority}")
+print(f"状态: {result.status}")
+print(f"可信度: {result.confidence}")
+
+# 验证参数
+is_valid, error = analyzer.validate_params({
+    "project_type": result.project_type,
+    "priority": result.priority,
+    "status": result.status
+})
 ```
-✏️ 已更新: [原内容] → [新字段]
+
+## 错误处理
+
+```python
+from bitable_manager import (
+    BitableManagerError,
+    BitableValidationError,
+    BitableAPIError
+)
+from intent_analyzer import IntentAnalyzerError
+from worklog_assistant import WorklogAssistantError
+
+try:
+    result = assistant.process("记录任务")
+except WorklogAssistantError as e:
+    print(f"处理失败: {e}")
+except BitableValidationError as e:
+    print(f"验证失败: {e}")
+except BitableAPIError as e:
+    print(f"API错误: {e}")
 ```
 
-### 删除确认
+## 测试
+
+```bash
+# 运行单元测试
+python3 -m unittest tests.test_feishu_worklog
+
+# 运行特定测试类
+python3 -m unittest tests.test_feishu_worklog.TestBitableManager
+python3 -m unittest tests.test_feishu_worklog.TestIntentAnalyzer
+python3 -m unittest tests.test_feishu_worklog.TestWorklogAssistant
 ```
-⚠️ 找到记录: [内容]
-   确认删除吗? (回复"确认"执行)
+
+## 项目结构
+
+```
+feishu-worklog/
+├── bitable_manager.py    # 飞书多维表格管理器
+├── intent_analyzer.py    # 意图分析器
+├── worklog_assistant.py # 主控制器
+├── REQUIREMENTS.md       # 需求文档
+├── SKILL.md             # Skill 说明文档
+├── README.md            # 项目说明
+├── tests/
+│   └── test_feishu_worklog.py  # 单元测试
+└── examples/
+    └── quick_start.py   # 快速开始示例
 ```
 
-## 工具映射
+## 依赖
 
-| 操作 | 工具 | 参数 |
-|------|------|------|
-| 创建 | feishu_bitable_create_record | app_token, table_id, fields |
-| 列表 | feishu_bitable_list_records | app_token, table_id, page_size |
-| 获取 | feishu_bitable_get_record | app_token, table_id, record_id |
-| 更新 | feishu_bitable_update_record | app_token, table_id, record_id, fields |
-| 字段 | feishu_bitable_list_fields | app_token, table_id |
-
-## 字段列表
-
-- `内容` (Text) - 工作描述
-- `创建日期` (DateTime) - 创建时间
-- `完成时间` (DateTime) - 完成时间
-- `备注` (Text) - 补充说明
-- `附件` (Attachment) - 文件
-- `项目状态` (SingleSelect) - 待确认/待完成/已完成
-- `项目类型` (SingleSelect) - 现场/设计/施工/机电
-- `优先级别` (SingleSelect) - 第一优先/重要/普通重要
+- Python 3.6+
+- requests
 
 ## 注意事项
 
-- **优先理解**: 从自然语言中理解意图,不要纠结于精确匹配
-- **默认值优先**: 能用默认值的就不用问
-- **简洁回复**: 像语音助手一样简洁友好
-- **安全性**: 删除操作必须确认
-- **容错性**: 如果找不到记录,提示用户并提供搜索结果
+1. 使用前需设置有效的飞书 access_token
+2. 删除操作需要先确认再执行
+3. 默认参数会在无法识别时自动填充
+4. 日期范围支持"今天"、"昨天"、"本周"、"本月"

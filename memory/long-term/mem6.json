@@ -1,0 +1,15 @@
+{
+  "id": "mem6",
+  "content": "用户喜欢看科幻电影，尤其是星际穿越这类",
+  "memory_type": "long_term",
+  "importance": 3,
+  "tags": [
+    "偏好",
+    "娱乐"
+  ],
+  "source_turn_id": null,
+  "created_at": "2026-03-15T14:07:27.444596",
+  "last_accessed": "2026-03-15T14:12:36.480927",
+  "access_count": 4,
+  "metadata": {}
+}

@@ -1,0 +1,15 @@
+{
+  "id": "m1",
+  "content": "我叫小明，喜欢用 Python 开发",
+  "memory_type": "short_term",
+  "importance": 3,
+  "tags": [
+    "开发",
+    "技术"
+  ],
+  "source_turn_id": null,
+  "created_at": "2026-03-15T14:12:36.473491",
+  "last_accessed": "2026-03-15T14:12:36.473492",
+  "access_count": 0,
+  "metadata": {}
+}

@@ -1,4 +1,13 @@
+# WeChat Article Reader - Python Dependencies
+
+# Core dependencies
 requests>=2.31.0
 beautifulsoup4>=4.12.0
-lxml>=4.9.0
-markdownify>=0.11.6
+
+# Optional dependencies
+selenium>=4.15.0  # For screenshots and full rendering
+lxml>=4.9.0       # Faster HTML parsing
+
+# Development dependencies
+pytest>=7.4.0      # For testing
+pytest-cov>=4.1.0  # Test coverage

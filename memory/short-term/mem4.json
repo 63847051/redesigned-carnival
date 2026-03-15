@@ -1,0 +1,14 @@
+{
+  "id": "mem4",
+  "content": "今天天气很好，用户去公园散步了",
+  "memory_type": "short_term",
+  "importance": 2,
+  "tags": [
+    "日常"
+  ],
+  "source_turn_id": null,
+  "created_at": "2026-03-15T14:07:27.444590",
+  "last_accessed": "2026-03-15T14:07:27.444591",
+  "access_count": 0,
+  "metadata": {}
+}

@@ -1,0 +1,33 @@
+{
+  "name": "wechat-article-reader",
+  "version": "1.0.0",
+  "description": "Extract full text from WeChat Official Account articles, bypassing anti-bot detection",
+  "homepage": "https://github.com/63847051/redesigned-carnival/tree/main/skills/wechat-article-reader",
+  "license": "MIT",
+  "author": "大领导 🎯",
+  "keywords": [
+    "wechat",
+    "weixin",
+    "article",
+    "extractor",
+    "scraper",
+    "mp.weixin.qq.com",
+    "公众号",
+    "微信文章"
+  ],
+  "clawbot": {
+    "emoji": "📱",
+    "requires": {
+      "bins": ["python3"]
+    },
+    "lang": "python"
+  },
+  "dependencies": {
+    "requests": "^2.31.0",
+    "beautifulsoup4": "^4.12.0",
+    "lxml": "^5.0.0"
+  },
+  "scripts": {
+    "test": "python3 scripts/read-wechat.py 'https://mp.weixin.qq.com/s/test'"
+  }
+}

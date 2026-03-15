@@ -1,0 +1,34 @@
+{
+  "name": "wechat-article-reader",
+  "version": "1.0.0",
+  "description": "Extract full content from WeChat Official Account articles (mp.weixin.qq.com). Bypasses anti-bot detection using iPhone User-Agent, session reuse, or Selenium automation.",
+  "author": "OpenClaw Community",
+  "homepage": "https://github.com/63847051/redesigned-carnival",
+  "keywords": ["wechat", "weixin", "article", "mp.weixin.qq.com", "公众号", "微信文章"],
+  "capabilities": {
+    "extraction": ["text", "metadata", "markdown", "screenshot"],
+    "methods": ["iphone-ua", "session-reuse", "selenium"],
+    "features": ["batch-processing", "url-validation", "content-cleaning"]
+  },
+  "requirements": {
+    "python": ">=3.6",
+    "dependencies": [
+      "requests>=2.31.0",
+      "beautifulsoup4>=4.12.0"
+    ],
+    "optional": [
+      "selenium>=4.15.0"
+    ]
+  },
+  "install": {
+    "pip": "pip install requests beautifulsoup4",
+    "apt": "sudo apt-get install python3-requests python3-bs4"
+  },
+  "triggers": [
+    "Read WeChat article",
+    "Extract WeChat content",
+    "mp.weixin.qq.com",
+    "微信文章",
+    "公众号文章"
+  ]
+}
