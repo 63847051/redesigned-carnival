@@ -74,9 +74,109 @@
 
 ---
 
+## ⚠️ 不支持的配置字段（重要！）
+
+**更新时间**: 2026-03-16 15:11
+
+### 🔴 OpenClaw 不支持的字段
+
+基于实践验证，以下字段**不在 OpenClaw Schema 中**，添加会导致 Gateway 崩溃：
+
+| 字段 | 状态 | 说明 |
+|------|------|------|
+| `context` | ❌ 不支持 | 不在 Schema 中定义 |
+| `context.excludeFiles` | ❌ 不支持 | 不在 Schema 中定义 |
+| 任何未在文档中列出的字段 | ❌ 不支持 | 严格验证模式 |
+
+### 🔴 事故记录
+
+**时间**: 2026-03-16 14:42:39 - 14:43:48
+**错误**: `agents.defaults.subagents: Unrecognized key: "context"`
+**结果**: Gateway 反复崩溃重启（约 10 次）
+**恢复**: 用户手动移除 `context` 字段
+**修复**: 14:44 Gateway 恢复正常
+
+**教训**:
+1. ✅ 必须验证字段是否在 Schema 中
+2. ✅ 不能随意添加未定义的配置字段
+3. ✅ 实施前必须运行验证脚本
+
+### ✅ 验证工具
+
+**验证脚本**: `scripts/validate-config.sh`
+
+**功能**:
+- ✅ 检查 JSON 格式
+- ✅ 检查 Gateway 状态
+- ✅ 检查已知无效字段
+- ✅ 提供修复建议
+
+**使用方法**:
+```bash
+# 修改配置前验证
+~/.openclaw/workspace/scripts/validate-config.sh
+
+# 如果 Gateway 崩溃，查看日志
+journalctl --user -u openclaw-gateway --since "10 minutes ago"
+```
+
+---
+
 ## 🔧 实施方案
 
-### 方案 1: OpenClaw 配置级（推荐）
+## 🔧 实施方案
+
+### ⚠️ 实施前检查清单（必读！）
+
+**Step 1: 验证配置**
+```bash
+# 运行验证脚本
+~/.openclaw/workspace/scripts/validate-config.sh
+```
+
+**Step 2: 检查文档**
+```bash
+# 查阅配置参考
+open https://docs.openclaw.ai/gateway/configuration-reference
+```
+
+**Step 3: 测试环境验证**
+```bash
+# 在测试环境先试运行
+# 观察是否有错误
+```
+
+**Step 4: 生产环境实施**
+```bash
+# 确认无问题后再应用到生产环境
+```
+
+---
+
+### 方案 1: OpenClaw 配置级（部分实施）
+
+**状态**: ⚠️ **部分实施**
+
+**已生效的优化**:
+```json
+{
+  "subagents": {
+    "model": "opencode/minimax-m2.5-free",
+    "runTimeoutSeconds": 300,
+    "maxConcurrent": 8,
+    "maxChildrenPerAgent": 5
+  }
+}
+```
+
+**未实施的部分**:
+- ❌ `context.excludeFiles`（不支持，会导致崩溃）
+
+**原因**: OpenClaw 不支持 `context` 字段
+
+---
+
+### 方案 2: 替代方案（推荐）
 
 **在 `openclaw.json` 中配置**:
 
@@ -367,3 +467,65 @@
 **状态**: ✅ 设计完成，待验证
 
 **下一步**: 等待用户确认后，开始实施测试
+
+---
+
+## ⚠️ 重要更新：不支持的字段（2026-03-16）
+
+### 🔴 OpenClaw 不支持的字段
+
+基于实践验证，以下字段**不在 OpenClaw Schema 中**，添加会导致 Gateway 崩溃：
+
+| 字段 | 状态 | 说明 |
+|------|------|------|
+| `context` | ❌ 不支持 | 不在 Schema 中定义 |
+| `context.excludeFiles` | ❌ 不支持 | 不在 Schema 中定义 |
+| 任何未在文档中列出的字段 | ❌ 不支持 | 严格验证模式 |
+
+### 🔴 事故记录
+
+**时间**: 2026-03-16 14:42:39 - 14:43:48
+**错误**: `agents.defaults.subagents: Rnrecognized key: "context"`
+**结果**: Gateway 反复崩溃重启（约 10 次）
+**恢复**: 用户手动移除 `context` 字段
+**修复**: 14:44 Gateway 恢复正常
+
+### ✅ 验证工具
+
+**验证脚本**: `scripts/validate-config.sh`
+
+**功能**:
+- ✅ 检查 JSON 格式
+- ✅ 检查 Gateway 状态
+- ✅ 检查已知无效字段
+- ✅ 提供修复建议
+
+**使用方法**:
+```bash
+# 修改配置前验证
+~/.openclaw/workspace/scripts/validate-config.sh
+
+# 如果 Gateway 崩溃，查看日志
+journalctl --user -u openclaw-gateway --since "10 minutes ago"
+```
+
+### 🔧 修改后的实施方案
+
+**推荐方案**: 方案 2（替代方案）
+
+**方案 2A: 在 AGENTS.md 中明确说明**
+**方案 2B: 任务描述中明确要求**
+**方案 2C: 探索代码层面的实现**（长期）
+
+**详细说明**:
+- 在子 Agent 的 AGENTS.md 中添加上下文边界说明
+- 在任务描述中明确角色和职责
+- 避免使用不支持的配置字段
+
+### 📚 参考文档
+
+- https://docs.openclaw.ai/gateway/configuration-reference
+- https://docs.openclaw.ai/tools/subagents
+- /root/.openclaw/extensions/openclaw-lark/README.md
+
+---

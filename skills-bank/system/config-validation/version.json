@@ -1,0 +1,15 @@
+{
+  "skill_id": "config-validation",
+  "name": "配置验证",
+  "version": "0.1.3",
+  "created_at": "2026-03-16",
+  "last_updated": "2026-03-16",
+  "iteration_count": 3,
+  "usage_count": 15,
+  "success_rate": 0.95,
+  "quality_score": 0.92,
+  "category": "system",
+  "tags": ["validation", "config", "gateway", "json"],
+  "status": "active",
+  "description": "验证 OpenClaw 配置文件，检查无效字段，防止 Gateway 崩溃"
+}
