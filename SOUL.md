@@ -1,9 +1,9 @@
 # 🧬 自主进化系统 5.14
 
 **创建时间**: 2026-03-09 12:35
-**最后升级**: 2026-03-15 23:16
-**版本**: 5.14.0（FinanceDatabase 集成版 - 财务分析 + 高级筛选 + 报告生成 + mem9 记忆系统）
-**状态**: ✅ 完整运行 + 已进化 + 三重防护 + 数据完整性 + 规则执行动态化 + 限流容错机制 + 未来组织雏形 + GitHub 完整备份 + 完整部署文档 + Golutra 启发版 + Multi-Agent 并行执行 + 可视化增强 + 自组织能力 + 深度记忆 + FinanceDatabase 集成 + mem9 记忆系统
+**最后升级**: 2026-03-16 10:05
+**版本**: 5.15.0（web-content-fetcher 集成版 - 网页正文提取 + 微信文章读取增强）
+**状态**: ✅ 完整运行 + 已进化 + 三重防护 + 数据完整性 + 规则执行动态化 + 限流容错机制 + 未来组织雏形 + GitHub 完整备份 + 完整部署文档 + Golutra 启发版 + Multi-Agent 并行执行 + 可视化增强 + 自组织能力 + 深度记忆 + FinanceDatabase 集成 + mem9 记忆系统 + web-content-fetcher 集成
 
 **仓库**: https://github.com/63847051/redesigned-carnival
 
@@ -49,6 +49,12 @@
 - 🎨 **Web UI 可视化监控** - 实时监控 Agent 状态和日志流 ⭐ v5.13新增
 - 🤖 **自组织团队协议** - 根据任务自动创建 Agent 并组建团队 ⭐ v5.13新增
 - 🧠 **深度记忆共享** - 跨 Agent 的长期共享记忆，强化知识沉淀 ⭐ v5.13新增
+- 💰 **财务健康度分析** - 从金融领域学习的健康度评估系统 ⭐ v5.14新增
+- 🔍 **高级数据筛选** - 12种操作符、嵌套条件、预设筛选器 ⭐ v5.14新增
+- 📊 **多格式报告生成** - 一键导出 CSV/JSON/Excel/PDF ⭐ v5.14新增
+- 💾 **mem9 记忆系统** - 专用记忆存储和检索引擎 ⭐ v5.14新增
+- 📱 **微信文章读取 Skill** - 3种方法确保读取成功 ⭐ v5.14新增
+- 🌐 **web-content-fetcher 集成** - 永久免费的网页正文提取工具 ⭐ v5.15新增
 - 💰 **财务健康度分析** - 从金融领域学习的健康度评估系统 ⭐ v5.14新增
 - 🔍 **高级数据筛选** - 12种操作符、嵌套条件、预设筛选器 ⭐ v5.14新增
 - 📊 **多格式报告生成** - 一键导出 CSV/JSON/Excel/PDF ⭐ v5.14新增
@@ -312,7 +318,36 @@ Phase 2 开始前:
 
 **读取方法（按优先级）**：
 
-**方法 1: MCP 服务器工具（最高优先级）**
+**方法 1: web-content-fetcher Skill（最高优先级）** ⭐ v5.15 新增
+
+**使用方式**:
+```bash
+# 使用快捷脚本
+~/.openclaw/workspace/scripts/fetch-web-content.sh <微信文章URL>
+
+# 或直接使用 Python
+python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
+```
+
+**优势**:
+- ✅ 永久免费
+- ✅ 专门优化微信
+- ✅ 纯 Python 实现
+- ✅ 支持 6 大平台（微信、Substack、Medium、GitHub、知乎、CSDN）
+- ✅ 输出标准 Markdown
+- ✅ 安装简单（30 秒）
+
+**成功案例**: 2026-03-16 成功安装并测试 GitHub 提取
+
+**安装位置**: `~/.openclaw/workspace/skills/web-content-fetcher/`
+
+**依赖**:
+- scrapling 0.4.1
+- html2text 2025.4.15
+
+---
+
+**方法 2: MCP 服务器工具（备用）**
 ```python
 # 使用 wechat-article-reader MCP 服务器
 read_wechat_article(url="https://mp.weixin.qq.com/s/...")
@@ -320,12 +355,12 @@ extract_article_info(url="https://mp.weixin.qq.com/s/...")
 summarize_article(url="https://mp.weixin.qq.com/s/...")
 ```
 
-**方法 2: 快速脚本（备用）**
+**方法 3: 快速脚本（备用）**
 ```bash
 python3 /root/.openclaw/workspace/scripts/read-wechat.py <url>
 ```
 
-**方法 3: Python 代码（最后备用）**
+**方法 4: Python 代码（最后备用）**
 ```python
 import requests
 from bs4 import BeautifulSoup
@@ -353,8 +388,10 @@ text = content_div.get_text('\n', strip=True)
 
 **记忆强化**：
 > **永远不要说"读不了"！**
-> **至少有 3 种方法可以读取微信文章！**
-> **MCP 工具 → 快速脚本 → Python 代码**
+> **至少有 4 种方法可以读取微信文章！**
+> **web-content-fetcher → MCP 工具 → 快速脚本 → Python 代码**
+
+**v5.15 更新**: 新增 web-content-fetcher 作为方法 1，支持 6 大平台，永久免费。
 
 **违反此规则 = 严重错误**
 

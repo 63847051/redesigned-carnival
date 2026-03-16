@@ -42,7 +42,46 @@ _（待添加常用工具和命令）_
 
 ---
 
-## 📱 微信公众号文章读取工具 ⭐
+## 📱 网页内容提取工具 ⭐ v5.15 更新
+
+### 方法 1: web-content-fetcher Skill（推荐）⭐ v5.15 新增
+
+**快捷脚本**: `~/.openclaw/workspace/scripts/fetch-web-content.sh`
+
+**使用方法**:
+```bash
+# 使用快捷脚本
+~/.openclaw/workspace/scripts/fetch-web-content.sh <URL>
+
+# 或直接使用 Python
+python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
+```
+
+**支持平台**:
+- ✅ 微信公众号（专门优化）
+- ✅ GitHub
+- ✅ 知乎
+- ✅ CSDN
+- ✅ Substack
+- ✅ Medium
+
+**优势**:
+- ✅ 永久免费
+- ✅ 安装简单（30 秒）
+- ✅ 输出标准 Markdown
+- ✅ 支持多平台
+
+**位置**: `~/.openclaw/workspace/skills/web-content-fetcher/`
+
+**依赖**:
+- scrapling 0.4.1
+- html2text 2025.4.15
+
+**测试报告**: `.learnings/improvements/web-content-fetcher-test-report-20260316.md`
+
+---
+
+### 方法 2: read-wechat.py（备用）
 
 **快速读取工具**: `/root/.openclaw/workspace/scripts/read-wechat.py`
 

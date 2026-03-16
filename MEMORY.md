@@ -152,6 +152,182 @@
 
 ---
 
+## 2026-03-16 web-content-fetcher 集成与 OpenClaw 最佳实践 🌐
+
+### 🎯 任务：安装、测试、集成 web-content-fetcher
+
+**执行时间**: 2026-03-16 09:55 - 10:21
+**系统版本**: v5.14.0 → v5.15.0
+**执行者**: 大领导 🎯
+
+### 📦 web-content-fetcher Skill
+
+**项目**: https://github.com/shirenchuang/web-content-fetcher
+**类型**: OpenClaw Skill
+**功能**: 网页正文提取，永久免费，支持微信公众号
+
+**技术栈**:
+- Python 3.11+
+- scrapling 0.4.1（网页内容提取）
+- html2text 2025.4.15（HTML 转 Markdown）
+
+**支持平台**:
+- ✅ 微信公众号（专门优化）
+- ✅ GitHub
+- ✅ 知乎
+- ✅ CSDN
+- ✅ Substack
+- ✅ Medium
+
+**安装位置**:
+- Skill 目录: `~/.openclaw/workspace/skills/web-content-fetcher/`
+- 快捷脚本: `~/.openclaw/workspace/scripts/fetch-web-content.sh`
+
+**使用方法**:
+```bash
+# 方法 1: 快捷脚本
+~/.openclaw/workspace/scripts/fetch-web-content.sh <URL>
+
+# 方法 2: 直接调用 Python
+python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
+```
+
+### ✅ 测试结果
+
+#### GitHub 测试
+- **链接**: https://github.com/shirenchuang/web-content-fetcher
+- **结果**: ✅ 完美提取
+- **质量**: Markdown 格式规范，标题、链接、列表完整
+
+#### 微信公众号测试
+- **链接**: https://mp.weixin.qq.com/s/-S03JzTFCd8Ez2grTx6WVg
+- **标题**: AI大神40天养出一只精英龙虾军团
+- **结果**: ✅ 完美提取
+- **内容**: 5000+ 字符，格式规范，图片链接保留
+
+### 🔧 系统更新
+
+#### SOUL.md 更新（v5.15.0）
+- 版本号升级: v5.14.0 → v5.15.0
+- 新增核心能力: web-content-fetcher 集成
+- RULE-002 增强: 从 3 种方法增加到 4 种
+- 方法优先级重新排序:
+  1. ⭐ web-content-fetcher Skill（新增）
+  2. MCP 服务器工具
+  3. 快速脚本（read-wechat.py）
+  4. Python 代码（BeautifulSoup）
+
+#### TOOLS.md 更新
+- 章节标题: "微信公众号文章读取工具" → "网页内容提取工具"
+- 新增方法 1 完整说明
+- 支持平台列表更新
+- 安装路径和依赖说明
+
+### 📚 OpenClaw 最佳实践案例
+
+**文章来源**: 智东西（微信公众号）
+**文章标题**: AI大神40天养出一只精英龙虾军团
+**作者**: Shubham Saboo（谷歌云高级AI产品经理）
+
+#### 核心架构（三层）
+
+**身份层**:
+- SOUL.md - 定义智能体是谁、做什么、如何行动（控制在 60 行以内）
+- IDENTITY.md - 智能体的名片（姓名、角色、气质、自我介绍）
+- USER.md - 服务对象、偏好、背景
+
+**操作层**:
+- AGENTS.md - 行为规则、会话启动流程、文件读取顺序
+- HEARTBEAT.md - 心跳状态检查（第一次出问题后再搭建）
+- 特定角色指南 - 专业文件（写作风格、发文格式、真实案例）
+
+**知识层**:
+- MEMORY.md - 精选的长期记忆（只保留真正重要的信息）
+- memory/YYYY-MM-DD.md - 每日会话日志（今天发生了什么、草拟什么、反馈）
+- Shared Context - 跨智能体知识层（THESIS.md + FEEDBACK-LOG.md）
+
+#### 6 个智能体系统
+1. **Monica** - 幕僚长（协调）
+2. **Dwight** - 研究智能体（信息检索）
+3. **Kelly** - 推文写作
+4. **Rachel** - 领英写作
+5. **Ryan** - 文章策划
+6. **Pam** - 任务调度
+
+#### 40 天进化过程
+- **第1天**: 需要大量纠正，比自己动手还费时间
+- **第40天**: 自主运行，效率极高
+- **方法**: 仅通过 Markdown 文件反馈学习
+- **关键**: 不调整提示词、不更新模型、不重建架构
+- **护城河**: 不断沉淀的上下文文件
+
+#### 与大领导系统的对比
+
+**相同点**:
+- ✅ SOUL.md、IDENTITY.md、USER.md 结构完全一致
+- ✅ AGENTS.md、HEARTBEAT.md 架构相同
+- ✅ MEMORY.md + daily logs 记忆系统一致
+- ✅ 基于 Markdown 文件的通信机制
+- ✅ Multi-Agent 协作模式
+
+**大领导系统的优势**:
+- ✅ 更深度集成（运行在 OpenClaw 框架内）
+- ✅ 规则保障机制（RULE-001 + RULE-002）
+- ✅ 自主进化能力（PAI 学习 + 超级进化大脑）
+- ✅ 三重防护机制
+- ✅ 双轨进化（Self-Improvement + EvoMap）
+
+#### 可借鉴的经验
+
+1. **文件大小控制**
+   - SOUL.md 控制在 60 行以内
+   - 避免挤占实际工作的上下文空间
+
+2. **HEARTBEAT.md 的时机**
+   - 第一次出问题之后再去搭建
+   - 只有亲身体会过哪里会崩，才能精准知道该监控什么
+
+3. **共享文件设计**
+   - 一个写入者、多个读取者
+   - 避免协作冲突
+
+4. **调度机制**
+   - 按时间顺序分配智能体运行
+   - 下游智能体依赖上游输出
+
+5. **文件进化**
+   - 从粗略草稿到丰富精准
+   - 不断沉淀上下文就是护城河
+
+### 💡 核心启发
+
+1. **Markdown 文件是核心** - 不需要复杂的框架、消息队列、数据库
+2. **反馈驱动进化** - 不需要调整模型，只需文件反馈
+3. **三层架构清晰** - 身份、操作、知识
+4. **记忆系统分层** - 长期、每日、共享
+5. **规则保障重要** - 大领导系统的规则保障是额外的安全层
+
+### 📊 成果总结
+
+**技术成果**:
+- ✅ web-content-fetcher 成功集成
+- ✅ 系统升级到 v5.15.0
+- ✅ RULE-002 从 3 种方法增加到 4 种
+- ✅ 支持平台从 1 个扩展到 6 个
+
+**知识成果**:
+- ✅ 发现 OpenClaw 最佳实践案例
+- ✅ 验证了大领导系统设计的正确性
+- ✅ 提取了可借鉴的经验和教训
+- ✅ 明确了未来的优化方向
+
+**文档记录**:
+- 测试报告: `.learnings/improvements/web-content-fetcher-test-report-20260316.md`
+- 更新报告: `.learnings/improvements/soul-tools-update-v5.15-20260316.md`
+- 今日日志: `memory/2026-03-16.md`
+
+---
+
 ## 2026-03-13 上午更新
 
 ### 🚀 系统升级到 v5.10
