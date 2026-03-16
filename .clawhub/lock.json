@@ -104,6 +104,10 @@
     "document-handler": {
       "version": "1.0.0",
       "installedAt": 1773536642728
+    },
+    "research-analyzer": {
+      "version": "1.0.1",
+      "installedAt": 1773617648418
     }
   }
 }

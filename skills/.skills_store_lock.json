@@ -144,6 +144,12 @@
       "zip_url": "https://lightmake.site/api/v1/download?slug=document-handler",
       "source": "skillhub",
       "version": "1.0.0"
+    },
+    "research-analyzer": {
+      "name": "Research Analyzer",
+      "zip_url": "https://lightmake.site/api/v1/download?slug=research-analyzer",
+      "source": "skillhub",
+      "version": "1.0.1"
     }
   }
 }
