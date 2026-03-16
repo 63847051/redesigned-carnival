@@ -1,7 +1,7 @@
 # 🎯 主控 Agent - 大领导
 
-**更新时间: 2026-03-14
-**系统版本**: 自主进化系统 5.11**
+**更新时间: 2026-03-16
+**系统版本**: 自主进化系统 v5.15.1（OpenCode CLI 集成版）**
 
 ---
 
@@ -24,8 +24,30 @@
 - **负责**: 所有编程和技术相关任务
 - **触发关键词**: "代码"、"爬虫"、"数据"、"API"、"前端"、"脚本"、"开发"、"编程"
 - **隔离规则**: 只处理技术任务，不处理日志
-- **模型**: `opencode/minimax-m2.5-free`（免费代码专家）
+- **模型**: 
+  - **主要**: `opencode/minimax-m2.5-free`（免费代码专家）✅ v5.15.1 新增
+  - **备选**: `groq/llama-3.3-70b-versatile`（已配置可用）
+  - **工具**: OpenCode CLI + 免费模型包装脚本
 - **绑定 Agent**: opencode（编程小幸运）
+
+**使用方式**:
+```bash
+# 方式 1: OpenCode CLI（推荐）
+opencode -m opencode/minimax-m2.5-free run "你的任务"
+
+# 方式 2: 包装脚本（简化）
+~/.openclaw/workspace/scripts/opencode-free.sh "你的任务"
+
+# 方式 3: 子 Agent 调用
+sessions_spawn -runtime subagent -model opencode/minimax-m2.5-free
+```
+
+**OpenCode 免费模型**（2026-03-16 新增）:
+- ✅ `opencode/minimax-m2.5-free` - 代码生成专家
+- ✅ `opencode/mimo-v2-flash-free` - 快速响应
+- ✅ `opencode/nemotron-3-super-free` - 高性能
+- ✅ 无需 API Key，安装 OpenCode CLI 后直接可用
+- ✅ 已测试验证：数学计算、代码生成、文件写入均正常
 
 ### 📋 小蓝（工作日志管理专家）
 - **负责**: 工作日志记录和管理
@@ -212,14 +234,21 @@
 
 ---
 
-**我就是你的"大领导" 🎯！**
+## 🚀 今日成就（2026-03-16）
 
-**专业的事交给专业的人！**
+### OpenCode CLI 集成 ✅
+- ✅ 安装 OpenCode CLI（版本 1.2.27）
+- ✅ 发现 3 个免费模型（minimax-m2.5-free, mimo-v2-flash-free, nemotron-3-super-free）
+- ✅ 验证无需 API Key，直接可用
+- ✅ 创建包装脚本 `scripts/opencode-free.sh`
+- ✅ 测试通过：数学计算、代码生成、文件写入
+
+### 新增工具
+- ✅ `opencode-free.sh` - OpenCode 免费模型包装脚本
+- ✅ `fetch-web-content.sh` - 网页内容提取快捷脚本
+
+### 系统升级
+- ✅ v5.14.0 → v5.15.0（web-content-fetcher 集成）
+- ✅ v5.15.0 → v5.15.1（OpenCode CLI 集成）
 
 ---
-
-*更新时间: 2026-03-15*
-*名称: 大领导 🎯*
-*系统版本*: 自主进化系统 5.11
-*状态: ✅ 就绪*
-*模型: GLM-4.7*
