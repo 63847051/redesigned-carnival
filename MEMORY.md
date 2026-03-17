@@ -6,8 +6,82 @@
 - **角色**: 技术开发者 / 项目管理者
 - **平台**: 腾讯云轻量服务器
 - **系统**: OpenCloudOS 9
-- **OpenClaw**: AI 代理框架 (2026.2.26)
+- **OpenClaw**: AI 代理框架 (2026.3.13)
 - **时区**: GMT+8
+
+---
+
+## 2026-03-17 系统升级到 v5.16.0 🚀
+
+### 🎉 重大更新
+
+**版本**: v5.13.0 → v5.16.0（Git 硬重置）
+
+**核心亮点**：
+- ✅ **65% Token 节省**（子 Agent: 4300 → 1500）
+- ✅ **33-40% 响应速度提升**
+- ✅ **Clawith 集成**（on_message + Relationship）
+- ✅ **AutoSkill + XSKILL 系统**
+
+### 📊 升级过程
+
+**遇到的问题**：
+1. 尝试升级到 v5.13（使用后台脚本，超时失联 3 小时）
+2. 发现 GitHub 已有 v5.16（版本落后）
+3. 推送冲突（本地和远程分歧）
+
+**最终解决方案**：
+```bash
+git fetch origin main
+git reset --hard origin/main
+```
+
+**结果**：
+- ✅ 成功升级到 v5.16.0
+- ✅ 保留了 Golutra 研究项目
+- ✅ Gateway 运行正常
+- ✅ 获得所有新功能
+
+### 📚 新功能详解
+
+**文档位置**: `memory/v5.16-new-features.md`
+
+**四大核心更新**：
+
+1. **DP-006: 子 Agent Token 优化**
+   - 身份 vs 技能分离
+   - 主从上下文分层
+   - 最小化 Token 传递
+
+2. **Clawith 集成**
+   - on_message 触发器
+   - Relationship 系统
+   - 组织关系图谱
+
+3. **AutoSkill + XSKILL**
+   - 自动技能发现
+   - 跨平台技能标准
+   - 双循环架构
+
+4. **配置和服务优化**
+   - 版本自动追踪
+   - Skill Bank 管理
+   - 自动启动脚本
+
+### 🎓 经验教训
+
+**错误记录**: `.learnings/errors/upgrade-timeout-20260317-v2.md`
+
+**关键教训**：
+- ❌ 不要用后台运行升级脚本
+- ❌ 不要使用复杂的升级脚本
+- ✅ 定期 git pull 保持版本同步
+- ✅ 遇到问题用 Git 硬重置快速恢复
+
+**改进措施**：
+- ✅ 创建 `simple-upgrade-v5.16.sh`（前台运行，短超时）
+- ✅ 学习 v5.16 的新功能
+- ✅ 记录升级过程和教训
 
 ---
 
@@ -152,182 +226,6 @@
 
 ---
 
-## 2026-03-16 web-content-fetcher 集成与 OpenClaw 最佳实践 🌐
-
-### 🎯 任务：安装、测试、集成 web-content-fetcher
-
-**执行时间**: 2026-03-16 09:55 - 10:21
-**系统版本**: v5.14.0 → v5.15.0
-**执行者**: 大领导 🎯
-
-### 📦 web-content-fetcher Skill
-
-**项目**: https://github.com/shirenchuang/web-content-fetcher
-**类型**: OpenClaw Skill
-**功能**: 网页正文提取，永久免费，支持微信公众号
-
-**技术栈**:
-- Python 3.11+
-- scrapling 0.4.1（网页内容提取）
-- html2text 2025.4.15（HTML 转 Markdown）
-
-**支持平台**:
-- ✅ 微信公众号（专门优化）
-- ✅ GitHub
-- ✅ 知乎
-- ✅ CSDN
-- ✅ Substack
-- ✅ Medium
-
-**安装位置**:
-- Skill 目录: `~/.openclaw/workspace/skills/web-content-fetcher/`
-- 快捷脚本: `~/.openclaw/workspace/scripts/fetch-web-content.sh`
-
-**使用方法**:
-```bash
-# 方法 1: 快捷脚本
-~/.openclaw/workspace/scripts/fetch-web-content.sh <URL>
-
-# 方法 2: 直接调用 Python
-python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
-```
-
-### ✅ 测试结果
-
-#### GitHub 测试
-- **链接**: https://github.com/shirenchuang/web-content-fetcher
-- **结果**: ✅ 完美提取
-- **质量**: Markdown 格式规范，标题、链接、列表完整
-
-#### 微信公众号测试
-- **链接**: https://mp.weixin.qq.com/s/-S03JzTFCd8Ez2grTx6WVg
-- **标题**: AI大神40天养出一只精英龙虾军团
-- **结果**: ✅ 完美提取
-- **内容**: 5000+ 字符，格式规范，图片链接保留
-
-### 🔧 系统更新
-
-#### SOUL.md 更新（v5.15.0）
-- 版本号升级: v5.14.0 → v5.15.0
-- 新增核心能力: web-content-fetcher 集成
-- RULE-002 增强: 从 3 种方法增加到 4 种
-- 方法优先级重新排序:
-  1. ⭐ web-content-fetcher Skill（新增）
-  2. MCP 服务器工具
-  3. 快速脚本（read-wechat.py）
-  4. Python 代码（BeautifulSoup）
-
-#### TOOLS.md 更新
-- 章节标题: "微信公众号文章读取工具" → "网页内容提取工具"
-- 新增方法 1 完整说明
-- 支持平台列表更新
-- 安装路径和依赖说明
-
-### 📚 OpenClaw 最佳实践案例
-
-**文章来源**: 智东西（微信公众号）
-**文章标题**: AI大神40天养出一只精英龙虾军团
-**作者**: Shubham Saboo（谷歌云高级AI产品经理）
-
-#### 核心架构（三层）
-
-**身份层**:
-- SOUL.md - 定义智能体是谁、做什么、如何行动（控制在 60 行以内）
-- IDENTITY.md - 智能体的名片（姓名、角色、气质、自我介绍）
-- USER.md - 服务对象、偏好、背景
-
-**操作层**:
-- AGENTS.md - 行为规则、会话启动流程、文件读取顺序
-- HEARTBEAT.md - 心跳状态检查（第一次出问题后再搭建）
-- 特定角色指南 - 专业文件（写作风格、发文格式、真实案例）
-
-**知识层**:
-- MEMORY.md - 精选的长期记忆（只保留真正重要的信息）
-- memory/YYYY-MM-DD.md - 每日会话日志（今天发生了什么、草拟什么、反馈）
-- Shared Context - 跨智能体知识层（THESIS.md + FEEDBACK-LOG.md）
-
-#### 6 个智能体系统
-1. **Monica** - 幕僚长（协调）
-2. **Dwight** - 研究智能体（信息检索）
-3. **Kelly** - 推文写作
-4. **Rachel** - 领英写作
-5. **Ryan** - 文章策划
-6. **Pam** - 任务调度
-
-#### 40 天进化过程
-- **第1天**: 需要大量纠正，比自己动手还费时间
-- **第40天**: 自主运行，效率极高
-- **方法**: 仅通过 Markdown 文件反馈学习
-- **关键**: 不调整提示词、不更新模型、不重建架构
-- **护城河**: 不断沉淀的上下文文件
-
-#### 与大领导系统的对比
-
-**相同点**:
-- ✅ SOUL.md、IDENTITY.md、USER.md 结构完全一致
-- ✅ AGENTS.md、HEARTBEAT.md 架构相同
-- ✅ MEMORY.md + daily logs 记忆系统一致
-- ✅ 基于 Markdown 文件的通信机制
-- ✅ Multi-Agent 协作模式
-
-**大领导系统的优势**:
-- ✅ 更深度集成（运行在 OpenClaw 框架内）
-- ✅ 规则保障机制（RULE-001 + RULE-002）
-- ✅ 自主进化能力（PAI 学习 + 超级进化大脑）
-- ✅ 三重防护机制
-- ✅ 双轨进化（Self-Improvement + EvoMap）
-
-#### 可借鉴的经验
-
-1. **文件大小控制**
-   - SOUL.md 控制在 60 行以内
-   - 避免挤占实际工作的上下文空间
-
-2. **HEARTBEAT.md 的时机**
-   - 第一次出问题之后再去搭建
-   - 只有亲身体会过哪里会崩，才能精准知道该监控什么
-
-3. **共享文件设计**
-   - 一个写入者、多个读取者
-   - 避免协作冲突
-
-4. **调度机制**
-   - 按时间顺序分配智能体运行
-   - 下游智能体依赖上游输出
-
-5. **文件进化**
-   - 从粗略草稿到丰富精准
-   - 不断沉淀上下文就是护城河
-
-### 💡 核心启发
-
-1. **Markdown 文件是核心** - 不需要复杂的框架、消息队列、数据库
-2. **反馈驱动进化** - 不需要调整模型，只需文件反馈
-3. **三层架构清晰** - 身份、操作、知识
-4. **记忆系统分层** - 长期、每日、共享
-5. **规则保障重要** - 大领导系统的规则保障是额外的安全层
-
-### 📊 成果总结
-
-**技术成果**:
-- ✅ web-content-fetcher 成功集成
-- ✅ 系统升级到 v5.15.0
-- ✅ RULE-002 从 3 种方法增加到 4 种
-- ✅ 支持平台从 1 个扩展到 6 个
-
-**知识成果**:
-- ✅ 发现 OpenClaw 最佳实践案例
-- ✅ 验证了大领导系统设计的正确性
-- ✅ 提取了可借鉴的经验和教训
-- ✅ 明确了未来的优化方向
-
-**文档记录**:
-- 测试报告: `.learnings/improvements/web-content-fetcher-test-report-20260316.md`
-- 更新报告: `.learnings/improvements/soul-tools-update-v5.15-20260316.md`
-- 今日日志: `memory/2026-03-16.md`
-
----
-
 ## 2026-03-13 上午更新
 
 ### 🚀 系统升级到 v5.10
@@ -356,6 +254,8 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 - **措施**: 移除明文密钥，改用环境变量
 - **推送**: 成功推送到 GitHub（分支 master）
 
+---
+
 ## 2026-03-12 重要更新
 
 ### 🎉 OpenClaw Control Center 安装成功
@@ -377,7 +277,7 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 - **飞书 Gateway**: ✅ 运行中
 - **EvoMap 节点**: node_3cfe84b91a567bd4, 声誉 54.35, 积分 500
 - **系统健康**: Gateway 重启 5 次, 内存使用 57%
-- **系统版本**: v5.10（API 数据完整性保障）
+- **系统版本**: v5.16.0（子 Agent Token 优化版）
 
 ### 重要项目
 - **🧬 双轨进化系统**: Self-Improvement + EvoMap Evolution
@@ -387,6 +287,7 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 - **🎯 项目管理**: 蓝色光标上海办公室工作日志（40 条任务，77.5% 完成率）
 - **👥 独立子 Agent 系统**: Skill 隔离规则系统 v1.0 (2026-03-04 实施)
 - **📡 API 数据完整性**: 分页处理模式 + 检查清单（2026-03-13 新增）
+- **🚀 Golutra 研究**: 完整研究报告和进化方案（2026-03-15 完成）
 
 ---
 
@@ -443,20 +344,28 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 
 ## 🚨 重要教训
 
-### 升级失败事件 (2026-03-01)
-**OpenClaw 2026.2.15 → 2026.2.26 升级导致失联 20 分钟**
+### 系统升级事件 (2026-03-17) ✅ 已解决
+**v5.13 → v5.16 升级，最终通过 Git 硬重置成功**
 
-- **原因**: 新版本新增 Control UI 安全校验,配置不兼容
-- **教训**: 升级前必须检查版本变更日志、验证配置兼容性
-- **防护**: 已创建安全升级脚本 (`scripts/safe-upgrade.sh`)
-- **记忆**: `.learnings/errors/upgrade-failure-20260301.md`
-
-### 脚本文件缺失 (2026-03-02)
-**备份脚本在配置前被调用**
-
-- **原因**: 文档提到脚本但尚未创建
-- **教训**: 配置文档和实际文件要同步
-- **解决**: 已创建所有备份和升级脚本
+- **问题**: 尝试升级到 v5.13，发现 GitHub 已有 v5.16
+- **症状**: 升级超时导致 3 小时失联
+- **最终解决**: Git 硬重置到 origin/main
+  ```bash
+  git fetch origin main
+  git reset --hard origin/main
+  ```
+- **教训**:
+  - ❌ 不要用后台运行升级脚本
+  - ❌ 不要使用复杂的升级脚本
+  - ✅ 定期 git pull 保持版本同步
+  - ✅ 遇到问题用 Git 硬重置快速恢复
+- **改进**:
+  - ✅ 创建 `simple-upgrade-v5.16.sh`（前台运行，短超时）
+  - ✅ 学习 v5.16 的新功能（Token 优化、Clawith 等）
+- **记忆**:
+  - `.learnings/errors/upgrade-timeout-20260317-v2.md`
+  - `memory/2026-03-17-v5.16.md`
+  - `memory/v5.16-new-features.md`
 
 ---
 
@@ -498,7 +407,7 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 ### 技术栈
 - **Node.js**: v22.22.0
 - **操作系统**: OpenCloudOS (Linux 6.6.117-45.1.oc9.x86_64)
-- **AI 框架**: OpenClaw 2026.2.26
+- **AI 框架**: OpenClaw 2026.3.13
 - **默认模型**: GLM-4.7 (glmcode)
 
 ---
@@ -529,6 +438,12 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 - **任务**: 集成 PAI 学习系统到日常工作
 - **完成**: 学习信号捕获 + 每日报告 + 可视化仪表板
 - **结果**: ✅ 完整集成，系统已启用
+
+### v5.16 系统升级 (2026-03-17)
+- **任务**: 升级到最新版本 v5.16
+- **挑战**: 版本落后 + 升级超时
+- **解决**: Git 硬重置到 origin/main
+- **结果**: ✅ 成功升级，获得所有新功能
 
 ---
 
@@ -565,9 +480,9 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
   - **隔离**: 只处理设计任务,不处理代码或日志
   - **触发词**: 设计、图纸、平面图、立面图、天花、地面、排砖、柜体、会议室
 
-- 💻 **技术支持专家**
+- 💻 **小新（技术支持专家）**
   - **职责**: 编程和技术相关任务
-  - **模型**: GPT-OSS-120B (免费,代码专家)
+  - **模型**: opencode/minimax-m2.5-free (免费,代码专家)
   - **隔离**: 只处理技术任务,不处理设计或日志
   - **触发词**: 代码、爬虫、数据、API、前端、脚本、开发、编程
 
@@ -589,7 +504,7 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 ### 免费模型 (70% 任务)
 - **GLM-4.5-Air** - 超快速响应、工作日志记录
 - **GLM-4.6** - 中文任务、简单设计
-- **GPT-OSS-120B** (OpenRouter) - 代码编写、技术支持
+- **opencode/minimax-m2.5-free** - 代码编写、技术支持（v5.16 新增）
 - **Gemini 2.5 Flash** - 日常对话、问答
 
 ### 主模型 (30% 任务)
@@ -611,7 +526,7 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 
 ### 手动备份脚本
 - **快速备份**: `bash /root/.openclaw/workspace/scripts/backup-before-update.sh`
-- **安全升级**: `bash /root/.openclaw/workspace/scripts/safe-upgrade.sh`
+- **安全升级**: `bash /root/.openclaw/workspace/scripts/simple-upgrade-v5.16.sh`
 - **恢复配对**: `bash /root/.openclaw/workspace/scripts/restore-pairing.sh <备份目录>`
 
 ### 心跳和监控
@@ -621,6 +536,6 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 
 ---
 
-*最后更新: 2026-03-05*
-*状态: ✅ 运行正常*
-*PAI 学习系统: 🧠 已启用*
+*最后更新: 2026-03-17*
+*状态: ✅ v5.16.0 运行正常*
+*核心改进: 65% Token 节省 + Clawith 集成*

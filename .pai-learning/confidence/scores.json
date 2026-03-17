@@ -1,0 +1,12 @@
+[
+  {
+    "name": "error",
+    "frequency": 5,
+    "success": false,
+    "successRate": 0,
+    "complexity": 5,
+    "emotion": "negative",
+    "daysSince": 0,
+    "confidence": 90
+  }
+]
