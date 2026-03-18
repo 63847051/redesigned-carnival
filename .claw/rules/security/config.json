@@ -1,0 +1,269 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-03-19T07:15:00Z",
+  "scanDepth": "max",
+  "severityLevel": "all",
+
+  "excludeDirectories": [
+    "node_modules",
+    ".git",
+    "venv",
+    "__pycache__",
+    ".claw/.backups",
+    "dist",
+    "build",
+    ".next",
+    ".nuxt"
+  ],
+
+  "excludeFiles": [
+    "*.log",
+    "*.bak",
+    "*.tmp",
+    "*.min.js",
+    "*.min.css",
+    "*.map"
+  ],
+
+  "enabledRules": [
+    "sensitive-info",
+    "api-key",
+    "file-permissions",
+    "command-injection",
+    "credentials-audit",
+    "hook-security"
+  ],
+
+  "sensitiveInfo": {
+    "enabled": true,
+    "patterns": {
+      "API Key": {
+        "pattern": "(?:api[_-]?key|apikey|API[_-]?KEY)\\s*[:=]\\s*['\"]?([a-zA-Z0-9_\\-]{20,})['\"]?",
+        "severity": "high",
+        "description": "硬编码的 API Key"
+      },
+      "AWS Access Key": {
+        "pattern": "AKIA[0-9A-Z]{16}",
+        "severity": "high",
+        "description": "AWS 访问密钥"
+      },
+      "GitHub Token": {
+        "pattern": "ghp_[a-zA-Z0-9]{36}",
+        "severity": "high",
+        "description": "GitHub 个人访问令牌"
+      },
+      "Secret": {
+        "pattern": "(?:secret|password|passwd|pwd|SECRET|PASSWORD|PASSWD|PWD)\\s*[:=]\\s*['\"]?([^\\s'\"`]{8,})['\"]?",
+        "severity": "high",
+        "description": "硬编码的密钥或密码"
+      },
+      "Bearer Token": {
+        "pattern": "Bearer\\s+[a-zA-Z0-9_\\-\\.]{20,}",
+        "severity": "high",
+        "description": "Bearer 认证令牌"
+      },
+      "JWT": {
+        "pattern": "eyJ[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+",
+        "severity": "medium",
+        "description": "JSON Web Token"
+      },
+      "RSA Private Key": {
+        "pattern": "-----BEGIN\\s+RSA\\s+PRIVATE\\s+KEY-----",
+        "severity": "high",
+        "description": "RSA 私钥"
+      },
+      "Private Key": {
+        "pattern": "-----BEGIN\\s+PRIVATE\\s+KEY-----",
+        "severity": "high",
+        "description": "私钥文件"
+      },
+      "Database URL": {
+        "pattern": "(?:mongodb|mysql|postgres|redis|sqlite)\\+?:\\/\\/[^\\s'\"`]+",
+        "severity": "high",
+        "description": "数据库连接字符串"
+      },
+      "Internal URL": {
+        "pattern": "https?:\\/\\/(?:localhost|127\\.0\\.0\\.1|0\\.0\\.0\\.0|10\\.|172\\.1[6-9]\\.|172\\.2[0-9]\\.|172\\.3[0-1]\\.|192\\.168\\)[^\\s'\"`]*",
+        "severity": "low",
+        "description": "内部 URL"
+      }
+    },
+    "fileExtensions": [
+      ".md",
+      ".js",
+      ".ts",
+      ".py",
+      ".sh",
+      ".bash",
+      ".json",
+      ".yml",
+      ".yaml",
+      ".env",
+      ".config",
+      ".txt"
+    ]
+  },
+
+  "apiKeySecurity": {
+    "enabled": true,
+    "checkHardcoded": true,
+    "checkEnvVars": true,
+    "checkKeyStrength": true,
+    "minKeyLength": 20,
+    "checkRotation": true,
+    "maxKeyAge": 90
+  },
+
+  "filePermissions": {
+    "enabled": true,
+    "rules": [
+      {
+        "pattern": "credentials/**",
+        "expectedPermissions": "600",
+        "severity": "high",
+        "description": "凭证文件应该只有所有者可读写"
+      },
+      {
+        "pattern": ".env",
+        "expectedPermissions": "600",
+        "severity": "high",
+        "description": "环境变量文件应该只有所有者可读写"
+      },
+      {
+        "pattern": "*.json",
+        "expectedPermissions": "644",
+        "severity": "medium",
+        "description": "JSON 配置文件应该所有者可读写，其他人只读"
+      },
+      {
+        "pattern": "*.yml",
+        "expectedPermissions": "644",
+        "severity": "medium",
+        "description": "YAML 配置文件应该所有者可读写，其他人只读"
+      },
+      {
+        "pattern": ".claw/**",
+        "expectedPermissions": "755",
+        "severity": "medium",
+        "description": "系统配置目录应该所有者完全控制，其他人可进入"
+      },
+      {
+        "pattern": "*.sh",
+        "expectedPermissions": "755",
+        "severity": "low",
+        "description": "Shell 脚本应该可执行"
+      },
+      {
+        "pattern": ".claw/hooks/*.js",
+        "expectedPermissions": "755",
+        "severity": "medium",
+        "description": "Hook 脚本必须可执行"
+      }
+    ]
+  },
+
+  "commandInjection": {
+    "enabled": true,
+    "patterns": [
+      {
+        "pattern": "eval\\s*\\(",
+        "severity": "high",
+        "description": "直接 eval 执行用户输入"
+      },
+      {
+        "pattern": "exec\\s*\\(",
+        "severity": "high",
+        "description": "直接 exec 执行命令"
+      },
+      {
+        "pattern": "system\\s*\\(",
+        "severity": "high",
+        "description": "直接 system 执行命令"
+      },
+      {
+        "pattern": "\\$\\{.*\\}",
+        "severity": "medium",
+        "description": "Bash 变量替换可能被注入"
+      },
+      {
+        "pattern": "`.*`",
+        "severity": "medium",
+        "description": "命令替换可能被注入"
+      },
+      {
+        "pattern": "\\$\\(.*\\)",
+        "severity": "medium",
+        "description": "命令替换可能被注入"
+      },
+      {
+        "pattern": "child_process\\.exec",
+        "severity": "high",
+        "description": "Node.js 子进程执行，可能被注入"
+      },
+      {
+        "pattern": "os\\.system",
+        "severity": "high",
+        "description": "Python 系统命令执行，可能被注入"
+      },
+      {
+        "pattern": "subprocess\\.call",
+        "severity": "high",
+        "description": "Python 子进程调用，可能被注入"
+      },
+      {
+        "pattern": "\\.\\.\\/\\.\\.",
+        "severity": "medium",
+        "description": "父目录遍历攻击"
+      }
+    ]
+  },
+
+  "credentialsAudit": {
+    "enabled": true,
+    "auditFiles": [
+      ".env",
+      "credentials/",
+      ".claw/credentials/",
+      "openclaw.json",
+      ".git/config"
+    ],
+    "checks": [
+      "fileExists",
+      "filePermissions",
+      "sensitiveInfo",
+      "gitIgnored",
+      "keyExpiration"
+    ]
+  },
+
+  "hookSecurity": {
+    "enabled": true,
+    "hookScripts": [
+      "session-start.js",
+      "session-end.js",
+      "suggest-compact.js",
+      "pre-tool-use.js",
+      "post-tool-use.js",
+      "pre-write.js",
+      "post-write.js",
+      "pre-compact.js",
+      "post-compact.js",
+      "ERROR-HANDLING.js"
+    ],
+    "checks": [
+      "syntaxValidation",
+      "executablePermission",
+      "securityReview",
+      "dependencyCheck",
+      "logAudit"
+    ]
+  },
+
+  "reporting": {
+    "format": "markdown",
+    "outputFile": ".claw/reports/security-scan-YYYYMMDD-HHMMSS.md",
+    "includeDetails": true,
+    "includeSuggestions": true,
+    "groupBySeverity": true
+  }
+}
