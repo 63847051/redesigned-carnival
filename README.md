@@ -213,12 +213,12 @@ node .claw/tests/unit/pai-learning.test.js
 ### 方式 2：从 Release 下载
 
 ```bash
-# 下载 v5.17.0
-wget https://github.com/63847051/redesigned-carnival/archive/refs/tags/v5.17.0.tar.gz
+# 下载 v5.18.0
+wget https://github.com/63847051/redesigned-carnival/archive/refs/tags/v5.18.0.tar.gz
 
 # 解压
-tar -xzf redesigned-carnival-5.17.0.tar.gz
-cd redesigned-carnival-5.17.0
+tar -xzf redesigned-carnival-5.18.0.tar.gz
+cd redesigned-carnival-5.18.0
 ```
 
 ---
@@ -389,5 +389,5 @@ MIT License
 **最终更新**: 2026-03-17**
 **维护者**: 大领导 🎯
 **仓库**: https://github.com/63847051/redesigned-carnival
-**版本**: v5.17.0
+**版本**: v5.18.0
 **状态**: ✅ 运行正常
