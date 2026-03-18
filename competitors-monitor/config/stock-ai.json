@@ -1,0 +1,24 @@
+{
+  "monitor_type": "api",
+  "name": "股票 AI 分析监控",
+  "description": "从 daily_stock_analysis 系统获取 AI 分析结果",
+  "api_url": "http://127.0.0.1:8000/api/v1/analysis/history",
+  "targets": [
+    {
+      "name": "自选股分析",
+      "limit": 10
+    }
+  ],
+  "check_rules": {
+    "min_score": 60,
+    "check_frequency": "daily"
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "18:30",
+    "alert_on": {
+      "score_below": 60,
+      "score_above": 80
+    }
+  }
+}
