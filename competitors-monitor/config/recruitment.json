@@ -1,0 +1,68 @@
+{
+  "monitor_type": "recruitment",
+  "name": "招聘流程自动化",
+  "description": "简历解析、候选人筛选、面试安排、邮件通知自动化",
+  "data_sources": {
+    "resume_folder": "./data/resumes",
+    "email": {
+      "enabled": false,
+      "smtp_server": "smtp.example.com",
+      "smtp_port": 587,
+      "sender_email": "hr@example.com",
+      "sender_password": "YOUR_PASSWORD"
+    }
+  },
+  "positions": [
+    {
+      "id": "python_dev",
+      "title": "Python 开发工程师",
+      "requirements": {
+        "skills": ["Python", "Django", "Flask", "PostgreSQL", "Redis"],
+        "experience_years_min": 3,
+        "education": "本科",
+        "languages": ["英语CET-6"]
+      },
+      "keywords": ["Python", "后端", "全栈", "Django"],
+      "weight": {
+        "skills": 0.5,
+        "experience": 0.3,
+        "education": 0.2
+      }
+    },
+    {
+      "id": "data_analyst",
+      "title": "数据分析师",
+      "requirements": {
+        "skills": ["Python", "SQL", "Tableau", "Excel", "机器学习"],
+        "experience_years_min": 2,
+        "education": "本科",
+        "languages": ["英语CET-4"]
+      },
+      "keywords": ["数据分析", "SQL", "Python", "BI"],
+      "weight": {
+        "skills": 0.5,
+        "experience": 0.3,
+        "education": 0.2
+      }
+    }
+  ],
+  "workflow": {
+    "stages": ["新简历", "筛选", "一面", "二面", "offer", "入职"],
+    "auto_screen": true,
+    "schedule_interview": true
+  },
+  "check_rules": {
+    "match_score_threshold": 0.6,
+    "alert_on_new_resume": true,
+    "stale_candidate_days": 7
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "09:00",
+    "alert_on": [
+      "new_candidate",
+      "interview_reminder",
+      "offer_sent"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "monitor_type": "finance",
+  "name": "财务报表分析",
+  "description": "自动解析 PDF 财务报表，计算财务指标，分析公司健康状况",
+  "data_sources": {
+    "pdf_folder": "./data/financial_reports",
+    "api": {
+      "enabled": false,
+      "provider": "tushare",
+      "token": "YOUR_TOKEN"
+    }
+  },
+  "companies": [
+    {
+      "name": "示例公司A",
+      "stock_code": "600000",
+      "fiscal_year": 2025,
+      "benchmark": {
+        "roe": 0.15,
+        "gross_margin": 0.30,
+        "debt_ratio": 0.60
+      }
+    }
+  ],
+  "metrics": {
+    "profitability": ["gross_margin", "net_margin", "roe", "roa"],
+    "liquidity": ["current_ratio", "quick_ratio"],
+    "leverage": ["debt_ratio", "interest_coverage"],
+    "efficiency": ["asset_turnover", "inventory_turnover"]
+  },
+  "thresholds": {
+    "gross_margin_decline": 0.05,
+    "debt_ratio_high": 0.70,
+    "current_ratio_low": 1.0
+  },
+  "check_rules": {
+    "compare_with_benchmark": true,
+    "alert_on_anomaly": true,
+    "trend_analysis": true
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "09:00",
+    "alert_on": [
+      "margin_decline",
+      "high_debt",
+      "low_liquidity",
+      "benchmark_breach"
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "monitor_type": "learning",
+  "name": "学习助手系统",
+  "description": "知识图谱学习、进度追踪、智能复习提醒",
+  "user_profile": {
+    "name": "学习者",
+    "level": "intermediate",
+    "daily_study_time_minutes": 60,
+    "preferred_learning_style": "mixed"
+  },
+  "subjects": [
+    {
+      "name": "Python 编程",
+      "topics": [
+        {"name": "基础语法", "priority": 1, "mastery": 0.8},
+        {"name": "函数", "priority": 2, "mastery": 0.7},
+        {"name": "面向对象", "priority": 2, "mastery": 0.5},
+        {"name": "数据分析", "priority": 3, "mastery": 0.3},
+        {"name": "Web 开发", "priority": 3, "mastery": 0.2}
+      ]
+    },
+    {
+      "name": "机器学习",
+      "topics": [
+        {"name": "数学基础", "priority": 1, "mastery": 0.6},
+        {"name": "监督学习", "priority": 2, "mastery": 0.4},
+        {"name": "深度学习", "priority": 3, "mastery": 0.2}
+      ]
+    }
+  ],
+  "knowledge_graph": {
+    "enabled": true,
+    "show_dependencies": true
+  },
+  "spaced_repetition": {
+    "enabled": true,
+    "review_intervals_days": [1, 3, 7, 14, 30],
+    "ease_factor_default": 2.5
+  },
+  "schedule": {
+    "study_days": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"],
+    "study_time": "19:00"
+  },
+  "check_rules": {
+    "alert_on_overdue_review": true,
+    "alert_on_streak_break": true,
+    "daily_new_topics_limit": 3
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOK_URL_HERE",
+    "report_time": "08:00",
+    "alert_on": [
+      "review_due",
+      "streak_at_risk",
+      "goal_achieved"
+    ]
+  }
+}

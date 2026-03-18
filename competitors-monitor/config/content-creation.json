@@ -1,0 +1,34 @@
+{
+  "monitor_type": "webpage",
+  "name": "内容创作监控",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+  "targets": [
+    {
+      "name": "36氪",
+      "pages": [
+        {
+          "name": "首页",
+          "url": "https://36kr.com",
+          "type": "homepage"
+        }
+      ]
+    },
+    {
+      "name": "少数派",
+      "pages": [
+        {
+          "name": "首页",
+          "url": "https://sspai.com",
+          "type": "homepage"
+        }
+      ]
+    }
+  ],
+  "check_rules": {
+    "content_similarity_threshold": 0.9
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "09:00"
+  }
+}

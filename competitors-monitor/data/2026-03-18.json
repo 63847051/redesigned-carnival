@@ -1,0 +1,36 @@
+[
+  {
+    "url": "https://www.apple.com",
+    "title": "Apple",
+    "content": "\n\n\n\n\n\n\n\n\n\n\nApple\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApple\n\nAppleStoreMaciPadiPhoneWatch\nVisionAirPodsTV & HomeEntertainmentAccessoriesSupport\n\n\n0+\n\n\n\n\n\n\n\n \n\niPhone\nMeet the latest iPhone lineup.\n\nLearn more\nShop iPhone\n\n\n\n\n\n\n\n\n\n\n\n\n \n\nMacBook Neo\nAmazing Mac. Surprising price.\n\nLearn more\nBuy\n\n\n\n\n\n\n\n\n\n\n\n\n \n\nAirPods Max 2\nListening. Remastered.\nOrder 3.25\nAvailable early next month\n\nLearn more\nView pricing\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\nRead the letter from Tim\n\n\n\n\n\n\n\n\n\n\n\n\n \n\niPad Air\nNow supercharged by M4.\n\nLearn more\nBuy\n\n",
+    "price": null,
+    "timestamp": "2026-03-18T11:00:25.839586",
+    "competitor": "Apple",
+    "page_type": "homepage"
+  },
+  {
+    "url": "https://www.apple.com/iphone",
+    "title": "iPhone - Apple",
+    "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\niPhone - Apple\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAppleStoreMaciPadiPhoneWatch\nVisionAirPodsTV & HomeEntertainmentAccessoriesSupport\n\n\n0+\n\n\n\n\n\n\n\n\n\n\nGet credit toward iPhone 17, iPhone Air, or iPhone 17 Pro when you trade in an eligible smartphone.Get credit toward iPhone 17, iPhone Air, or iPhone 17 Pro when you trade in an eligible smartphone.* Shop iPhoneGet credit when you trade in your current smartphoneGet credit toward iPhone 17, iPhone Air, or iPhone 17 Pro when you trade in an ",
+    "price": "Get credit toward iPhone 17, iPhone Air, or iPhone 17 Pro when you trade in an eligible smartphone.",
+    "timestamp": "2026-03-18T11:00:28.110695",
+    "competitor": "Apple",
+    "page_type": "products"
+  },
+  {
+    "url": "https://www.microsoft.com",
+    "title": "Your request has been blocked. This could be\r\n                        due to several reasons.",
+    "content": "\nYour request has been blocked. This could be\r\n                        due to several reasons.Skip\r\n                                                                to main contentMicrosoftMicrosoft 365TeamsCopilotWindowsSurfaceXboxDealsSmall BusinessSupportMoreAll\r\n                                                                                                                                                MicrosoftOfficeWindowsSurfaceXboxDealsSupportSoftwareWindows\r\n                            ",
+    "price": null,
+    "timestamp": "2026-03-18T11:00:30.173467",
+    "competitor": "Microsoft",
+    "page_type": "homepage"
+  },
+  {
+    "url": "https://www.microsoft.com/en-us/products",
+    "error": "404 Client Error: Not Found for url: https://www.microsoft.com/en-us/products",
+    "timestamp": "2026-03-18T11:00:32.732775",
+    "competitor": "Microsoft",
+    "page_type": "products"
+  }
+]

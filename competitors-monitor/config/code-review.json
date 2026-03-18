@@ -1,0 +1,37 @@
+{
+  "monitor_type": "github",
+  "name": "代码审查自动化",
+  "description": "自动监控 GitHub 仓库的 PR 变化、代码质量问题、审查评论",
+  "github": {
+    "token": "YOUR_GITHUB_TOKEN_HERE",
+    "owner": "your-org",
+    "repo": "your-repo"
+  },
+  "targets": [
+    {
+      "name": "主仓库",
+      "owner": "your-org",
+      "repo": "your-repo",
+      "branches": ["main", "develop"],
+      "monitor_prs": true,
+      "monitor_issues": true,
+      "monitor_workflows": true
+    }
+  ],
+  "check_rules": {
+    "pr_age_threshold_days": 3,
+    "required_reviewers": 2,
+    "blocking_labels": ["needs-review", "blocking"],
+    "workflow_failure_alert": true
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "09:00",
+    "alert_on": ["pr_overdue", "workflow_failed", "new_comments"]
+  },
+  "analysis": {
+    "enable_code_metrics": true,
+    "enable_security_scan": false,
+    "enable_complexity_check": true
+  }
+}

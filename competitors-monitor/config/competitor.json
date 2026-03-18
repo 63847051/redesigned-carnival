@@ -1,0 +1,39 @@
+{
+  "monitor_type": "webpage",
+  "name": "竞品监控",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+  "targets": [
+    {
+      "name": "Apple",
+      "pages": [
+        {
+          "name": "首页",
+          "url": "https://www.apple.com",
+          "type": "homepage"
+        },
+        {
+          "name": "iPhone 页面",
+          "url": "https://www.apple.com/iphone",
+          "type": "products"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "pages": [
+        {
+          "name": "首页",
+          "url": "https://www.microsoft.com",
+          "type": "homepage"
+        }
+      ]
+    }
+  ],
+  "check_rules": {
+    "content_similarity_threshold": 0.9
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "09:00"
+  }
+}

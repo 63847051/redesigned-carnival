@@ -1,0 +1,29 @@
+[
+  {
+    "url": "https://www.apple.com",
+    "title": "Apple",
+    "content": "Apple Store Mac iPad iPhone Watch Vision AirPods TV & Home Entertainment Accessories Support\n\niPhone\nMeet the latest iPhone lineup.\n\nLearn more\nShop iPhone",
+    "price": null,
+    "timestamp": "2026-03-17T09:00:00.000000",
+    "competitor": "Apple",
+    "page_type": "homepage"
+  },
+  {
+    "url": "https://www.apple.com/iphone",
+    "title": "iPhone - Apple",
+    "content": "iPhone - Apple\n\nGet credit toward iPhone 16 when you trade in an eligible smartphone.",
+    "price": "Starting at $799",
+    "timestamp": "2026-03-17T09:00:00.000000",
+    "competitor": "Apple",
+    "page_type": "products"
+  },
+  {
+    "url": "https://www.microsoft.com",
+    "title": "Microsoft",
+    "content": "Microsoft 365 Teams Copilot Windows Surface Xbox Deals Small Business Support",
+    "price": null,
+    "timestamp": "2026-03-17T09:00:00.000000",
+    "competitor": "Microsoft",
+    "page_type": "homepage"
+  }
+]

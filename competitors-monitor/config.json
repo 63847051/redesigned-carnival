@@ -1,0 +1,47 @@
+{
+  "competitors": [
+    {
+      "name": "Apple",
+      "url": "https://www.apple.com",
+      "pages": [
+        {
+          "name": "首页",
+          "url": "https://www.apple.com",
+          "type": "homepage"
+        },
+        {
+          "name": "iPhone 页面",
+          "url": "https://www.apple.com/iphone",
+          "type": "products"
+        }
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "url": "https://www.microsoft.com",
+      "pages": [
+        {
+          "name": "首页",
+          "url": "https://www.microsoft.com",
+          "type": "homepage"
+        },
+        {
+          "name": "Products 页面",
+          "url": "https://www.microsoft.com/en-us/products",
+          "type": "products"
+        }
+      ]
+    }
+  ],
+  "scraping_rules": {
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "timeout": 30,
+    "retry_times": 3,
+    "delay_between_requests": 2
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "09:00",
+    "timezone": "Asia/Shanghai"
+  }
+}

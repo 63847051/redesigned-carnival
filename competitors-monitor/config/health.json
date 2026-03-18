@@ -1,0 +1,59 @@
+{
+  "monitor_type": "health",
+  "name": "健康管理助手",
+  "description": "监控健康数据变化，提供健康建议和预警",
+  "data_sources": {
+    "apple_health": {
+      "enabled": false,
+      "export_path": "/path/to/apple_health_export"
+    },
+    "google_fit": {
+      "enabled": false,
+      "credentials_file": "/path/to/credentials.json"
+    },
+    "manual_input": {
+      "enabled": true,
+      "last_values": {
+        "weight": 70,
+        "blood_pressure_systolic": 120,
+        "blood_pressure_diastolic": 80,
+        "heart_rate": 72,
+        "sleep_hours": 7.5,
+        "steps": 8000,
+        "water_intake": 2000
+      }
+    }
+  },
+  "targets": [
+    {
+      "name": "日常健康",
+      "metrics": ["weight", "heart_rate", "blood_pressure", "sleep", "steps", "water"]
+    }
+  ],
+  "check_rules": {
+    "weight_change_threshold_kg": 2,
+    "heart_rate_abnormal_low": 50,
+    "heart_rate_abnormal_high": 100,
+    "blood_pressure_systolic_high": 140,
+    "blood_pressure_diastolic_high": 90,
+    "sleep_minimum_hours": 6,
+    "steps_minimum": 5000,
+    "water_minimum_ml": 1500
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "08:00",
+    "alert_on": [
+      "abnormal_heart_rate",
+      "high_blood_pressure",
+      "poor_sleep",
+      "low_activity"
+    ]
+  },
+  "goals": {
+    "weight_target": 68,
+    "sleep_target": 8,
+    "steps_target": 10000,
+    "water_target": 2500
+  }
+}

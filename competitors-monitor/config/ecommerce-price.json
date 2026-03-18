@@ -1,0 +1,57 @@
+{
+  "monitor_type": "ecommerce",
+  "name": "电商价格监控",
+  "description": "监控多个电商平台的商品价格变化，支持京东、天猫、淘宝、拼多多等",
+  "data_sources": {
+    "jd": {
+      "enabled": false,
+      "api_key": "YOUR_JD_API_KEY"
+    },
+    "taobao": {
+      "enabled": false,
+      "app_key": "YOUR_TAOBAO_APP_KEY",
+      "app_secret": "YOUR_TAOBAO_APP_SECRET"
+    },
+    "pdd": {
+      "enabled": false,
+      "client_id": "YOUR_PDD_CLIENT_ID"
+    },
+    "web_scraping": {
+      "enabled": true,
+      "use_proxy": false
+    }
+  },
+  "targets": [
+    {
+      "name": "iPhone 15 Pro",
+      "jd_sku": "100086924",
+      "taobao_item_id": "123456789",
+      "pdd_goods_id": "abcdef",
+      "price_threshold": 100,
+      "alert_on_price_drop": true
+    },
+    {
+      "name": "MacBook Air M3",
+      "jd_sku": "100080896",
+      "taobao_item_id": "987654321",
+      "price_threshold": 200,
+      "alert_on_price_drop": true
+    }
+  ],
+  "check_rules": {
+    "price_change_threshold": 0.05,
+    "compare_with_yesterday": true,
+    "track_lowest_price": true,
+    "alert_on_out_of_stock": true
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "10:00",
+    "alert_on": [
+      "price_drop",
+      "price_increase",
+      "out_of_stock",
+      "lowest_price"
+    ]
+  }
+}

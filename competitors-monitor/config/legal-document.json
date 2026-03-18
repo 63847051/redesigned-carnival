@@ -1,0 +1,24 @@
+{
+  "monitor_type": "webpage",
+  "name": "法律文档监控",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+  "targets": [
+    {
+      "name": "合同模板库",
+      "pages": [
+        {
+          "name": "最新合同",
+          "url": "https://example.com/contracts/latest",
+          "type": "contract"
+        }
+      ]
+    }
+  ],
+  "check_rules": {
+    "content_similarity_threshold": 0.95
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "14:00"
+  }
+}

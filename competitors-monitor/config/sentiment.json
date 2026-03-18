@@ -1,0 +1,48 @@
+{
+  "monitor_type": "social",
+  "name": "客户舆情监控",
+  "description": "监控社交媒体上关于公司/产品的舆情，进行情感分析",
+  "data_sources": {
+    "twitter": {
+      "enabled": false,
+      "bearer_token": "YOUR_TWITTER_BEARER_TOKEN"
+    },
+    "news_api": {
+      "enabled": false,
+      "api_key": "YOUR_NEWS_API_KEY"
+    },
+    "rss_feed": {
+      "enabled": true,
+      "feeds": [
+        "https://news.google.com/rss/search?q=YOUR_BRAND_NAME"
+      ]
+    },
+    "mock": {
+      "enabled": true
+    }
+  },
+  "targets": [
+    {
+      "name": "品牌舆情",
+      "keywords": ["产品名", "公司名", "品牌名"],
+      "negative_keywords": ["投诉", "欺诈", "泄露", "bug", "崩溃"],
+      "platforms": ["twitter", "news", "rss"]
+    }
+  ],
+  "check_rules": {
+    "sentiment_threshold_negative": -0.3,
+    "sentiment_threshold_positive": 0.3,
+    "min_interactions": 10,
+    "alert_on_negative": true,
+    "alert_on_brand_mention_spike": true
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE",
+    "report_time": "09:00",
+    "alert_on": [
+      "negative_sentiment",
+      "crisis_detected",
+      "viral_post"
+    ]
+  }
+}

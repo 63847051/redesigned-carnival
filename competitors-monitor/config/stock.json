@@ -1,0 +1,24 @@
+{
+  "monitor_type": "api",
+  "name": "股票监控",
+  "api_url": "https://hq.sinajs.cn/list",
+  "headers": {},
+  "targets": [
+    {
+      "name": "上证指数",
+      "code": "s_sh000001",
+      "fields": ["price", "change", "volume"]
+    },
+    {
+      "name": "贵州茅台",
+      "code": "s_sh600519",
+      "fields": ["price", "change", "volume"]
+    }
+  ],
+  "check_rules": {
+    "price_change_threshold": 0.05
+  },
+  "notification": {
+    "feishu_webhook": "YOUR_WEBHOOK_URL_HERE"
+  }
+}
