@@ -16,6 +16,7 @@ Before doing anything else:
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 5. **Read `.learnings/rules/critical-rule-001-wait-confirmation.md`** — 关键规则 ⭐ CRITICAL
 6. **Run `/root/.openclaw/workspace/scripts/check-critical-rules.sh`** — 规则检查 ⭐ CRITICAL
+7. **HeyCube GET_CONFIG Hook** ⭐ 2026-03-21 新增 - 对话前加载用户画像
 
 Don't ask permission. Just do it.
 
@@ -334,5 +335,85 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 **设计文档**: 
 - `docs/on-message-trigger-design.md`
 - `docs/relationship-system-design.md`
+
+---
+
+## 🧠 HeyCube Hook 执行规则 ⭐ 2026-03-21 新增
+
+### HeyCube 是什么？
+
+HeyCube（黑方体）是一个**AI 记忆管家**，通过结构化个人档案让 OpenClaw 更懂你。
+
+### Hook 执行规则
+
+#### 对话前：GET_CONFIG Hook
+
+**触发时机**: 每次有实质内容的对话前
+
+**执行内容**:
+1. 检查 `TOOLS.md` 中是否配置了 HeyCube API Key
+2. 检查 workspace 根目录是否存在 `.heycube-off` 文件（开关）
+3. 如果检查通过，调用 HeyCube API 获取维度配置
+4. 从本地 SQLite 查询用户档案
+5. 将查询到的档案数据注入到对话上下文
+
+**前置检查**:
+- ✅ API_KEY 已配置 → 继续
+- ❌ API_KEY 未配置 → 跳过
+- ✅ `.heycube-off` 文件不存在 → 继续
+- ❌ `.heycube-off` 文件存在 → 跳过
+
+**Skill 文件**: `~/.agents/skills/heycube-get-config-0.1.0/SKILL.md`
+
+#### 对话后：UPDATE_DATA Hook
+
+**触发时机**: 每次有实质内容的对话结束后
+
+**执行内容**:
+1. 检查 `TOOLS.md` 中是否配置了 HeyCube API Key
+2. 检查 workspace 根目录是否存在 `.heycube-off` 文件（开关）
+3. 如果检查通过，脱敏总结对话内容
+4. 调用 HeyCube API 获取需要更新的维度
+5. 提取数据写入本地 SQLite
+
+**前置检查**:
+- ✅ API_KEY 已配置 → 继续
+- ❌ API_KEY 未配置 → 跳过
+- ✅ `.heycube-off` 文件不存在 → 继续
+- ❌ `.heycube-off` 文件存在 → 跳过
+
+**Skill 文件**: `~/.agents/skills/heycube-update-data-0.1.0/SKILL.md`
+
+### 隐私保护
+
+- 只发送脱敏摘要到服务端
+- 结构化档案数据完全存储在本地 SQLite
+- 服务端只返回维度配置，不接触实际数据
+
+### 开关控制
+
+**临时关闭 HeyCube**:
+```bash
+touch ~/.openclaw/workspace/.heycube-off
+```
+
+**重新启用 HeyCube**:
+```bash
+rm ~/.openclaw/workspace/.heycube-off
+```
+
+### 配置 HeyCube API Key
+
+在 `TOOLS.md` 中添加：
+
+```markdown
+## 🧠 HeyCube Server（黑方体 AI 记忆管家）
+
+### 配置信息
+
+- **Base URL:** https://heifangti.com/api/api/v1/heifangti
+- **API Key:** hey_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+- **数据库路径:** /root/.openclaw/workspace/personal-db.sqlite
+```
 
 ---

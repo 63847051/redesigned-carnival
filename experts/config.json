@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "experts": {
+    "tech": {
+      "name": "小新",
+      "max_parallel": 2,
+      "model": "opencode/minimax-m2.5-free"
+    },
+    "log": {
+      "name": "小蓝",
+      "max_parallel": 1,
+      "model": "glmcode/glm-4.5-air"
+    },
+    "design": {
+      "name": "室内设计专家",
+      "max_parallel": 1,
+      "model": "glmcode/glm-4.7"
+    }
+  }
+}

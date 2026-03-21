@@ -1,0 +1,14 @@
+{
+  "id": "test_mem9_001",
+  "content": "🎉 mem9 记忆系统测试成功！\n\n测试内容:\n- 系统版本: v5.16.0\n- 测试时间: 2026-03-21\n- 测试项目: mem9 与飞书 Bitable 集成\n- 集成状态: ✅ 成功\n- 记忆存储: 飞书云表格\n- 记忆检索: 支持向量搜索 + 全文搜索\n\n结论: mem9 系统运行正常！",
+  "memory_type": "short_term",
+  "importance": 3,
+  "tags": [
+    "项目"
+  ],
+  "source_turn_id": null,
+  "created_at": "2026-03-21T07:47:18.115800",
+  "last_accessed": "2026-03-21T07:47:18.115801",
+  "access_count": 0,
+  "metadata": {}
+}

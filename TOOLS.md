@@ -42,6 +42,65 @@ _（待添加常用工具和命令）_
 
 ---
 
+## 🧠 HeyCube Server（黑方体 AI 记忆管家）⭐ 2026-03-21 新增
+
+### 配置信息
+
+- **Base URL:** https://heifangti.com/api/api/v1/heifangti
+- **API Key:** （需要配置）
+- **数据库路径:** /root/.openclaw/workspace/personal-db.sqlite
+
+### 功能说明
+
+HeyCube 是一个**结构化个人档案管理方案**，为 OpenClaw 打造的 AI 记忆管理系统。
+
+**核心特性**:
+- 🧠 **结构化记忆** - 8 大域分类（身份认知、心理结构、审美偏好、职业画像、计划目标、日程节奏、杂项偏好、关系网络）
+- ⚡ **按需加载** - 一次只花 ~2000 tokens
+- 🎯 **智能召回** - 不是检索，是推理
+- 🔒 **隐私分离** - 本地存储，数据不出站
+
+### CLI 工具
+
+**位置**: `/root/.openclaw/workspace/scripts/personal-db.py`
+
+**使用方法**:
+```bash
+# 列出所有维度
+python3 /root/.openclaw/workspace/scripts/personal-db.py list
+
+# 获取单个维度
+python3 /root/.openclaw/workspace/scripts/personal-db.py get profile.career
+
+# 批量获取维度
+python3 /root/.openclaw/workspace/scripts/personal-db.py get-batch "profile.career,behavior.work_habits"
+
+# 设置单个维度
+python3 /root/.openclaw/workspace/scripts/personal-db.py set profile.career.career_stage "职业阶段" "资深"
+
+# 批量设置维度
+python3 /root/.openclaw/workspace/scripts/personal-db.py set-batch '{"profile.career": "软件工程师", "behavior.work_habits.time_management": "番茄工作法"}'
+
+# 导出为 JSON
+python3 /root/.openclaw/workspace/scripts/personal-db.py export
+```
+
+### OpenClaw 集成
+
+**前置 Hook**: `~/.agents/skills/heycube-get-config-0.1.0/SKILL.md`
+- 对话前自动加载用户画像
+
+**后置 Hook**: `~/.agents/skills/heycube-update-data-0.1.0/SKILL.md`
+- 对话后自动更新用户档案
+
+### 项目信息
+
+- **GitHub**: https://github.com/MMMMMMTL/heycube-heifangti
+- **文档位置**: `/root/.openclaw/workspace/skills/heycube-heifangti/docs/`
+- **License**: MIT
+
+---
+
 ## 📱 网页内容提取工具 ⭐ v5.15 更新
 
 ### 方法 1: web-content-fetcher Skill（推荐）⭐ v5.15 新增

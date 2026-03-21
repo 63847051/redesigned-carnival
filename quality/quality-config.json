@@ -1,0 +1,154 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-03-20T12:00:00Z",
+  "updated_at": "2026-03-20T12:00:00Z",
+  
+  "quality_standards": {
+    "tech": {
+      "name": "技术任务",
+      "description": "代码开发、脚本编写、数据处理等技术支持任务",
+      "criteria": {
+        "runnable": {
+          "enabled": true,
+          "weight": 3,
+          "description": "代码可运行",
+          "check_method": "syntax",
+          "file_patterns": ["*.sh", "*.py", "*.js", "*.ts", "*.go", "*.java"]
+        },
+        "test_passed": {
+          "enabled": true,
+          "weight": 3,
+          "description": "测试通过",
+          "check_method": "test_runner",
+          "file_patterns": ["test_*.sh", "test_*.py", "*_test.js", "*.spec.*"]
+        },
+        "documented": {
+          "enabled": true,
+          "weight": 2,
+          "description": "文档完整",
+          "check_method": "doc_check",
+          "file_patterns": ["README.md", "*.md", "doc/**"]
+        },
+        "no_secrets": {
+          "enabled": true,
+          "weight": 3,
+          "description": "无敏感信息泄露",
+          "check_method": "secret_scan",
+          "patterns": ["password", "api_key", "secret", "token", "credential"]
+        }
+      },
+      "pass_threshold": 0.7,
+      "block_threshold": 0.5
+    },
+    
+    "log": {
+      "name": "日志任务",
+      "description": "工作日志记录、进度跟踪、统计汇总等日志管理任务",
+      "criteria": {
+        "complete": {
+          "enabled": true,
+          "weight": 3,
+          "description": "信息完整",
+          "check_method": "field_check",
+          "required_fields": ["date", "content", "timestamp"]
+        },
+        "format_correct": {
+          "enabled": true,
+          "weight": 3,
+          "description": "格式正确",
+          "check_method": "format_validate",
+          "format_rules": ["iso8601_date", "markdown_structure"]
+        },
+        "no_errors": {
+          "enabled": true,
+          "weight": 3,
+          "description": "无错误",
+          "check_method": "error_scan",
+          "patterns": ["ERROR", "FAIL", "FATAL", "CRITICAL"]
+        },
+        "consistent": {
+          "enabled": true,
+          "weight": 2,
+          "description": "格式一致",
+          "check_method": "consistency_check",
+          "template": "daily_log"
+        }
+      },
+      "pass_threshold": 0.7,
+      "block_threshold": 0.5
+    },
+    
+    "design": {
+      "name": "设计任务",
+      "description": "室内设计图纸、平面图、立面图等设计任务",
+      "criteria": {
+        "clear_drawing": {
+          "enabled": true,
+          "weight": 3,
+          "description": "图纸清晰",
+          "check_method": "file_integrity",
+          "file_patterns": ["*.dwg", "*.pdf", "*.png", "*.jpg", "*.svg"]
+        },
+        "accurate_dimension": {
+          "enabled": true,
+          "weight": 3,
+          "description": "尺寸准确",
+          "check_method": "metadata_check",
+          "required_fields": ["width", "height", "unit"]
+        },
+        "meets_requirement": {
+          "enabled": true,
+          "weight": 3,
+          "description": "符合要求",
+          "check_method": "requirement_match",
+          "check_fields": ["scale", "layers", "annotations"]
+        },
+        "properly_named": {
+          "enabled": true,
+          "weight": 2,
+          "description": "命名规范",
+          "check_method": "naming_convention",
+          "pattern": "^[A-Z]{2,4}-[A-Z]{2,4}-\\d{3,4}-[A-Z]{2,4}$"
+        }
+      },
+      "pass_threshold": 0.7,
+      "block_threshold": 0.5
+    }
+  },
+  
+  "notification_rules": {
+    "on_pass": {
+      "enabled": true,
+      "method": "log",
+      "level": "info"
+    },
+    "on_warning": {
+      "enabled": true,
+      "method": "log",
+      "level": "warning"
+    },
+    "on_fail": {
+      "enabled": true,
+      "method": "log",
+      "level": "error"
+    }
+  },
+  
+  "report_settings": {
+    "format": "json",
+    "include_details": true,
+    "include_suggestions": true,
+    "output_dir": "quality/reports",
+    "retention_days": 30
+  },
+  
+  "auto_tagging": {
+    "enabled": true,
+    "tag_prefix": "quality:",
+    "tags": {
+      "pass": "quality:passed",
+      "warning": "quality:needs_review",
+      "fail": "quality:failed"
+    }
+  }
+}

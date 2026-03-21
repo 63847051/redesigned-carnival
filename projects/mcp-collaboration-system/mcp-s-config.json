@@ -1,0 +1,26 @@
+{
+  "workflow": {
+    "max_parallel_tasks": 3,
+    "enable_quality_gate": true,
+    "min_quality_score": 70.0,
+    "timeout_seconds": 600
+  },
+  "role_pool": {
+    "max_pool_size": 10,
+    "role_warm_up": false,
+    "role_timeout": 300
+  },
+  "quality_gate": {
+    "enabled_checks": [
+      "syntax",
+      "completeness",
+      "security"
+    ],
+    "min_score": 70.0,
+    "blocking": true
+  },
+  "templates": {
+    "auto_register_built_in": true,
+    "template_dir": "./templates"
+  }
+}

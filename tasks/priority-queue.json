@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-03-20T13:53:24Z",
+  "queue": [
+    {
+      "task_id": "TASK-001",
+      "priority": 1,
+      "added_at": "2026-03-20T13:53:43Z"
+    },
+    {
+      "task_id": "TASK-002",
+      "priority": 1,
+      "added_at": "2026-03-20T13:53:43Z"
+    }
+  ],
+  "last_updated": "2026-03-20T13:53:43Z"
+}

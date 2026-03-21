@@ -1,1 +1,0 @@
-/root/.openclaw/workspace/.learnings/PERMANENT-MEMORY-core-logic.md

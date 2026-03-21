@@ -1,0 +1,34 @@
+{
+  "quality_standards": {
+    "syntax": {
+      "weight": 1.0,
+      "min_score": 70,
+      "blocking": true,
+      "description": "语法检查"
+    },
+    "completeness": {
+      "weight": 1.0,
+      "min_score": 70,
+      "blocking": true,
+      "description": "完整性检查"
+    },
+    "security": {
+      "weight": 1.5,
+      "min_score": 80,
+      "blocking": true,
+      "description": "安全检查"
+    },
+    "performance": {
+      "weight": 0.8,
+      "min_score": 60,
+      "blocking": false,
+      "description": "性能检查"
+    },
+    "semantic": {
+      "weight": 1.2,
+      "min_score": 75,
+      "blocking": true,
+      "description": "语义检查"
+    }
+  }
+}

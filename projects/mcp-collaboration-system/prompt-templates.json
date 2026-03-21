@@ -1,0 +1,32 @@
+{
+  "templates": {
+    "coding_task": {
+      "name": "编码任务",
+      "type": "task",
+      "content": "你是一个专业的程序员。\n\n任务描述:\n{{task_description}}\n\n要求:\n1. 代码要清晰、可维护\n2. 添加必要的注释\n3. 处理错误情况\n4. 编写简单的测试\n\n技术栈:\n{{tech_stack}}\n\n输出格式:\n请直接输出代码，不要有多余的解释。",
+      "variables": ["task_description", "tech_stack"],
+      "description": "用于编码任务的通用模板"
+    },
+    "code_review": {
+      "name": "代码审查",
+      "type": "review",
+      "content": "请审查以下代码:\n\n```{{language}}\n{{code}}\n```\n\n检查要点:\n1. 代码质量和可读性\n2. 潜在的 bug\n3. 安全问题\n4. 性能优化建议\n5. 最佳实践建议\n\n请以结构化的方式给出审查意见。",
+      "variables": ["language", "code"],
+      "description": "用于代码审查的模板"
+    },
+    "data_analysis": {
+      "name": "数据分析",
+      "type": "task",
+      "content": "你是一个数据分析师。\n\n数据源:\n{{data_source}}\n\n分析目标:\n{{analysis_goal}}\n\n分析要求:\n1. 数据清洗和预处理\n2. 探索性数据分析\n3. 可视化关键发现\n4. 得出结论和建议\n\n请提供详细的分析报告。",
+      "variables": ["data_source", "analysis_goal"],
+      "description": "用于数据分析任务的模板"
+    },
+    "documentation": {
+      "name": "文档编写",
+      "type": "task",
+      "content": "请编写{{doc_type}}文档。\n\n主题:\n{{topic}}\n\n目标读者:\n{{audience}}\n\n文档要求:\n1. 结构清晰，层次分明\n2. 语言简洁易懂\n3. 包含必要的示例\n4. 使用 Markdown 格式\n\n请提供完整的文档内容。",
+      "variables": ["doc_type", "topic", "audience"],
+      "description": "用于编写各类文档的模板"
+    }
+  }
+}

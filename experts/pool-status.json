@@ -1,0 +1,21 @@
+{
+  "pools": {
+    "tech": {
+      "total": 2,
+      "available": 1,
+      "running": [
+        "TASK-001"
+      ]
+    },
+    "log": {
+      "total": 1,
+      "available": 1,
+      "running": []
+    },
+    "design": {
+      "total": 1,
+      "available": 1,
+      "running": []
+    }
+  }
+}
