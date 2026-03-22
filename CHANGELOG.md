@@ -1,6 +1,6 @@
 # 版本历史 - OpenClaw 自主进化系统
 
-**仓库**: https://github.com/63847051/redesigned-carnival
+**仓库**: https://github.com/638470151/redesigned-carnival
 
 ---
 

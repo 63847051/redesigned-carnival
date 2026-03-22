@@ -13,7 +13,7 @@
 - ✅ 版本标签推送成功 (v5.17.0)
 - ✅ 77 个文件，5450 行新增
 
-**仓库**: https://github.com/63847051/redesigned-carnival
+**仓库**: https://github.com/638470151/redesigned-carnival
 
 ---
 

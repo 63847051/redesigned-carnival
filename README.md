@@ -4,7 +4,7 @@
 
 **版本**: v5.25.0（Multi-Agent 完整版 + 微信集成 - 完整备份系统）
 **状态**: ✅ 完整运行
-**仓库**: https://github.com/63847051/redesigned-carnival
+**仓库**: https://github.com/638470151/redesigned-carnival
 **规则执行率**: 100% 🎯
 **服务可用性**: 99.9%+ 🚀
 
@@ -199,7 +199,7 @@
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/63847051/redesigned-carnival.git
+git clone https://github.com/638470151/redesigned-carnival.git
 cd redesigned-carnival
 
 # 2. 查看版本
@@ -216,7 +216,7 @@ node .claw/tests/unit/pai-learning.test.js
 
 ```bash
 # 下载 v5.25.0
-wget https://github.com/63847051/redesigned-carnival/archive/refs/tags/v5.25.0tar.gz
+wget https://github.com/638470151/redesigned-carnival/archive/refs/tags/v5.25.0tar.gz
 
 # 解压
 tar -xzf redesigned-carnival-5.18.0.tar.gz
@@ -413,6 +413,6 @@ MIT License
 
 **最终更新**: 2026-03-17**
 **维护者**: 大领导 🎯
-**仓库**: https://github.com/63847051/redesigned-carnival
+**仓库**: https://github.com/638470151/redesigned-carnival
 **版本**: v5.25.0
 **状态**: ✅ 运行正常

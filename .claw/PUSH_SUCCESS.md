@@ -12,7 +12,7 @@
 
 **Tag**: `v5.17.0`
 
-**仓库**: https://github.com/63847051/redesigned-carnival
+**仓库**: https://github.com/638470151/redesigned-carnival
 
 ---
 
@@ -83,7 +83,7 @@
 
 **Clone**: 
 ```bash
-git clone -b v5.17.0 https://github.com/63847051/redesigned-carnival.git
+git clone -b v5.17.0 https://github.com/638470151/redesigned-carnival.git
 ```
 
 ---

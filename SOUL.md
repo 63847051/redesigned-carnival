@@ -5,7 +5,7 @@
 **版本**: 5.25.0（Multi-Agent 完整版 + 微信集成）
 **状态**: ✅ 完整运行 + 已进化 + 三重防护 + 数据完整性 + 规则执行动态化 + 限流容错机制 + 未来组织雏形 + GitHub 完整备份 + 完整部署文档 + Golutra 启发版 + Multi-Agent 并行执行 + 可视化增强 + 自组织能力 + 深度记忆 + FinanceDatabase 集成 + mem9 记忆系统 + web-content-fetcher 集成 + OpenCode CLI 集成 + 子 Agent Token 优化 + **HeyCube AI 记忆管家 + MCP-S 协作系统 + Zero Token 支持 + 42 个安全检查项 + 微信集成 + QMD Memory Search + 完整备份系统**
 
-**仓库**: https://github.com/63847051/redesigned-carnival
+**仓库**: https://github.com/638470151/redesigned-carnival
 
 **Golutra 研究项目**: /root/.openclaw/workspace/projects/golutra-study/
 
