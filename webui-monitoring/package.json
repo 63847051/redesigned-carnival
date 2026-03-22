@@ -1,0 +1,49 @@
+{
+  "name": "webui-monitoring",
+  "version": "1.0.0",
+  "description": "大领导系统 v5.23 Web UI 可视化监控",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js --port 8080",
+    "test": "node test-websocket.js",
+    "lint": "eslint . --ext .js,.json",
+    "build": "echo 'No build required'"
+  },
+  "keywords": [
+    "monitoring",
+    "dashboard",
+    "websocket",
+    "real-time",
+    "agent-system"
+  ],
+  "author": "大领导系统团队",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/63847051/redesigned-carnival.git",
+    "directory": "webui-monitoring"
+  },
+  "bugs": {
+    "url": "https://github.com/63847051/redesigned-carnival/issues"
+  },
+  "homepage": "https://github.com/63847051/redesigned-carnival#readme",
+  "config": {
+    "port": 8080,
+    "updateInterval": 2000,
+    "maxClients": 100,
+    "heartbeatInterval": 30000,
+    "maxLogEntries": 100,
+    "enableMockData": true
+  }
+}

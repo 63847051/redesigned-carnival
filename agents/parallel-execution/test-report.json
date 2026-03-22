@@ -1,0 +1,60 @@
+{
+  "testResults": [
+    {
+      "id": 1,
+      "name": "基本功能测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:51:35.165Z"
+    },
+    {
+      "id": 2,
+      "name": "优先级队列测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:51:35.167Z"
+    },
+    {
+      "id": 3,
+      "name": "并行执行测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:51:35.169Z"
+    },
+    {
+      "id": 4,
+      "name": "结果聚合测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:51:35.171Z"
+    },
+    {
+      "id": 5,
+      "name": "错误处理测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:51:35.174Z"
+    },
+    {
+      "id": 6,
+      "name": "性能测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:51:35.176Z"
+    },
+    {
+      "id": 7,
+      "name": "集成测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:51:35.177Z"
+    }
+  ],
+  "summary": {
+    "total": 7,
+    "passed": 0,
+    "failed": 7,
+    "successRate": 0
+  },
+  "timestamp": "2026-03-22T01:51:35.178Z"
+}

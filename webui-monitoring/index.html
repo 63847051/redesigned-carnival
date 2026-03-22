@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大领导系统 - 实时监控面板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .status-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        .status-running {
+            background: #4CAF50;
+        }
+
+        .status-idle {
+            background: #FFC107;
+            animation: none;
+        }
+
+        .status-error {
+            background: #F44336;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .agent-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .agent-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .agent-info strong {
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .agent-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .metric-label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .metric-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .log-container {
+            background: #2c3e50;
+            border-radius: 8px;
+            color: white;
+            height: 300px;
+            overflow-y: auto;
+        }
+
+        .log-header {
+            background: #34495e;
+            padding: 10px 15px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .log-header span {
+            font-weight: 500;
+        }
+
+        .clear-logs-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .clear-logs-btn:hover {
+            background: #c0392b;
+        }
+
+        .log-content {
+            padding: 15px;
+        }
+
+        .log-entry {
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border-left: 3px solid;
+        }
+
+        .log-entry.info {
+            border-left-color: #3498db;
+        }
+
+        .log-entry.warn {
+            border-left-color: #f39c12;
+        }
+
+        .log-entry.error {
+            border-left-color: #e74c3c;
+        }
+
+        .log-time {
+            color: #95a5a6;
+            margin-right: 10px;
+        }
+
+        .log-agent {
+            color: #3498db;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+
+        .log-type {
+            color: #f39c12;
+            margin-right: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .log-message {
+            color: #ecf0f1;
+        }
+
+        .efficiency-chart {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            height: 200px;
+            display: flex;
+            align-items: end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, #3498db, #5dade2);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 0.5s ease;
+        }
+
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .chart-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .offline-banner {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .offline-banner.reconnecting {
+            background: #f39c12;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .dashboard-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .stat-value {
+                font-size: 1.5rem;
+            }
+
+            .log-container {
+                height: 250px;
+            }
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .connection-status.connected {
+            border-left: 4px solid #4CAF50;
+        }
+
+        .connection-status.disconnected {
+            border-left: 4px solid #F44336;
+        }
+
+        .connection-status.reconnecting {
+            border-left: 4px solid #FFC107;
+        }
+    </style>
+</head>
+<body>
+    <div class="connection-status" id="connection-status">
+        <span class="status-indicator" id="connection-indicator"></span>
+        <span id="connection-text">连接中...</span>
+    </div>
+
+    <div class="container">
+        <header class="dashboard-header">
+            <h1>大领导系统 v5.23 - 实时监控面板</h1>
+            <div class="system-status">
+                <span class="status-indicator" id="system-status"></span>
+                <span id="system-status-text">系统状态</span>
+            </div>
+        </header>
+
+        <div id="offline-warning" class="offline-banner" style="display: none;">
+            <span>连接已断开，正在尝试重新连接...</span>
+        </div>
+
+        <div class="dashboard">
+            <section class="card">
+                <h2>🤖 Agent 状态面板</h2>
+                <div id="agent-status">
+                    <div class="loading"></div>
+                    <p style="text-align: center; color: #666;">正在加载 Agent 状态...</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>📊 任务队列监控</h2>
+                <div id="task-queue">
+                    <div class="queue-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">待处理</span>
+                            <span class="stat-value" id="pending-tasks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">进行中</span>
+                            <span class="stat-value" id="running-tasks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">已完成</span>
+                            <span class="stat-value" id="completed-tasks">0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>⚡ 性能指标</h2>
+                <div id="performance-metrics">
+                    <div class="metric-item">
+                        <span class="metric-label">效率提升</span>
+                        <span class="metric-value" id="efficiency-gain">0%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">任务完成率</span>
+                        <span class="metric-value" id="completion-rate">0%</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">并发利用率</span>
+                        <span class="metric-value" id="utilization-rate">0%</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>📈 效率趋势</h2>
+                <div class="efficiency-chart">
+                    <div class="chart-container" id="efficiency-chart">
+                        <!-- 动态生成的图表 -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="card full-width">
+                <h2>📋 实时日志流</h2>
+                <div class="log-container">
+                    <div class="log-header">
+                        <span>实时日志</span>
+                        <button id="clear-logs" class="clear-logs-btn">清空日志</button>
+                    </div>
+                    <div id="log-content">
+                        <div style="text-align: center; padding: 50px; color: #95a5a6;">
+                            <div class="loading"></div>
+                            <p>等待日志数据...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="webui-monitoring.js"></script>
+</body>
+</html>

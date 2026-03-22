@@ -1,0 +1,39 @@
+{
+  "testResults": [
+    {
+      "id": 1,
+      "name": "PriorityTaskQueue 测试",
+      "status": "passed",
+      "duration": 1,
+      "timestamp": "2026-03-22T01:53:36.150Z"
+    },
+    {
+      "id": 2,
+      "name": "ResultCollector 测试",
+      "status": "failed",
+      "error": "结果收集不正确",
+      "timestamp": "2026-03-22T01:53:36.151Z"
+    },
+    {
+      "id": 3,
+      "name": "ParallelExecutionOrchestrator 测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:53:36.155Z"
+    },
+    {
+      "id": 4,
+      "name": "ParallelExecutionManager 基础测试",
+      "status": "failed",
+      "error": "agentProcess.send is not a function",
+      "timestamp": "2026-03-22T01:53:36.159Z"
+    }
+  ],
+  "summary": {
+    "total": 4,
+    "passed": 1,
+    "failed": 3,
+    "successRate": 25
+  },
+  "timestamp": "2026-03-22T01:53:36.159Z"
+}
