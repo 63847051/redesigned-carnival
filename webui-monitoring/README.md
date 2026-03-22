@@ -383,7 +383,7 @@ GET /config.js
 - [Phase 1 实施报告](../parallel-execution-phase1.md)
 - [系统架构文档](../../SOUL.md)
 - [Agent 团队配置](../../IDENTITY.md)
-- [GitHub 仓库](https://github.com/638470151/redesigned-carnival)
+- [GitHub 仓库](https://github.com/63847051/redesigned-carnival)
 
 ---
 

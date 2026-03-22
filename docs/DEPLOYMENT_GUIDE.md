@@ -64,7 +64,7 @@ yum install -y git
 
 ```bash
 # 克隆主仓库
-git clone https://github.com/638470151/redesigned-carnival.git
+git clone https://github.com/63847051/redesigned-carnival.git
 cd redesigned-carnival
 
 # 或者使用你的 fork
@@ -459,7 +459,7 @@ cat ~/.openclaw/logs/errors.log
 ## 获取帮助
 
 ### 文档
-- GitHub: https://github.com/638470151/redesigned-carnival
+- GitHub: https://github.com/63847051/redesigned-carnival
 - Wiki: [待添加]
 
 ### 社区
@@ -467,7 +467,7 @@ cat ~/.openclaw/logs/errors.log
 - 飞书群: [待添加]
 
 ### 问题反馈
-- GitHub Issues: https://github.com/638470151/redesigned-carnival/issues
+- GitHub Issues: https://github.com/63847051/redesigned-carnival/issues
 
 ---
 

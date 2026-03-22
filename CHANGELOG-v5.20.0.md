@@ -128,6 +128,6 @@
 **升级完成时间**: 2026-03-21
 **版本**: v5.19.0 + v5.17.0 → v5.25.0
 **状态**: ✅ 完整合并
-**仓库**: https://github.com/638470151/redesigned-carnival
+**仓库**: https://github.com/63847051/redesigned-carnival
 
 **你的 OpenClaw 现在最强大了！** 🎉

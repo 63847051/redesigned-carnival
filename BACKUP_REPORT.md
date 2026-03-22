@@ -129,10 +129,10 @@
 - ✅ 推送到 GitHub: 成功
 
 #### 仓库信息
-- **仓库**: https://github.com/638470151/redesigned-carnival
+- **仓库**: https://github.com/63847051/redesigned-carnival
 - **分支**: main
 - **标签**: v5.12.0-full-backup
-- **访问**: https://github.com/638470151/redesigned-carnival/releases/tag/v5.12.0-full-backup
+- **访问**: https://github.com/63847051/redesigned-carnival/releases/tag/v5.12.0-full-backup
 
 ---
 
@@ -207,7 +207,7 @@ v5.12.0-full-backup        # 完整备份版本标签
 
 1. **克隆仓库**
    ```bash
-   git clone https://github.com/638470151/redesigned-carnival.git
+   git clone https://github.com/63847051/redesigned-carnival.git
    cd redesigned-carnival
    ```
 

@@ -1,6 +1,6 @@
 # 📋 版本更新记录
 
-**仓库**: https://github.com/638470151/redesigned-carnival
+**仓库**: https://github.com/63847051/redesigned-carnival
 **维护者**: 幸运小行星 & 大领导 🎯
 
 ---

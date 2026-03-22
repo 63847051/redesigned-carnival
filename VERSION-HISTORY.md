@@ -38,7 +38,7 @@
 - 并行执行: 400%
 - 响应速度: 提升 33-40%
 
-**GitHub**: https://github.com/638470151/redesigned-carnival
+**GitHub**: https://github.com/63847051/redesigned-carnival
 **Commit**: 7d1fceb
 
 ---
@@ -314,4 +314,4 @@
 **最后更新**: 2026-03-22 16:59
 **版本**: v5.25.0
 **状态**: ✅ 运行正常
-**GitHub**: https://github.com/638470151/redesigned-carnival
+**GitHub**: https://github.com/63847051/redesigned-carnival
