@@ -298,5 +298,5 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 ---
 
 **最后更新**: 2026-03-22 09:30
-**版本**: v5.22.0（角色定位固化版）
+**版本**: v5.25.0（角色定位固化版）
 **状态**: ✅ 规则已永久固化
