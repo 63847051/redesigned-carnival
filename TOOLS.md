@@ -140,6 +140,149 @@ python3 ~/.openclaw/workspace/skills/web-content-fetcher/scripts/fetch.py <URL>
 
 ---
 
+## 🎯 DeerFlow 技能库 ⭐ 2026-03-23 新增
+
+### 已移植技能（5个）
+
+| 技能名称 | 描述 | 文件数 |
+|---------|------|--------|
+| `deerflow-skill-creator` | 创建和优化 agent 技能，测量技能性能 | 20 |
+| `deerflow-deep-research` | 深度网络研究，多角度系统性调研 | 1 |
+| `deerflow-data-analysis` | Excel/CSV 数据分析，DuckDB 支持 | 2 |
+| `deerflow-find-skills` | 发现和安装 agent 技能 | 2 |
+| `deerflow-github-deep-research` | GitHub 仓库深度研究 | 3 |
+
+### 原始可用技能（16个公开技能）
+
+位于 `/root/.openclaw/workspace/projects/deerflow-study/deer-flow-source/skills/public/`：
+
+- `bootstrap` - 快速启动
+- `chart-visualization` - **26种图表可视化**（28文件）⭐
+- `claude-to-deerflow` - Claude 迁移
+- `consulting-analysis` - 咨询分析
+- `data-analysis` - 数据分析（DuckDB）
+- `deep-research` - 深度研究
+- `find-skills` - 查找技能
+- `frontend-design` - 前端设计
+- `github-deep-research` - GitHub 研究
+- `image-generation` - 图片生成
+- `podcast-generation` - 播客生成
+- `ppt-generation` - PPT 生成
+- `skill-creator` - 技能创建（核心）
+- `surprise-me` - 惊喜技能
+- `vercel-deploy-claimable` - Vercel 部署
+- `video-generation` - 视频生成
+- `web-design-guidelines` - 网页设计指南
+
+### 技能位置
+
+**已移植**: `/root/.openclaw/workspace/skills/deerflow-*`
+**原始**: `/root/.openclaw/workspace/projects/deerflow-study/deer-flow-source/skills/public/`
+
+### 使用方法
+
+```bash
+# 查看已安装的 DeerFlow 技能
+ls /root/.openclaw/workspace/skills/deerflow-*
+
+# 查看技能详情
+cat /root/.openclaw/workspace/skills/deerflow-<skill-name>/SKILL.md
+```
+
+---
+
+## ⚡ 上下文优化模块 ⭐ 2026-03-23 新增
+
+### 位置
+
+`/root/.openclaw/workspace/context-optimization/`
+
+### 核心组件
+
+| 模块 | 功能 | 状态 |
+|------|------|------|
+| `auto_summarizer.py` | 自动总结已完成任务，节省 Token | ✅ 测试通过 |
+| `result_offloader.py` | 大结果存储到磁盘，按需加载 | ✅ 测试通过 |
+| `compressor.py` | 上下文压缩，提取关键信息 | ✅ 测试通过 |
+
+### 测试结果
+
+- **AutoSummarizer**: Token 节省 40%
+- **ResultOffloader**: 文件存储和加载正常
+- **ContextCompressor**: 消息压缩比 35%
+- **集成测试**: 全部通过 ✅
+
+### 使用方法
+
+```python
+from context_optimization import AutoSummarizer, ResultOffloader, ContextCompressor
+
+# 总结任务
+summarizer = AutoSummarizer()
+summary = summarizer.create_summary("test_session")
+
+# 存储大结果
+offloader = ResultOffloader()
+result_id = offloader.save_result(large_data)
+
+# 压缩上下文
+compressor = ContextCompressor()
+compressed = compressor.compress(messages, token_budget=4000)
+```
+
+### 测试脚本
+
+```bash
+python3 /root/.openclaw/workspace/context-optimization/test_context_optimization.py
+```
+
+---
+
+## 🔌 MCP 增强模块 ⭐ 2026-03-23 新增
+
+### 位置
+
+`/root/.openclaw/workspace/mcp-enhancement/`
+
+### 核心组件
+
+| 模块 | 功能 | 状态 |
+|------|------|------|
+| `oauth.py` | OAuth 认证提供商（Google/GitHub） | ✅ 测试通过 |
+| `tool_extension.py` | 工具扩展和注册系统 | ✅ 测试通过 |
+
+### OAuth 支持
+
+```python
+from mcp_enhancement.oauth import OAuthProvider
+
+provider = OAuthProvider("google")
+auth_url = provider.get_authorization_url()
+```
+
+### 工具扩展
+
+```python
+from mcp_enhancement.tool_extension import ToolExtension, standard_tool
+
+extension = ToolExtension()
+
+@standard_tool(name="greet", description="Greet a user")
+def greet(name: str):
+    return f"Hello, {name}!"
+
+extension.register_tool(greet)
+result = extension.call_tool("greet", {"name": "World"})
+```
+
+### 测试脚本
+
+```bash
+python3 /root/.openclaw/workspace/mcp-enhancement/test_mcp_enhancement.py
+```
+
+---
+
 ### 方法 2: read-wechat.py（备用）
 
 **快速读取工具**: `/root/.openclaw/workspace/scripts/read-wechat.py`

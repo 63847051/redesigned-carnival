@@ -1,0 +1,44 @@
+{
+  "session_id": "test_session",
+  "messages": [
+    {
+      "role": "system",
+      "content": "[已压缩 15 条早期消息，保留摘要]",
+      "timestamp": "2026-03-23T19:53:14.101879",
+      "compressed": true
+    },
+    {
+      "role": "system",
+      "content": "[消息摘要] 消息 0; 消息 1; 消息 2; 消息 3; 消息 4 ... (+10 more)",
+      "timestamp": "2026-03-23T19:53:14.101815",
+      "compressed": true
+    },
+    {
+      "role": "user",
+      "content": "消息 15",
+      "timestamp": "2026-03-23T19:53:14.101857"
+    },
+    {
+      "role": "user",
+      "content": "消息 16",
+      "timestamp": "2026-03-23T19:53:14.101859"
+    },
+    {
+      "role": "user",
+      "content": "消息 17",
+      "timestamp": "2026-03-23T19:53:14.101861"
+    },
+    {
+      "role": "user",
+      "content": "消息 18",
+      "timestamp": "2026-03-23T19:53:14.101862"
+    },
+    {
+      "role": "user",
+      "content": "消息 19",
+      "timestamp": "2026-03-23T19:53:14.101864"
+    }
+  ],
+  "timestamp": "2026-03-23T19:53:14.101938",
+  "original_count": 7
+}

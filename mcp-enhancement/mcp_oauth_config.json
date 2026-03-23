@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "providers": {
+    "google": {
+      "enabled": true,
+      "client_id": "",
+      "client_secret": "",
+      "redirect_uri": "http://localhost:8080/oauth/callback",
+      "scope": ["openid", "email", "profile"]
+    },
+    "github": {
+      "enabled": false,
+      "client_id": "",
+      "client_secret": "",
+      "redirect_uri": "http://localhost:8080/oauth/callback",
+      "scope": ["user:email", "read:user"]
+    },
+    "microsoft": {
+      "enabled": false,
+      "client_id": "",
+      "client_secret": "",
+      "redirect_uri": "http://localhost:8080/oauth/callback",
+      "scope": ["openid", "email", "profile"]
+    }
+  },
+  "token_storage": {
+    "path": "~/.openclaw/mcp_oauth_tokens.json",
+    "encrypt": false
+  },
+  "auto_refresh": {
+    "enabled": true,
+    "buffer_seconds": 60
+  }
+}

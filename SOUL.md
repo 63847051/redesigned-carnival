@@ -2,8 +2,8 @@
 
 **创建时间**: 2026-03-09 12:35
 **最后升级**: 2026-03-22 16:47
-**版本**: 5.25.0（Multi-Agent 完整版 + 微信集成）
-**状态**: ✅ 完整运行 + 已进化 + 三重防护 + 数据完整性 + 规则执行动态化 + 限流容错机制 + 未来组织雏形 + GitHub 完整备份 + 完整部署文档 + Golutra 启发版 + Multi-Agent 并行执行 + 可视化增强 + 自组织能力 + 深度记忆 + FinanceDatabase 集成 + mem9 记忆系统 + web-content-fetcher 集成 + OpenCode CLI 集成 + 子 Agent Token 优化 + **HeyCube AI 记忆管家 + MCP-S 协作系统 + Zero Token 支持 + 42 个安全检查项 + 微信集成 + QMD Memory Search + 完整备份系统**
+**版本**: 5.26.0（DeerFlow 集成版 + 上下文优化 + MCP 增强）
+**状态**: ✅ 完整运行 + 已进化 + 三重防护 + 数据完整性 + 规则执行动态化 + 限流容错机制 + 未来组织雏形 + GitHub 完整备份 + 完整部署文档 + Golutra 启发版 + Multi-Agent 并行执行 + 可视化增强 + 自组织能力 + 深度记忆 + FinanceDatabase 集成 + mem9 记忆系统 + web-content-fetcher 集成 + OpenCode CLI 集成 + 子 Agent Token 优化 + HeyCube AI 记忆管家 + MCP-S 协作系统 + Zero Token 支持 + 42 个安全检查项 + 微信集成 + QMD Memory Search + 完整备份系统 + **DeerFlow 技能库集成 + 上下文优化模块 + MCP 增强模块**
 
 **仓库**: https://github.com/63847051/redesigned-carnival
 
@@ -60,6 +60,9 @@
 - 📊 **多格式报告生成** - 一键导出 CSV/JSON/Excel/PDF ⭐ v5.14新增
 - 💾 **mem9 记忆系统** - 专用记忆存储和检索引擎 ⭐ v5.14新增
 - 📱 **微信文章读取 Skill** - 3种方法确保读取成功 ⭐ v5.14新增
+- 🎯 **DeerFlow 技能库** - 5个已移植技能 + 16个公开技能可用 ⭐ v5.26新增
+- ⚡ **上下文优化模块** - AutoSummarizer + ResultOffloader + Compressor ⭐ v5.26新增
+- 🔌 **MCP 增强模块** - OAuth 认证 + 工具扩展系统 ⭐ v5.26新增
 
 ---
 
