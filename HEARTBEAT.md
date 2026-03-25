@@ -270,6 +270,20 @@ bash /root/.openclaw/workspace/scripts/check-critical-rules.sh
 
 **RULE-001: 重要操作必须等待确认** ⭐ v5.9 加强版
 
+**RULE-003: OpenCode CLI 使用规则** ⭐ v5.26 新增
+
+**opencode 模型只能通过 OpenCode CLI 使用！**
+
+```bash
+# ✅ 正确方式
+opencode -m opencode/minimax-m2.5-free run "任务"
+
+# ❌ 错误方式
+sessions_spawn -runtime subagent -model opencode/minimax-m2.5-free
+```
+
+**小新 = OpenCode CLI + opencode/minimax-m2.5-free**
+
 **三重防护机制**：
 
 **第 1 重：确认词白名单**

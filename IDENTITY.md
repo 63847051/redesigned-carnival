@@ -64,11 +64,11 @@
 
 **使用方式**:
 ```bash
-# 方式 1: OpenCode CLI（推荐）⭐
+# ✅ 唯一正确方式：OpenCode CLI
 opencode -m opencode/minimax-m2.5-free run "你的任务"
 
-# 方式 2: 子 Agent 调用
-sessions_spawn -runtime subagent -model opencode/minimax-m2.5-free
+# ❌ 错误方式（不要用！）
+# sessions_spawn -runtime subagent -model opencode/minimax-m2.5-free
 ```
 
 ---
