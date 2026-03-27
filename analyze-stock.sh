@@ -1,0 +1,1 @@
+/root/.openclaw/workspace/scripts/stock-integration/analyze.sh

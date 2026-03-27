@@ -30,17 +30,55 @@ This folder is home. Treat it that way.
 
 ### 规则 3：职责分离
 
-| Agent | 职责 | 模型 | 触发词 |
-|-------|------|------|--------|
-| **大领导** | 沟通、分配、监督、汇报 | GLM-4.7 | "大领导你安排下" |
-| **小新** | 技术任务（代码、爬虫、API） | opencode/minimax-m2.5-free ⭐ | 代码、爬虫、数据、API |
-| **小蓝** | 日志任务（记录、进度、统计） | GLM-4.5-Air | 日志、记录、工作、任务 |
-| **设计专家** | 设计任务（图纸、平面图） | GLM-4.6 | 设计、图纸、平面图 |
+| Agent | 职责 | 模型 | 触发词 | 调用方式 |
+|-------|------|------|--------|----------|
+| **大领导** | 沟通、分配、监督、汇报 | GLM-4.7 | "大领导你安排下" | - |
+| **小新** | 技术任务（代码、爬虫、API） | opencode/minimax-m2.5-free ⭐ | 代码、爬虫、数据、API | `opencode -m opencode/minimax-m2.5-free run "任务"` ⭐ |
+| **小蓝** | 日志任务（记录、进度、统计） | GLM-4.5-Air | 日志、记录、工作、任务 | `sessions_spawn -runtime subagent -model glmcode/glm-4.5-air` |
+| **设计专家** | 设计任务（图纸、平面图） | GLM-4.6 | 设计、图纸、平面图 | `sessions_spawn -runtime subagent -model glmcode/glm-4.6` |
 
 **重要**：
 - ✅ 小新使用 opencode Agent 自己的免费模型
+- ✅ **小新必须使用 OpenCode CLI 调用** ⭐ v5.27.1 新增
 - ✅ 详细文档: `/root/.openclaw/workspace/docs/OPENCODE-MODELS.md`
 - ✅ 不要和其他 Agent 的模型混淆
+
+### 规则 3.1：小新的特殊调用规则 ⭐ v5.27.1 新增
+
+**为什么小新特殊？**
+- opencode 是一个独立的 Agent 系统
+- 它有自己的模型管理和工具集成
+- `opencode/minimax-m2.5-free` 只能通过 OpenCode CLI 访问
+
+**正确调用方式**：
+```bash
+# ✅ 正确方式
+opencode -m opencode/minimax-m2.5-free run "任务描述"
+
+# ❌ 错误方式
+sessions_spawn -runtime subagent -model opencode/minimax-m2.5-free
+```
+
+**其他 Agent 可以用 sessions_spawn**：
+```bash
+# 小蓝
+sessions_spawn -runtime subagent -model glmcode/glm-4.5-air
+
+# 设计专家
+sessions_spawn -runtime subagent -model glmcode/glm-4.6
+```
+
+**快速参考**：
+```bash
+# 技术任务 → 小新 → OpenCode CLI
+opencode -m opencode/minimax-m2.5-free run "技术任务"
+
+# 日志任务 → 小蓝 → sessions_spawn
+sessions_spawn -runtime subagent -model glmcode/glm-4.5-air
+
+# 设计任务 → 设计专家 → sessions_spawn
+sessions_spawn -runtime subagent -model glmcode/glm-4.6
+```
 
 ### 规则 4：执行流程
 
@@ -297,6 +335,6 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 
 ---
 
-**最后更新**: 2026-03-22 21:59
-**版本**: v5.25.0（Multi-Agent 完整版）
+**最后更新**: 2026-03-27 22:35
+**版本**: v6.1（自主迭代 + 量化分析 + A股 MCP 集成）
 **状态**: ✅ 规则已永久固化

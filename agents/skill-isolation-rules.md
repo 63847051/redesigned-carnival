@@ -17,14 +17,15 @@
 }
 ```
 
-### 💻 技术支持专家（tech-expert）
+### 💻 小新（xiaoxin - 技术支持专家）
 ```javascript
 {
-  role: "tech-expert",
-  label: "技术专家",
+  role: "xiaoxin",
+  label: "小新",
   triggers: ["代码", "脚本", "爬虫", "API", "数据", "前端", "开发", "编程"],
   scope: ["编程开发", "数据处理", "系统运维"],
-  model: "openrouter/gpt-oss-120b",
+  model: "opencode/minimax-m2.5-free",  // ⭐ 使用 opencode Agent 的免费模型
+  useCLI: "opencode",  // ⭐ 必须使用 OpenCode CLI
   isolation: "strict"
 }
 ```

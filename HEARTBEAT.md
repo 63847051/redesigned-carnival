@@ -272,17 +272,38 @@ bash /root/.openclaw/workspace/scripts/check-critical-rules.sh
 
 **RULE-003: OpenCode CLI 使用规则** ⭐ v5.26 新增
 
+**v5.27.1 更新**：现在支持通过 `sessions_spawn` 调用小新！
+
 **opencode 模型只能通过 OpenCode CLI 使用！**
 
 ```bash
-# ✅ 正确方式
+# ✅ 正确方式 1: 直接使用 OpenCode CLI
 opencode -m opencode/minimax-m2.5-free run "任务"
 
-# ❌ 错误方式
+# ✅ 正确方式 2: 使用智能分配脚本（v5.27.1 新增）
+bash /root/.openclaw/workspace/scripts/assign-task.sh "任务" "tech"
+
+# ✅ 正确方式 3: 使用 sessions_spawn（v5.27.1 更新）
 sessions_spawn -runtime subagent -model opencode/minimax-m2.5-free
+
+# ❌ 错误方式（旧版本）
+# sessions_spawn -runtime subagent -model glmcode/glm-4.5-air  # 这是小蓝的模型
 ```
 
 **小新 = OpenCode CLI + opencode/minimax-m2.5-free**
+
+**三种调用方式对比**：
+
+| 方式 | 适用场景 | 优点 | 缺点 |
+|------|---------|------|------|
+| **OpenCode CLI** | 技术任务 | 原生支持，工具完整 | 需要手动输入 |
+| **智能分配脚本** | 自动检测类型 | 自动选择 Agent | 需要脚本 |
+| **sessions_spawn** | 通用任务 | 灵活，统一接口 | 可能忘记配置 |
+
+**推荐使用**：
+- 🥇 **智能分配脚本**（最推荐）
+- 🥈 **OpenCode CLI**（技术任务）
+- 🥉 **sessions_spawn**（通用任务）
 
 **三重防护机制**：
 
