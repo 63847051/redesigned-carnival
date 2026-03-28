@@ -273,6 +273,31 @@ bash /root/.openclaw/workspace/scripts/check-critical-rules.sh
 **RULE-003: OpenCode CLI 使用规则** ⭐ v5.26 新增
 
 **RULE-004: OpenCode CLI 正确使用方法** ⭐ v5.28 新增 🔴 CRITICAL
+
+**RULE-005: 备份前必须更新 README.md** ⭐ v6.1.1 新增 🔴 CRITICAL
+
+**核心规则**:
+> **"备份不是简单的 git push，而是完整的版本发布流程。"**
+
+**备份前检查清单**:
+1. [ ] 检查 SOUL.md 和 README.md 版本号是否一致
+2. [ ] 如果不一致，先更新 README.md
+3. [ ] 更新版本历史和最新更新内容
+4. [ ] 使用完整备份流程脚本：`bash scripts/complete-backup.sh`
+
+**快速备份**:
+```bash
+# 使用完整备份流程脚本（推荐）
+bash /root/.openclaw/workspace/scripts/complete-backup.sh
+
+# 或者手动执行
+# 1. 更新 README.md
+# 2. git add -A
+# 3. git commit -m "备份信息"
+# 4. git push origin main
+```
+
+**违反此规则 = 版本号不一致，用户困惑**
 **错误次数**: 3 次（重复犯错）
 
 **核心规则**:
