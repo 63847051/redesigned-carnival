@@ -1,0 +1,20 @@
+[
+  "tests/test_extractor_agent.py::TestEPUBParser::test_parse_nonexistent_file",
+  "tests/test_extractor_agent.py::TestEPUBParser::test_parse_valid_epub",
+  "tests/test_extractor_agent.py::TestExtractionResult::test_create_result",
+  "tests/test_extractor_agent.py::TestExtractionResult::test_default_values",
+  "tests/test_extractor_agent.py::TestExtractorAgentConfig::test_custom_config",
+  "tests/test_extractor_agent.py::TestExtractorAgentConfig::test_default_config",
+  "tests/test_extractor_agent.py::TestExtractorAgentCreation::test_capabilities",
+  "tests/test_extractor_agent.py::TestExtractorAgentCreation::test_create_agent",
+  "tests/test_extractor_agent.py::TestExtractorAgentCreation::test_skills_initialized",
+  "tests/test_extractor_agent.py::TestIntegration::test_auto_format_detection",
+  "tests/test_extractor_agent.py::TestIntegration::test_explicit_format",
+  "tests/test_extractor_agent.py::TestIntegration::test_unsupported_format",
+  "tests/test_extractor_agent.py::TestPDFParser::test_parse_pdf_not_implemented",
+  "tests/test_extractor_agent.py::TestRoleConfig::test_create_role_config",
+  "tests/test_extractor_agent.py::TestStructureParser::test_build_toc_tree",
+  "tests/test_extractor_agent.py::TestStructureParser::test_parse_structure",
+  "tests/test_extractor_agent.py::TestTextExtractor::test_clean_text",
+  "tests/test_extractor_agent.py::TestTextExtractor::test_extract_chapters"
+]
