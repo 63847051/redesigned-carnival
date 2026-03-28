@@ -238,11 +238,40 @@
 
 ---
 
-## 🚨 关键规则保障层 ⭐ v5.8/v5.9/v5.12
+## 🚨 关键规则保障层 ⭐ v5.8/v5.9/v5.12/v5.28
 
 ### 规则 1：重要操作必须等待确认 ⭐ v5.9 加强版
 
 ### 规则 2：微信公众号文章必须立即读取 ⭐ v5.12 新增
+
+### 规则 3：OpenCode CLI 正确使用方法 ⭐ v5.28 新增 🔴 CRITICAL
+
+**规则ID**: RULE-004
+**优先级**: 🔴 CRITICAL（最高）
+**错误次数**: 3 次（重复犯错）
+
+**核心内容**:
+> **"OpenCode CLI 是独立系统，有自己的配置，永远不要用 sessions_spawn 调用。"**
+
+**正确使用**:
+```bash
+# ✅ 方法 1: 直接使用 OpenCode CLI（最可靠）
+opencode -m opencode/minimax-m2.5-free run "任务"
+
+# ✅ 方法 2: 使用智能分配脚本（最推荐）
+bash /root/.openclaw/workspace/scripts/assign-task.sh "任务" "tech"
+```
+
+**绝对禁止**:
+```bash
+# ❌ 错误：不要用 sessions_spawn 调用 opencode 模型
+sessions_spawn -runtime subagent -model opencode/minimax-m2.5-free "任务"
+```
+
+**检查脚本**: `/root/.openclaw/workspace/scripts/check-opencode-usage.sh`
+**详细文档**: `/root/.openclaw/workspace/.learnings/rules/critical-rule-004-opencode-cli-correct-usage.md`
+
+**违反此规则 = 严重错误（用户极度不满）**
 
 **规则ID**: RULE-002
 **优先级**: 🔴 CRITICAL（最高）

@@ -272,6 +272,20 @@ bash /root/.openclaw/workspace/scripts/check-critical-rules.sh
 
 **RULE-003: OpenCode CLI 使用规则** ⭐ v5.26 新增
 
+**RULE-004: OpenCode CLI 正确使用方法** ⭐ v5.28 新增 🔴 CRITICAL
+**错误次数**: 3 次（重复犯错）
+
+**核心规则**:
+> **"OpenCode CLI 是独立系统，有自己的配置，永远不要用 sessions_spawn 调用。"**
+
+**检查方法**:
+```bash
+# 检查最近的命令历史
+bash /root/.openclaw/workspace/scripts/check-opencode-usage.sh history
+```
+
+**违反此规则 = 严重错误（用户极度不满）**
+
 **v5.27.1 更新**：现在支持通过 `sessions_spawn` 调用小新！
 
 **opencode 模型只能通过 OpenCode CLI 使用！**

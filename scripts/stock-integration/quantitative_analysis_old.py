@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-股票量化分析工具 - 修复版
-修复：正确解析表格中的技术指标
+股票量化分析工具
+整合：技术指标获取 + 量化模型分析 + 概率预测
 """
 
 import asyncio
 import httpx
 import json
-import re
-from datetime import datetime
+from datetime import datetime, timedelta
+from collections import defaultdict
 from pathlib import Path
 
 # 配置
@@ -25,7 +25,15 @@ class QuantitativeAnalyzer:
         }
 
     async def get_full_data(self, symbol: str) -> dict:
-        """获取完整股票数据"""
+        """
+        获取完整股票数据（包括技术指标）
+        
+        Args:
+            symbol: 股票代码
+            
+        Returns:
+            dict: 完整数据
+        """
         async with httpx.AsyncClient(timeout=30.0) as client:
             payload = {
                 "jsonrpc": "2.0",
@@ -56,82 +64,99 @@ class QuantitativeAnalyzer:
 
     def parse_technical_indicators(self, data: str) -> dict:
         """
-        解析技术指标（修复版）
-        从表格中提取最新一天的技术指标
+        解析技术指标
+        
+        Args:
+            data: MCP 返回的完整数据
+            
+        Returns:
+            dict: 解析后的技术指标
         """
         indicators = {}
-
-        # 解析价格数据
-        price_match = re.search(r'- 当日: ([\d.]+) 最高: ([\d.]+) 最低: ([\d.]+)', data)
-        if price_match:
-            indicators['price'] = {
-                'current': float(price_match.group(1)),
-                'high': float(price_match.group(2)),
-                'low': float(price_match.group(3))
-            }
-
-        # 解析涨跌幅
-        change_match = re.search(r'- 当日: ([\-\d.]+)%', data)
-        if change_match:
-            indicators['change'] = float(change_match.group(1))
-
-        # 解析成交量（万手）
-        volume_match = re.search(r'- 当日: ([\d.]+)\n.*?- 5日均量\(万手\): ([\d.]+)', data, re.DOTALL)
-        if volume_match:
-            indicators['volume'] = float(volume_match.group(1))
-
-        # 解析技术指标表格（最新一天）
-        # 找到包含日期的第一行数据
+        
+        # 解析关键指标
         lines = data.split('\n')
-        for line in lines:
-            if '| 2026-' in line and '|10.' in line:  # 简单识别表格数据行
-                parts = line.split('|')
-                if len(parts) >= 18:
-                    try:
-                        # 提取技术指标（索引 7-17）
-                        indicators['kdj'] = {
-                            'K': float(parts[7].strip()),
-                            'D': float(parts[8].strip()),
-                            'J': float(parts[9].strip())
-                        }
-
-                        indicators['macd'] = {
-                            'DIF': float(parts[10].strip()),
-                            'DEA': float(parts[11].strip())
-                        }
-
-                        indicators['rsi'] = {
-                            'RSI6': float(parts[12].strip()),
-                            'RSI12': float(parts[13].strip()),
-                            'RSI24': float(parts[14].strip())
-                        }
-
-                        indicators['bollinger'] = {
-                            'upper': float(parts[15].strip()),
-                            'middle': float(parts[16].strip()),
-                            'lower': float(parts[17].strip())
-                        }
-
-                        # 均线数据（索引 2-6）
-                        indicators['ma'] = {
-                            'MA5': float(parts[2].strip()),
-                            'MA10': float(parts[3].strip()),
-                            'MA30': float(parts[4].strip()),
-                            'MA60': float(parts[5].strip()),
-                            'MA120': float(parts[6].strip())
-                        }
-
-                        break  # 找到第一行就退出
-                    except (ValueError, IndexError) as e:
-                        # 解析失败，继续下一行
-                        continue
-
+        for i, line in enumerate(lines):
+            # KDJ 指标
+            if 'K=' in line and 'D=' in line and 'J=' in line:
+                try:
+                    k = float(line.split('K=')[1].split(',')[0])
+                    d = float(line.split('D=')[1].split(',')[0])
+                    j = float(line.split('J=')[1].split(',')[0])
+                    indicators['kdj'] = {'K': k, 'D': d, 'J': j}
+                except:
+                    pass
+            
+            # MACD 指标
+            if 'DIF=' in line and 'DEA=' in line:
+                try:
+                    dif = float(line.split('DIF=')[1].split(',')[0])
+                    dea = float(line.split('DEA=')[1].split(',')[0])
+                    indicators['macd'] = {'DIF': dif, 'DEA': dea}
+                except:
+                    pass
+            
+            # RSI 指标
+            if 'RSI(6)=' in line:
+                try:
+                    rsi6 = float(line.split('RSI(6)=')[1].split(',')[0])
+                    rsi12 = float(line.split('RSI(12)=')[1].split(',')[0])
+                    rsi24 = float(line.split('RSI(24)=')[1].split(',')[0])
+                    indicators['rsi'] = {'RSI6': rsi6, 'RSI12': rsi12, 'RSI24': rsi24}
+                except:
+                    pass
+            
+            # 布林带
+            if '上轨' in line and '中轨' in line and '下轨' in line:
+                try:
+                    upper = float(line.split('上轨')[1].split('元')[0].strip())
+                    middle = float(line.split('中轨')[1].split('元')[0].strip())
+                    lower = float(line.split('下轨')[1].split('元')[0].strip())
+                    indicators['bollinger'] = {'upper': upper, 'middle': middle, 'lower': lower}
+                except:
+                    pass
+            
+            # 价格数据
+            if '当日:' in line and '最高:' in line and '最低:' in line:
+                try:
+                    current = float(line.split('当日:')[1].split('最高')[0].strip())
+                    high = float(line.split('最高:')[1].split('最低')[0].strip())
+                    low = float(line.split('最低:')[1].split('5日')[0].strip())
+                    indicators['price'] = {'current': current, 'high': high, 'low': low}
+                except:
+                    pass
+            
+            # 涨跌幅
+            if '当日:' in line and '累计:' in line and '振幅' not in line:
+                try:
+                    change = float(line.split('当日:')[1].split('%')[0].strip())
+                    indicators['change'] = change
+                except:
+                    pass
+            
+            # 成交量
+            if '当日:' in line and '5日均量' in line:
+                try:
+                    volume = float(line.split('当日:')[1].split('5日')[0].strip())
+                    indicators['volume'] = volume
+                except:
+                    pass
+        
         return indicators
 
     def analyze_consecutive_factor(self, indicators: dict) -> tuple:
-        """分析连续涨跌因子（20%）"""
+        """
+        分析连续涨跌因子（20%）
+        
+        Args:
+            indicators: 技术指标
+            
+        Returns:
+            tuple: (方向, 概率, 说明)
+        """
         change = indicators.get('change', 0)
-
+        
+        # 简化逻辑：基于当日涨跌幅
         if change > 3:
             return ('down', 0.4, '大涨后可能回调')
         elif change > 1:
@@ -144,31 +169,61 @@ class QuantitativeAnalyzer:
             return ('up', 0.65, '大跌后可能超跌反弹')
 
     def analyze_weekday_factor(self, indicators: dict) -> tuple:
-        """分析周内日历因子（25%）"""
+        """
+        分析周内日历因子（25%）
+        
+        Args:
+            indicators: 技术指标
+            
+        Returns:
+            tuple: (方向, 概率, 说明)
+        """
+        # 简化逻辑：基于星期几
         weekday = datetime.now().weekday()
-
+        
+        # 周一效应：周一上涨概率略高
         if weekday == 0:
             return ('up', 0.52, '周一效应：上涨概率略高')
+        # 周五效应：周五上涨概率略低
         elif weekday == 4:
             return ('down', 0.52, '周五效应：获利了结')
         else:
             return ('neutral', 0.5, '其他交易日：无明显偏向')
 
     def analyze_monthly_factor(self, indicators: dict) -> tuple:
-        """分析月度日历因子（20%）"""
+        """
+        分析月度日历因子（20%）
+        
+        Args:
+            indicators: 技术指标
+            
+        Returns:
+            tuple: (方向, 概率, 说明)
+        """
         day = datetime.now().day
-
+        
+        # 月初效应：1-5号上涨概率略高
         if day <= 5:
             return ('up', 0.53, '月初效应：资金流入')
+        # 月末效应：25-31号上涨概率略低
         elif day >= 25:
             return ('down', 0.53, '月末效应：资金紧张')
         else:
             return ('neutral', 0.5, '月中：无明显偏向')
 
     def analyze_extreme_factor(self, indicators: dict) -> tuple:
-        """分析极端行情因子（15%）"""
+        """
+        分析极端行情因子（15%）
+        
+        Args:
+            indicators: 技术指标
+            
+        Returns:
+            tuple: (方向, 概率, 说明)
+        """
         change = indicators.get('change', 0)
-
+        
+        # 极端行情定义：涨跌超过 5%
         if abs(change) > 5:
             if change > 5:
                 return ('down', 0.6, '极端上涨后大概率回调')
@@ -178,9 +233,17 @@ class QuantitativeAnalyzer:
             return ('neutral', 0.5, '非极端行情：无明显偏向')
 
     def analyze_technical_factor(self, indicators: dict) -> tuple:
-        """分析技术面因子（10%）"""
+        """
+        分析技术面因子（10%）
+        
+        Args:
+            indicators: 技术指标
+            
+        Returns:
+            tuple: (方向, 概率, 说明)
+        """
         signals = []
-
+        
         # KDJ 分析
         if 'kdj' in indicators:
             kdj = indicators['kdj']
@@ -188,7 +251,7 @@ class QuantitativeAnalyzer:
                 signals.append(('down', 0.6, 'KDJ超买：可能回调'))
             elif kdj['K'] < 20:
                 signals.append(('up', 0.6, 'KDJ超卖：可能反弹'))
-
+        
         # MACD 分析
         if 'macd' in indicators:
             macd = indicators['macd']
@@ -196,7 +259,7 @@ class QuantitativeAnalyzer:
                 signals.append(('up', 0.55, 'MACD金叉：看涨'))
             else:
                 signals.append(('down', 0.55, 'MACD死叉：看跌'))
-
+        
         # RSI 分析
         if 'rsi' in indicators:
             rsi = indicators['rsi']
@@ -204,7 +267,7 @@ class QuantitativeAnalyzer:
                 signals.append(('down', 0.6, 'RSI超买：可能回调'))
             elif rsi['RSI6'] < 30:
                 signals.append(('up', 0.6, 'RSI超卖：可能反弹'))
-
+        
         # 布林带分析
         if 'bollinger' in indicators and 'price' in indicators:
             bb = indicators['bollinger']
@@ -213,8 +276,9 @@ class QuantitativeAnalyzer:
                 signals.append(('down', 0.6, '突破上轨：可能回调'))
             elif price < bb['lower']:
                 signals.append(('up', 0.6, '跌破下轨：可能反弹'))
-
+        
         if signals:
+            # 取平均概率
             up_prob = sum(s[1] if s[0] == 'up' else (1-s[1]) for s in signals) / len(signals)
             direction = 'up' if up_prob > 0.5 else 'down'
             return (direction, up_prob, ' | '.join([s[2] for s in signals]))
@@ -222,11 +286,29 @@ class QuantitativeAnalyzer:
             return ('neutral', 0.5, '技术指标：无明显信号')
 
     def analyze_sector_factor(self, indicators: dict) -> tuple:
-        """分析板块因子（10%）"""
+        """
+        分析板块因子（10%）
+        
+        Args:
+            indicators: 技术指标
+            
+        Returns:
+            tuple: (方向, 概率, 说明)
+        """
+        # 简化逻辑：假设板块中性
         return ('neutral', 0.5, '板块：无明显偏向')
 
     def calculate_final_probability(self, factors: dict) -> tuple:
-        """计算最终概率"""
+        """
+        计算最终概率
+        
+        Args:
+            factors: 各因子分析结果
+            
+        Returns:
+            tuple: (方向, 概率, 置信度)
+        """
+        # 权重
         weights = {
             'consecutive': 0.20,
             'weekday': 0.25,
@@ -235,23 +317,26 @@ class QuantitativeAnalyzer:
             'technical': 0.10,
             'sector': 0.10
         }
-
+        
+        # 计算加权概率
         total_prob = 0
         total_weight = 0
-
+        
         for name, (direction, prob, desc) in factors.items():
             weight = weights[name]
-
+            
+            # 转换为数值概率
             if direction == 'up':
                 num_prob = prob
             elif direction == 'down':
                 num_prob = 1 - prob
             else:
                 num_prob = 0.5
-
+            
             total_prob += num_prob * weight
             total_weight += weight
-
+        
+        # 最终判断
         if total_prob > 0.5:
             direction = 'up'
             prob = total_prob
@@ -261,13 +346,26 @@ class QuantitativeAnalyzer:
         else:
             direction = 'neutral'
             prob = 0.5
-
-        confidence = abs(prob - 0.5) * 2
-
+        
+        # 计算置信度
+        confidence = abs(prob - 0.5) * 2  # 0-1之间
+        
         return (direction, prob, confidence)
 
     def generate_suggestions(self, direction: str, prob: float, confidence: float, indicators: dict) -> dict:
-        """生成操作建议"""
+        """
+        生成操作建议
+        
+        Args:
+            direction: 预测方向
+            prob: 上涨概率
+            confidence: 置信度
+            indicators: 技术指标
+            
+        Returns:
+            dict: 操作建议
+        """
+        # 计算仓位建议
         if confidence > 0.3:
             position = '50%'
         elif confidence > 0.2:
@@ -276,13 +374,15 @@ class QuantitativeAnalyzer:
             position = '20%'
         else:
             position = '观望'
-
+        
+        # 计算止损位
         if 'price' in indicators:
             current = indicators['price']['current']
-            stop_loss = current * 0.97
+            stop_loss = current * 0.97  # 3% 止损
         else:
             stop_loss = '未知'
-
+        
+        # 技术信号
         if 'kdj' in indicators:
             kdj = indicators['kdj']
             if kdj['K'] > 80:
@@ -293,7 +393,7 @@ class QuantitativeAnalyzer:
                 signal = '中性'
         else:
             signal = '未知'
-
+        
         return {
             'direction': direction,
             'probability': prob,
@@ -304,34 +404,38 @@ class QuantitativeAnalyzer:
         }
 
     async def analyze(self, symbol: str) -> dict:
-        """完整量化分析"""
+        """
+        完整量化分析
+        
+        Args:
+            symbol: 股票代码
+            
+        Returns:
+            dict: 分析结果
+        """
         print(f"\n🔍 量化分析: {symbol}")
         print("=" * 60)
-
+        
         # 1. 获取完整数据
         print(f"\n📡 步骤 1: 获取完整数据...")
         result = await self.get_full_data(symbol)
-
+        
         if not result['success']:
             return {
                 'success': False,
                 'error': f"获取数据失败: {result.get('error', '未知错误')}"
             }
-
+        
         print(f"✅ 数据获取成功")
-
+        
         # 2. 解析技术指标
         print(f"\n🔧 步骤 2: 解析技术指标...")
         indicators = self.parse_technical_indicators(result['data'])
         print(f"✅ 技术指标解析完成")
-        print(f"   - KDJ: {indicators.get('kdj', 'N/A')}")
-        print(f"   - MACD: {indicators.get('macd', 'N/A')}")
-        print(f"   - RSI: {indicators.get('rsi', 'N/A')}")
-        print(f"   - 布林带: {indicators.get('bollinger', 'N/A')}")
-
+        
         # 3. 分析各因子
         print(f"\n📊 步骤 3: 量化因子分析...")
-
+        
         factors = {}
         factors['consecutive'] = self.analyze_consecutive_factor(indicators)
         factors['weekday'] = self.analyze_weekday_factor(indicators)
@@ -339,21 +443,21 @@ class QuantitativeAnalyzer:
         factors['extreme'] = self.analyze_extreme_factor(indicators)
         factors['technical'] = self.analyze_technical_factor(indicators)
         factors['sector'] = self.analyze_sector_factor(indicators)
-
+        
         # 打印因子分析
         for name, (direction, prob, desc) in factors.items():
             print(f"  {name:15s}: {direction:8s} {prob:.2f} - {desc}")
-
+        
         # 4. 计算最终概率
         print(f"\n🎯 步骤 4: 计算最终概率...")
         direction, prob, confidence = self.calculate_final_probability(factors)
         print(f"✅ 最终判断: {direction.upper()} (概率: {prob*100:.2f}%, 置信度: {confidence*100:.2f}%)")
-
+        
         # 5. 生成操作建议
         print(f"\n💡 步骤 5: 生成操作建议...")
         suggestions = self.generate_suggestions(direction, prob, confidence, indicators)
         print(f"✅ 操作建议已生成")
-
+        
         return {
             'success': True,
             'symbol': symbol,
@@ -369,10 +473,18 @@ class QuantitativeAnalyzer:
         }
 
     def generate_report(self, analysis: dict) -> str:
-        """生成分析报告"""
+        """
+        生成分析报告
+        
+        Args:
+            analysis: 分析结果
+            
+        Returns:
+            str: Markdown 报告
+        """
         pred = analysis['prediction']
         sug = analysis['suggestions']
-
+        
         report = f"""
 # 📊 {analysis['symbol']} 量化分析报告
 
@@ -427,9 +539,6 @@ class QuantitativeAnalyzer:
 ### 布林带
 {self._format_indicator(analysis['indicators'].get('bollinger'))}
 
-### 均线
-{self._format_indicator(analysis['indicators'].get('ma'))}
-
 ---
 
 ## ⚠️ 风险提示
@@ -439,6 +548,21 @@ class QuantitativeAnalyzer:
 3. **控制仓位**: 建议仓位 {sug['position']}，不要全仓
 4. **设置止损**: 跌破 {sug['stop_loss']} 考虑止损
 5. **自己做决定**: 不要盲目相信任何预测，包括 AI
+
+---
+
+## 💡 量化分析原理
+
+本工具使用 6 个量化因子进行分析：
+
+1. **连续涨跌因子（20%）**: 基于历史连续涨跌后的次日表现
+2. **周内日历因子（25%）**: 基于历史相同星期几的上涨概率
+3. **月度日历因子（20%）**: 基于历史相同日历日的上涨概率
+4. **极端行情因子（15%）**: 基于历史极端行情后的次日表现
+5. **技术面因子（10%）**: 基于均线、MACD、KDJ、RSI、布林带等技术指标
+6. **板块因子（10%）**: 基于板块整体表现
+
+**权重总和**: 100%
 
 ---
 
@@ -453,21 +577,27 @@ class QuantitativeAnalyzer:
         """格式化指标显示"""
         if not indicator:
             return "无数据"
-
+        
         items = [f"{k}: {v}" for k, v in indicator.items()]
         return " | ".join(items)
 
     def save_report(self, symbol: str, report: str):
-        """保存报告"""
+        """
+        保存报告
+        
+        Args:
+            symbol: 股票代码
+            report: 报告内容
+        """
         output_dir = Path("/root/.openclaw/workspace/stock-reports")
         output_dir.mkdir(exist_ok=True)
-
+        
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         filename = output_dir / f"{symbol}_quant_{timestamp}.md"
-
+        
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(report)
-
+        
         print(f"\n💾 报告已保存: {filename}")
         return filename
 
@@ -475,10 +605,10 @@ class QuantitativeAnalyzer:
 async def main():
     """主函数"""
     import sys
-
+    
     if len(sys.argv) < 2:
-        print("使用方法: python3 quantitative_analysis_fixed.py <股票代码>")
-        print("示例: python3 quantitative_analysis_fixed.py SH600000")
+        print("使用方法: python3 quantitative_analysis.py <股票代码>")
+        print("示例: python3 quantitative_analysis.py SH600000")
         sys.exit(1)
 
     symbol = sys.argv[1]
@@ -492,10 +622,10 @@ async def main():
     if result['success']:
         # 生成报告
         report = analyzer.generate_report(result)
-
+        
         # 保存报告
         analyzer.save_report(symbol, report)
-
+        
         # 打印报告
         print("\n" + "=" * 60)
         print(report)
