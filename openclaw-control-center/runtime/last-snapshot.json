@@ -1,21 +1,63 @@
 {
   "sessions": [
     {
-      "sessionKey": "agent:main:feishu:direct:ou_e356e8a931ed343100de9c449020964b",
+      "sessionKey": "agent:main:feishu:default:direct:ou_e356e8a931ed343100de9c449020964b",
       "agentId": "main",
-      "lastMessageAt": "2026-03-12T13:48:18.893Z",
+      "lastMessageAt": "2026-03-28T04:06:57.668Z",
       "state": "running"
     },
     {
       "sessionKey": "agent:main:main",
       "agentId": "main",
-      "lastMessageAt": "2026-03-12T13:37:10.301Z",
-      "state": "running"
+      "lastMessageAt": "2026-03-28T03:07:44.000Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:main:cron:b87d0bda-eb0e-4e8a-bb89-4deed179406d",
+      "agentId": "main",
+      "lastMessageAt": "2026-03-28T01:00:00.025Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:main:cron:b87d0bda-eb0e-4e8a-bb89-4deed179406d:run:2392c5bd-407c-4684-bc24-782c9ac324e0",
+      "agentId": "main",
+      "lastMessageAt": "2026-03-28T01:00:00.025Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:main:openclaw-weixin:d5da1125dc65-im-bot:direct:o9cq800_xn3dfzhuxz_wjkmqn3ss@im.wechat",
+      "agentId": "main",
+      "lastMessageAt": "2026-03-27T14:21:35.461Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:main:lightclawbot:default:direct:100006824404",
+      "agentId": "main",
+      "lastMessageAt": "2026-03-17T15:04:54.477Z",
+      "state": "idle"
     },
     {
       "sessionKey": "agent:main:feishu:group:oc_65a1c1459bcf9126ad362bffac588e34",
       "agentId": "main",
-      "lastMessageAt": "2026-03-11T23:32:39.244Z",
+      "lastMessageAt": "2026-03-15T08:42:10.437Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:opencode:feishu:opencode:direct:ou_7babb2c21544556202402b3a3697f365",
+      "agentId": "opencode",
+      "lastMessageAt": "2026-03-15T08:41:25.149Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:opencode:feishu:group:oc_65a1c1459bcf9126ad362bffac588e34",
+      "agentId": "opencode",
+      "lastMessageAt": "2026-03-15T08:34:49.468Z",
+      "state": "idle"
+    },
+    {
+      "sessionKey": "agent:main:feishu:direct:ou_e356e8a931ed343100de9c449020964b",
+      "agentId": "main",
+      "lastMessageAt": "2026-03-15T07:58:26.801Z",
       "state": "idle"
     },
     {
@@ -33,39 +75,88 @@
   ],
   "statuses": [
     {
-      "sessionKey": "agent:main:feishu:direct:ou_e356e8a931ed343100de9c449020964b",
+      "sessionKey": "agent:main:feishu:default:direct:ou_e356e8a931ed343100de9c449020964b",
       "model": "glm-4.7",
-      "tokensIn": 129944,
-      "tokensOut": 1462,
-      "updatedAt": "2026-03-12T13:51:58.686Z"
+      "tokensIn": 174653,
+      "tokensOut": 798,
+      "updatedAt": "2026-03-28T04:07:25.529Z"
     },
     {
       "sessionKey": "agent:main:main",
       "model": "glm-4.7",
-      "tokensIn": 23728,
-      "tokensOut": 252,
-      "updatedAt": "2026-03-12T13:51:58.686Z"
+      "tokensIn": 59020,
+      "tokensOut": 539,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
+    },
+    {
+      "sessionKey": "agent:main:cron:b87d0bda-eb0e-4e8a-bb89-4deed179406d",
+      "model": "glm-4.7",
+      "tokensIn": 31109,
+      "tokensOut": 345,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
+    },
+    {
+      "sessionKey": "agent:main:cron:b87d0bda-eb0e-4e8a-bb89-4deed179406d:run:2392c5bd-407c-4684-bc24-782c9ac324e0",
+      "model": "glm-4.7",
+      "tokensIn": 31109,
+      "tokensOut": 345,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
+    },
+    {
+      "sessionKey": "agent:main:openclaw-weixin:d5da1125dc65-im-bot:direct:o9cq800_xn3dfzhuxz_wjkmqn3ss@im.wechat",
+      "model": "glm-4.7",
+      "tokensIn": 26058,
+      "tokensOut": 103,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
+    },
+    {
+      "sessionKey": "agent:main:lightclawbot:default:direct:100006824404",
+      "model": "glm-4.7",
+      "tokensIn": 28091,
+      "tokensOut": 312,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
     },
     {
       "sessionKey": "agent:main:feishu:group:oc_65a1c1459bcf9126ad362bffac588e34",
       "model": "glm-4.7",
-      "tokensIn": 14322,
-      "tokensOut": 328,
-      "updatedAt": "2026-03-12T13:51:58.686Z"
+      "tokensIn": 53326,
+      "tokensOut": 695,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
+    },
+    {
+      "sessionKey": "agent:opencode:feishu:opencode:direct:ou_7babb2c21544556202402b3a3697f365",
+      "model": "glm-4.7",
+      "tokensIn": 10089,
+      "tokensOut": 392,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
+    },
+    {
+      "sessionKey": "agent:opencode:feishu:group:oc_65a1c1459bcf9126ad362bffac588e34",
+      "model": "glm-4.7",
+      "tokensIn": 2176,
+      "tokensOut": 107,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
+    },
+    {
+      "sessionKey": "agent:main:feishu:direct:ou_e356e8a931ed343100de9c449020964b",
+      "model": "glm-4.7",
+      "tokensIn": 245196,
+      "tokensOut": 1802,
+      "updatedAt": "2026-03-28T04:07:25.530Z"
     },
     {
       "sessionKey": "agent:tech:main",
       "model": "glm-4.7",
       "tokensIn": 14734,
       "tokensOut": 122,
-      "updatedAt": "2026-03-12T13:51:58.686Z"
+      "updatedAt": "2026-03-28T04:07:25.530Z"
     },
     {
       "sessionKey": "agent:assistant:main",
       "model": "glm-4.7",
       "tokensIn": 15256,
       "tokensOut": 435,
-      "updatedAt": "2026-03-12T13:51:58.686Z"
+      "updatedAt": "2026-03-28T04:07:25.530Z"
     }
   ],
   "cronJobs": [],
@@ -97,5 +188,5 @@
     "over": 0,
     "evaluations": []
   },
-  "generatedAt": "2026-03-12T13:52:05.292Z"
+  "generatedAt": "2026-03-28T04:07:35.376Z"
 }
