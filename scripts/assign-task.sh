@@ -88,6 +88,12 @@ execute_task() {
 
 # 主流程
 main() {
+    # 检查帮助参数
+    if [ "$TASK" = "--help" ] || [ "$TASK" = "-h" ]; then
+        show_help
+        exit 0
+    fi
+    
     # 检查参数
     if [ -z "$TASK" ]; then
         show_help

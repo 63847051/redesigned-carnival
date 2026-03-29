@@ -1,0 +1,23 @@
+[
+  {
+    "id": "exp-20260329",
+    "hypothesis": "智能确认能减少对话轮次",
+    "metrics": [
+      "对话轮次",
+      "用户满意度"
+    ],
+    "results": {
+      "对话轮次": {
+        "before": 10,
+        "after": 7
+      },
+      "用户满意度": {
+        "before": 70,
+        "after": 80
+      }
+    },
+    "created_at": "2026-03-29T15:25:46.287803",
+    "status": "completed",
+    "conclusion": "accept"
+  }
+]

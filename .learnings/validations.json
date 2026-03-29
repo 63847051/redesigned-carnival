@@ -1,0 +1,131 @@
+[
+  {
+    "name": "记忆系统优化",
+    "timestamp": "2026-03-29T15:23:43.755198",
+    "is_evolution": true,
+    "score": 9.5,
+    "scores": {
+      "completeness": 10,
+      "performance": 10,
+      "maintainability": 8,
+      "risk": 10
+    },
+    "details": {
+      "completeness": {
+        "score": 10,
+        "issues": [],
+        "new_features": [
+          "4层架构",
+          "按需加载",
+          "缓存"
+        ]
+      },
+      "performance": {
+        "score": 10,
+        "improvements": [
+          "token_usage: 70.0% 提升",
+          "response_time: 80.0% 提升"
+        ],
+        "regressions": []
+      },
+      "maintainability": {
+        "score": 8,
+        "note": "可维护性评估"
+      },
+      "risk": {
+        "score": 10,
+        "risks": [],
+        "note": "风险评估"
+      }
+    },
+    "requirements": [
+      "Token 节省 70%",
+      "速度提升 5 倍"
+    ]
+  },
+  {
+    "name": "用户交互优化",
+    "timestamp": "2026-03-29T15:23:43.755913",
+    "is_evolution": true,
+    "score": 10.0,
+    "scores": {
+      "completeness": 10,
+      "performance": 10,
+      "maintainability": 10,
+      "risk": 10
+    },
+    "details": {
+      "completeness": {
+        "score": 10,
+        "issues": [],
+        "new_features": [
+          "进度反馈",
+          "智能确认",
+          "错误处理"
+        ]
+      },
+      "performance": {
+        "score": 10,
+        "improvements": [
+          "response_time: 33.3% 提升"
+        ],
+        "regressions": []
+      },
+      "maintainability": {
+        "score": 10,
+        "note": "可维护性评估"
+      },
+      "risk": {
+        "score": 10,
+        "risks": [],
+        "note": "风险评估"
+      }
+    },
+    "requirements": [
+      "对话轮次 -30%",
+      "满意度 +20%"
+    ]
+  },
+  {
+    "name": "性能优化",
+    "timestamp": "2026-03-29T15:23:43.757516",
+    "is_evolution": true,
+    "score": 10.0,
+    "scores": {
+      "completeness": 10,
+      "performance": 10,
+      "maintainability": 10,
+      "risk": 10
+    },
+    "details": {
+      "completeness": {
+        "score": 10,
+        "issues": [],
+        "new_features": [
+          "搜索索引",
+          "记忆缓存",
+          "动态批量"
+        ]
+      },
+      "performance": {
+        "score": 10,
+        "improvements": [],
+        "regressions": []
+      },
+      "maintainability": {
+        "score": 10,
+        "note": "可维护性评估"
+      },
+      "risk": {
+        "score": 10,
+        "risks": [],
+        "note": "风险评估"
+      }
+    },
+    "requirements": [
+      "记忆加载 32.9x",
+      "搜索 < 1ms",
+      "写入 5x"
+    ]
+  }
+]

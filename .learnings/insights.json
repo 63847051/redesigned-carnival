@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-03-29T15:22:04.705396",
+  "patterns": {},
+  "insights": [
+    {
+      "dimension": "command_frequency",
+      "insight": "最常用的操作是：创建（141 次）",
+      "priority": "medium",
+      "timestamp": "2026-03-29T15:22:04.705351"
+    },
+    {
+      "dimension": "command_frequency",
+      "insight": "操作类型丰富（6 种），能力覆盖面广",
+      "priority": "medium",
+      "timestamp": "2026-03-29T15:22:04.705364"
+    },
+    {
+      "dimension": "response_times",
+      "insight": "记忆搜索可能需要优化索引",
+      "priority": "medium",
+      "timestamp": "2026-03-29T15:22:04.705367"
+    },
+    {
+      "dimension": "response_times",
+      "insight": "异步写入已经实现，效果良好",
+      "priority": "medium",
+      "timestamp": "2026-03-29T15:22:04.705369"
+    },
+    {
+      "dimension": "error_rates",
+      "insight": "发现 587 个错误记录",
+      "priority": "high",
+      "timestamp": "2026-03-29T15:22:04.705371"
+    },
+    {
+      "dimension": "error_rates",
+      "insight": "建议：增加错误处理和友好提示",
+      "priority": "high",
+      "timestamp": "2026-03-29T15:22:04.705374"
+    },
+    {
+      "dimension": "user_satisfaction",
+      "insight": "用户满意度 70%，有提升空间",
+      "priority": "medium",
+      "timestamp": "2026-03-29T15:22:04.705377"
+    },
+    {
+      "dimension": "user_satisfaction",
+      "insight": "主要痛点：确认次数、进度反馈",
+      "priority": "medium",
+      "timestamp": "2026-03-29T15:22:04.705379"
+    },
+    {
+      "dimension": "综合分析",
+      "insight": "用户最关心的是：响应速度和准确性",
+      "priority": "high",
+      "timestamp": "2026-03-29T15:22:04.705381"
+    },
+    {
+      "dimension": "综合分析",
+      "insight": "系统已经很好地实现了自动化（100%）",
+      "priority": "low",
+      "timestamp": "2026-03-29T15:22:04.705383"
+    }
+  ],
+  "improvements": [
+    {
+      "title": "优化错误处理",
+      "description": "友好的错误提示 + 恢复建议",
+      "priority": "high",
+      "estimated_effort": "1-2 天",
+      "expected_impact": "错误恢复率 +50%",
+      "status": "ready_to_implementation"
+    },
+    {
+      "title": "提升用户满意度",
+      "description": "优化交互流程，减少等待",
+      "priority": "medium",
+      "estimated_effort": "1 周",
+      "expected_impact": "满意度 +10%",
+      "status": "planned"
+    }
+  ],
+  "summary": {
+    "total_insights": 10,
+    "high_priority_insights": 3,
+    "total_improvements": 2,
+    "ready_to_implementation": 1
+  }
+}

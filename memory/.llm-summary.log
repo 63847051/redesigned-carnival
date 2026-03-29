@@ -1,0 +1,11 @@
+[2026-03-29 12:04:23] [INFO] 测试 GLM-4.5-Air 连接...
+[2026-03-29 12:04:23] [WARNING] 未找到 GLM_API_KEY，使用规则提取
+[2026-03-29 12:04:23] [INFO] LLM 返回: 无法提取
+[2026-03-29 12:11:21] [INFO] 测试 OpenClaw GLM-4.5-Air 连接...
+[2026-03-29 12:11:21] [DEBUG] 调用 OpenClaw GLM-4.5-Air（prompt: 17 字符）
+[2026-03-29 12:11:44] [ERROR] OpenClaw CLI 失败: Config warnings:\n- plugins.entries.skillhub: plugin disabled (not in allowlist) but config is present
+Config warnings:\n- plugins.entries.skillhub: plugin disabled (not in allowlist) but config is present
+[plugins] kimi-claw: loaded without install/load-path provenance; treat as untracked local code and pin trust via plugins.allow or install records (/root/.openclaw/extensions/kimi-claw/dist/index.js)
+error: unknown command 'chat'
+
+[2026-03-29 12:11:44] [INFO] LLM 返回: 无法提取
