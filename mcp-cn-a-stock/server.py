@@ -14,9 +14,9 @@ mcp = FastMCP("A 股数据代理")
 REMOTE_MCP_URL = "http://82.156.17.205/cnstock/mcp"
 
 
-async def call_remote_mcp(tool: str, stock_code: str) -> dict:
+async def call_remote_mcp_jsonrpc(tool: str, stock_code: str) -> dict:
     """
-    调用远程 MCP 服务
+    调用远程 MCP 服务 (JSON-RPC 2.0)
     
     Args:
         tool: 工具名称 (brief/medium/full)
@@ -27,17 +27,31 @@ async def call_remote_mcp(tool: str, stock_code: str) -> dict:
     """
     async with httpx.AsyncClient(timeout=30.0) as client:
         try:
-            # 调用远程 MCP 服务
+            # 调用远程 MCP 服务 (JSON-RPC 2.0)
             response = await client.post(
                 REMOTE_MCP_URL,
                 json={
-                    "tool": tool,
-                    "stock_code": stock_code
+                    "jsonrpc": "2.0",
+                    "id": "1",
+                    "method": tool,
+                    "params": {
+                        "stock_code": stock_code
+                    }
                 },
-                headers={"Content-Type": "application/json"}
+                headers={
+                    "Content-Type": "application/json",
+                    "Accept": "application/json, text/event-stream"
+                }
             )
             response.raise_for_status()
-            return response.json()
+            data = response.json()
+            
+            # 检查是否有错误
+            if "error" in data:
+                return {"error": data["error"]}
+            if "result" in data:
+                return data["result"]
+            return data
         except httpx.HTTPError as e:
             return {"error": f"HTTP 请求失败: {str(e)}"}
         except Exception as e:
@@ -55,7 +69,7 @@ async def brief(stock_code: str) -> dict:
     Returns:
         dict: 包含股票名称、所属板块、当前行情等基本信息
     """
-    result = await call_remote_mcp("brief", stock_code)
+    result = await call_remote_mcp_jsonrpc("brief", stock_code)
     return result
 
 
@@ -70,7 +84,7 @@ async def medium(stock_code: str) -> dict:
     Returns:
         dict: 包含基本信息和近年主要财务数据
     """
-    result = await call_remote_mcp("medium", stock_code)
+    result = await call_remote_mcp_jsonrpc("medium", stock_code)
     return result
 
 
@@ -85,7 +99,7 @@ async def full(stock_code: str) -> dict:
     Returns:
         dict: 包含所有数据和技术指标（KDJ、MACD、RSI、布林带等）
     """
-    result = await call_remote_mcp("full", stock_code)
+    result = await call_remote_mcp_jsonrpc("full", stock_code)
     return result
 
 

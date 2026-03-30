@@ -103,6 +103,11 @@ Before doing anything else:
 5. **Read `.learnings/rules/critical-rule-001-wait-confirmation.md`** — 关键规则 ⭐ CRITICAL
 6. **Run `/root/.openclaw/workspace/scripts/check-critical-rules.sh`** — 规则检查 ⭐ CRITICAL
 7. **HeyCube GET_CONFIG Hook** ⭐ 2026-03-21 新增 - 对话前加载用户画像
+8. **记忆搜索 Hook** ⭐ 2026-03-30 新增 - 对话前自动搜索相关记忆
+   - Skill: `memory-search-hook`
+   - 执行: `~/.agents/skills/memory-search-hook/scripts/search.sh "$USER_MESSAGE"`
+   - 如果找到相关记忆，自动注入到上下文
+   - 静默失败，不影响正常对话
 
 Don't ask permission. Just do it.
 

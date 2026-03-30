@@ -1,0 +1,162 @@
+[
+  {
+    "name": "answer-00da",
+    "type": "question",
+    "pattern": "如何优化性能？",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:40:09.544652",
+    "version": "1.0.0",
+    "description": "自动回答问题: 如何优化性能？"
+  },
+  {
+    "name": "answer-022c",
+    "type": "question",
+    "pattern": "怎么安装？",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:40:09.545140",
+    "version": "1.0.0",
+    "description": "自动回答问题: 怎么安装？"
+  },
+  {
+    "name": "answer-0352",
+    "type": "question",
+    "pattern": "有什么建议？",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:40:09.545147",
+    "version": "1.0.0",
+    "description": "自动回答问题: 有什么建议？"
+  },
+  {
+    "name": "solution-03e6",
+    "type": "solution",
+    "pattern": "解决方案：使用缓存",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:40:09.545152",
+    "version": "1.0.0",
+    "description": "自动模式: 解决方案：使用缓存"
+  },
+  {
+    "name": "solution-0364",
+    "type": "solution",
+    "pattern": "建议：查看文档",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:40:09.545168",
+    "version": "1.0.0",
+    "description": "自动模式: 建议：查看文档"
+  },
+  {
+    "name": "solution-00e2",
+    "type": "solution",
+    "pattern": "可以尝试：pip install",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:40:09.545173",
+    "version": "1.0.0",
+    "description": "自动模式: 可以尝试：pip install"
+  },
+  {
+    "name": "fix-0108",
+    "type": "error",
+    "pattern": "错误：连接失败",
+    "confidence": 0.9,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:40:09.545177",
+    "version": "1.0.0",
+    "description": "错误修复: 错误：连接失败"
+  },
+  {
+    "name": "fix-02b4",
+    "type": "error",
+    "pattern": "异常：权限不足",
+    "confidence": 0.9,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:40:09.545187",
+    "version": "1.0.0",
+    "description": "错误修复: 异常：权限不足"
+  },
+  {
+    "name": "answer-0138",
+    "type": "question",
+    "pattern": "如何优化性能？",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:45:26.472594",
+    "version": "1.0.0",
+    "description": "自动回答问题: 如何优化性能？"
+  },
+  {
+    "name": "answer-0309",
+    "type": "question",
+    "pattern": "怎么安装？",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:45:26.472612",
+    "version": "1.0.0",
+    "description": "自动回答问题: 怎么安装？"
+  },
+  {
+    "name": "answer-0026",
+    "type": "question",
+    "pattern": "有什么建议？",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:45:26.472617",
+    "version": "1.0.0",
+    "description": "自动回答问题: 有什么建议？"
+  },
+  {
+    "name": "solution-00ea",
+    "type": "solution",
+    "pattern": "解决方案：使用缓存",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:45:26.472621",
+    "version": "1.0.0",
+    "description": "自动模式: 解决方案：使用缓存"
+  },
+  {
+    "name": "solution-024e",
+    "type": "solution",
+    "pattern": "建议：查看文档",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:45:26.472626",
+    "version": "1.0.0",
+    "description": "自动模式: 建议：查看文档"
+  },
+  {
+    "name": "solution-027d",
+    "type": "solution",
+    "pattern": "可以尝试：pip install",
+    "confidence": 0.8,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:45:26.472631",
+    "version": "1.0.0",
+    "description": "自动模式: 可以尝试：pip install"
+  },
+  {
+    "name": "fix-01f6",
+    "type": "error",
+    "pattern": "错误：连接失败",
+    "confidence": 0.9,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:45:26.472635",
+    "version": "1.0.0",
+    "description": "错误修复: 错误：连接失败"
+  },
+  {
+    "name": "fix-033a",
+    "type": "error",
+    "pattern": "异常：权限不足",
+    "confidence": 0.9,
+    "source": "instinct_learning",
+    "created_at": "2026-03-29T18:45:26.472647",
+    "version": "1.0.0",
+    "description": "错误修复: 异常：权限不足"
+  }
+]
