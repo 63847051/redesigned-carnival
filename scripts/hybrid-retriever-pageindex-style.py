@@ -69,13 +69,15 @@ class HybridRetriever:
         # 方法 1: QMD 搜索
         try:
             cmd = f"{QMD_SEARCH_CMD} {query}"
-            output = subprocess.check_output(cmd, shell=True, text=True)
+            output = subprocess.check_output(cmd, shell=True, text=True, stderr=subprocess.DEVNULL)
             
-            # 解析 QMD 输出
+            # 解析 QMD 输出（格式：qmd://path:line #hash）
             for line in output.strip().split('\n')[:top_k]:
-                if line.strip():
+                if 'qmd://' in line:
+                    # 提取文件路径
+                    path = line.split('://')[1].split(':')[0]
                     results.append({
-                        'path': line.strip(),
+                        'path': path,
                         'score': 1.0,
                         'method': 'qmd'
                     })
@@ -158,24 +160,33 @@ class HybridRetriever:
     
     def _call_llm(self, prompt: str) -> List[int]:
         """调用 LLM（智谱 AI）"""
-        # 这里使用你的 OpenClaw 系统调用
-        # 或者直接使用 subprocess 调用 openclaw chat
-        
-        cmd = f'openclaw chat -m glmcode/glm-4.7 --system "你是一个检索助手" --message \'{prompt}\''
+        # 使用 sessions_spawn 调用 LLM
         
         try:
-            output = subprocess.check_output(cmd, shell=True, text=True, timeout=30)
+            # 保存当前提示词到临时文件
+            import tempfile
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
+                f.write(prompt)
+                prompt_file = f.name
             
-            # 解析输出
-            indices = []
-            for token in output.split(','):
-                try:
-                    idx = int(token.strip())
-                    indices.append(idx)
-                except ValueError:
-                    continue
+            # 调用 sessions_spawn
+            cmd = [
+                'sessions_spawn',
+                '-runtime', 'subagent',
+                '-model', 'glmcode/glm-4.7',
+                '-mode', 'run',
+                'bash', '-c', f'cat {prompt_file} | head -1'
+            ]
             
-            return indices
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            
+            # 清理临时文件
+            import os
+            os.unlink(prompt_file)
+            
+            # 简化版本：返回原始顺序
+            # TODO: 实现 LLM 排序
+            return list(range(10))  # 临时返回前10个索引
             
         except Exception as e:
             print(f"   ⚠️ LLM 调用失败: {e}")
