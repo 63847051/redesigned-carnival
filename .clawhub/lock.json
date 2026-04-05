@@ -108,6 +108,10 @@
     "research-analyzer": {
       "version": "1.0.1",
       "installedAt": 1773617648418
+    },
+    "web-tools-guide": {
+      "version": "1.0.0",
+      "installedAt": 1775299095766
     }
   }
 }

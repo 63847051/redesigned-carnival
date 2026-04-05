@@ -1,0 +1,13 @@
+graph TD
+    User[用户] --> MainAgent[主 Agent]
+    MainAgent --> DataCollector1[DataCollector1]
+    MainAgent --> DataCollector2[DataCollector2]
+    MainAgent --> DataCollector3[DataCollector3]
+
+    classDef mainAgent fill:#f9f,stroke:#333,stroke-width:2px
+    classDef subAgent fill:#bbf,stroke:#333,stroke-width:1px
+    classDef user fill:#ffd,stroke:#333,stroke-width:2px
+
+    class MainAgent mainAgent
+    class DataCollector1 DataCollector2 DataCollector3 subAgent
+    class User user

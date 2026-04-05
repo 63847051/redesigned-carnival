@@ -1,0 +1,1142 @@
+{
+  "version": "1.0",
+  "exportedAt": "2026-04-02T14:33:48Z",
+  "exportedBy": "大领导 🎯",
+  "source": "memory/2026-04-02.md",
+  "instincts": [
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- W @Claude-Code: Claude Code 使用三层记忆架构（索引层/主题文件层/会话记录层），MEMORY.md 是轻量级指针文件（~150字符/行，≤200行）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "Claude-Code",
+      "tags": ["Claude-Code"]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- W @Claude-Code: Claude Code 的 autoDream 机制在后台子代理中运行，自动合并重复、去重、解决矛盾、修剪无用信息",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "Claude-Code",
+      "tags": ["Claude-Code"]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- W @Wesley-AI: Wesley 的 OpenClaw Agent Team 记忆系统 v2.0 经过 19 天实战验证，解决了 5 个阶段的记忆问题",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "Wesley-AI",
+      "tags": ["Wesley-AI"]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- W @Retain: Retain 格式使用三种标签：W（世界事实）、B（行为记录）、O（观点偏好，需标注信心度 c=0.0-1.0）",
+      "confidence": 0.0,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "Retain",
+      "tags": ["Retain"]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- W @记忆管理: WAL（Write-Ahead Log）协议要求\"先写文件，再回复\"，防止\"收到≠记住\"问题",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @记忆系统: 完成 Retain 格式学习和文档创建（规范文档 + 实施计划 + 每日日志模板）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @记忆系统: Step 2 完成 - 创建 3 个记忆清理脚本（归档、审计、报告），全部测试通过",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @记忆系统: Step 3 完成 - 整合记忆系统健康检查到心跳流程，创建 heartbeat-memory-check.sh",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @记忆系统: Step 4 完成 - 创建 WAL 验证工具和记忆更新辅助脚本，强化\"先写再回复\"协议",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @记忆系统: 创建 Retain 自动提取脚本（extract-retain.py + auto-retain.sh），支持从对话中自动提取 W/B/O 条目",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @文档: 创建 RETAIN-FORMAT-SPEC.md（3348 字符）和 RETAIN-FORMAT-IMPLEMENTATION.md（1416 字符）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @文档: 创建 MEMORY-CLEANUP-PLAN.md（4398 字符）完整清理方案",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @文档: 创建 HEALTH-MONITOR-PLAN.md（3331 字符）健康监控整合方案",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @文档: 创建 WAL-PROTOCOL-PLAN.md（3404 字符）WAL 协议强化方案",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @工具: 创建 archive-old-logs.sh（7314 字符）支持 DRY RUN、自动归档、索引生成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @工具: 创建 audit-memory.sh（7911 字符）检查文件大小、矛盾规则、过时信息、可推导内容",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @工具: 创建 cleanup-report.sh（6304 字符）生成统计报告和历史趋势",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @工具: 创建 heartbeat-memory-check.sh（8382 字符）每次心跳时检查记忆系统健康",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @工具: 创建 wal-verify.sh（8328 字符）验证文件写入、Retain 格式、时间戳",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @工具: 创建 wal-update-memory.sh（8925 字符）标准化记忆更新流程，自动验证和重试",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @工具: 创建 extract-retain.py（8639 字符）Python 自动提取脚本，支持 W/B/O 分类",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @工具: 创建 auto-retain.sh（3044 字符）Shell 包装脚本，支持多种输入方式",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @配置: 更新 HEARTBEAT.md（v4.0 → v5.0），添加记忆系统健康检查章节",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @学习: 阅读并分析两篇微信文章（Claude Code 记忆系统 + Wesley AI 日记）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- B @系统: 完成 4 个可学习点的实施：1. Retain 格式 → 2. 过期清理 → 3. 健康监控 → 4. WAL 协议",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "Wesley 的实战经验比理论文章更有价值，每条规则背后都有真实事故",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "Wesley 的实战经验比理论文章更有价值，每条规则背后都有真实事故",
+      "rule": "0.9",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "\"好的记忆系统不是存得更多，而是忘得更聪明、管得更严谨\"（Claude Code 核心理念）",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": ""好的记忆系统不是存得更多，而是忘得更聪明、管得更严谨"（Claude Code 核心理念）",
+      "rule": "0.8",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "极简主义是最难的工程决策——不存可推导信息是关键",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "极简主义是最难的工程决策——不存可推导信息是关键",
+      "rule": "0.9",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "分层存储（热/温/冷）比单一存储更有效，热记忆必须严格控制 token 数量",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "分层存储（热/温/冷）比单一存储更有效，热记忆必须严格控制 token 数量",
+      "rule": "0.8",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "先采用 Retain 格式（最简单，立即见效），再逐步加强其他机制",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "先采用 Retain 格式（最简单，立即见效），再逐步加强其他机制",
+      "rule": "0.7",
+      "confidence": ,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 阅读微信文章《Claude Code的源码证明记忆不是简单\"存下一切\"》",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **关键学习**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: 提取核心理念，对比现有系统",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 阅读微信文章《给 OpenClaw Agent Team 装上记忆——踩了19天坑，终于搞明白了》",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **关键学习**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: 完整笔记 + 对比分析 + 实施计划",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 基于 Wesley 的经验，创建 Retain 格式规范和实施计划",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **产出**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: ✅ Phase 1 完成，准备进入 Phase 2（创建提取脚本）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 创建自动化的记忆过期清理和归档机制",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **产出**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **测试结果**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **统计数据**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: ✅ Step 2 完成，3 个脚本全部测试通过",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 整合记忆系统健康检查到心跳流程",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **产出**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **功能**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **检查项**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **测试结果**: ✅ 脚本工作正常，成功检测到 3 个问题",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: ✅ Step 3 完成，记忆健康监控已整合到心跳流程",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 确保\"先写文件，再回复\"不被绕过，强化记忆更新闭环",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **产出**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **wal-verify.sh 功能**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **wal-update-memory.sh 功能**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **测试结果**: ✅ 两个脚本全部测试通过",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: ✅ Step 4 完成，WAL 协议已强化",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 深入研究 ECC 的三个核心记忆功能，对标我们的实现",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **学习内容**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **产出**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **核心对比**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **核心洞察**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **可学习的改进**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **实施计划**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: ✅ 研究完成，掌握 ECC 记忆系统，制定改进计划",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 深入学习三种 Agent 拓扑架构，掌握设计原则和实现方法",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **学习内容**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **产出**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **agent-topology.sh 功能**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **测试结果**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **核心洞察**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: ✅ 学习完成，掌握 Agent 拓扑设计",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 优化健康检查脚本，解决误报问题",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **问题列表**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **优化内容**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **测试结果**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **结果**: ✅ 3 个问题全部解决，健康检查通过",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **时间**: 11:50",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **背景**: 学习了 Wesley 的实战经验，发现 Retain 格式能有效提取结构化记忆",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **决定**: 按照 4 个可学习点顺序实施改进",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **原因**: Retain 格式最简单，立即见效，不影响现有系统",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **时间**: 11:52",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **背景**: 需要创建 Retain 提取脚本",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **决定**: 先创建完整的规范文档和模板，再开发自动提取工具",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **原因**: 文档先行，确保规范清晰，避免反复修改",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **阅读文章**: 2 篇（5618 + 1379 字符）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **创建文档**: 3 个（5722 字符）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **学习时间**: ~3 小时",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **提取 Retain 条目**: 11 条（5W + 4B + 2O）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- Wesley 的文章质量极高，真实踩坑经验比理论更有价值",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- Retain 格式简单但有效，立即可以开始使用",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- 我们的系统已经有很多好的机制，主要是缺少结构化提取",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- 创建提取脚本，自动化 Retain 生成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- 在实际对话中测试 Retain 格式的效果",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- 逐步完善 4 个阶段的改进",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **状态**: ✅ 完成",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **描述**: 深入学习系统安全防护机制，建立安全审计和加固流程",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **学习内容**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **产出**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- - `docs/FUTURE-LEARNING-PLAN.md` - 后续学习计划（2787 字符）",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- **安全检查**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- - **核心洞察**:",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "- - - **时间**: ~1 小时",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    },
+    {
+      "id": "instinct-177514",
+      "rule": "---",
+      "confidence": 0.5,
+      "source": "retain",
+      "learnedAt": "2026-04-02T14:33:48Z",
+      "category": "",
+      "tags": [""]
+    }
+  ]
+}

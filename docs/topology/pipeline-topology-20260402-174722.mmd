@@ -1,0 +1,14 @@
+graph LR
+    User[用户] --> ResearchAgent[ResearchAgent]
+    ResearchAgent[ResearchAgent] -->|sessions_send| AnalysisAgent[AnalysisAgent]
+    AnalysisAgent[AnalysisAgent] -->|sessions_send| WriterAgent[WriterAgent]
+    WriterAgent[WriterAgent] -->|sessions_send| PublisherAgent[PublisherAgent]
+    PublisherAgent --> Result[结果]
+
+    classDef agent fill:#bbf,stroke:#333,stroke-width:2px
+    classDef user fill:#ffd,stroke:#333,stroke-width:2px
+    classDef result fill:#bfb,stroke:#333,stroke-width:2px
+
+    class ResearchAgent,AnalysisAgent WriterAgent PublisherAgent agent
+    class User user
+    class Result result

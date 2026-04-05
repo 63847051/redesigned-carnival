@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "exportedAt": "2026-04-02T14:00:00Z",
+  "exportedBy": "小蓝 📋",
+  "source": "团队经验库",
+  "instincts": [
+    {
+      "id": "team-001",
+      "rule": "使用 Git Worktrees 进行并行开发，避免切换分支",
+      "confidence": 0.9,
+      "source": "team-feedback",
+      "learnedAt": "2026-04-01T10:00:00Z",
+      "category": "git",
+      "tags": ["git", "worktree", "并行开发"]
+    },
+    {
+      "id": "team-002",
+      "rule": "写 Bash 脚本时总是使用 set -euo pipefail",
+      "confidence": 0.95,
+      "source": "team-feedback",
+      "learnedAt": "2026-04-01T11:00:00Z",
+      "category": "bash",
+      "tags": ["bash", "脚本", "错误处理"]
+    },
+    {
+      "id": "team-003",
+      "rule": "优先使用 Python 3.10+，享受新特性",
+      "confidence": 0.7,
+      "source": "team-feedback",
+      "learnedAt": "2026-04-01T12:00:00Z",
+      "category": "python",
+      "tags": ["python", "版本"]
+    },
+    {
+      "id": "team-004",
+      "rule": "每周运行一次安全审计，及时发现问题",
+      "confidence": 0.6,
+      "source": "team-feedback",
+      "learnedAt": "2026-04-01T13:00:00Z",
+      "category": "安全",
+      "tags": ["安全", "审计"]
+    }
+  ]
+}

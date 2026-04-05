@@ -343,3 +343,18 @@ This is a starting point. Add your own conventions, style, and rules as you figu
 **最后更新**: 2026-03-27 22:35
 **版本**: v6.1（自主迭代 + 量化分析 + A股 MCP 集成）
 **状态**: ✅ 规则已永久固化
+
+<!-- WEB-TOOLS-STRATEGY-START -->
+### Web Tools Strategy (CRITICAL)
+
+**Before using web_search/web_fetch/browser, you MUST `read workspace/skills/web-tools-guide/SKILL.md`!**
+
+**Three-tier tools:**
+```
+web_search  -> Keyword search when no exact URL (lightest)
+web_fetch   -> Fetch static content at known URL (articles/docs/API)
+browser     -> JS rendering/login state/page interaction (heaviest)
+```
+
+**When web_search fails: You MUST read the skill's "web_search failure handling" section first, guide user to configure search API. Only fall back after user explicitly refuses.**
+<!-- WEB-TOOLS-STRATEGY-END -->

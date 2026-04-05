@@ -1,7 +1,7 @@
-# HEARTBEAT.md - 系统健康检查 v4.0
+# HEARTBEAT.md - 系统健康检查 v5.0
 
-**版本**: v4.0 (整合proactive-agent)  
-**更新**: 2026-03-08 19:40
+**版本**: v5.0 (整合记忆系统监控)
+**更新**: 2026-04-02 12:50
 
 ---
 
@@ -364,4 +364,80 @@ sessions_spawn -runtime subagent -model opencode/minimax-m2.5-free
 - 不再假设"用户之前同意，现在也同意"
 
 **违反此规则 = 严重错误**
+
+---
+
+## 🧠 记忆系统健康检查（新增）⭐ v5.0
+
+```bash
+# 每次心跳时检查记忆系统
+bash /root/.openclaw/workspace/scripts/heartbeat-memory-check.sh
+```
+
+**检查内容**:
+- ✅ MEMORY.md 大小是否正常（< 8000 tokens）
+- ✅ 当前日志数量是否合理（< 50 个）
+- ✅ 归档目录是否正常
+- ✅ 最新日志是否及时更新（< 48 小时）
+- ✅ 是否使用 Retain 格式
+- ✅ 是否有重复发布问题
+
+**健康报告**: `memory/health-status.md`
+
+---
+
+### 📅 每日检查（每次心跳）
+
+**基础检查**:
+- [ ] MEMORY.md 是否超出 2000 tokens？
+- [ ] 当前日志数量是否正常？
+- [ ] 最近 24 小时是否有新日志？
+- [ ] 归档目录是否正常？
+
+**异常检测**:
+- [ ] 是否有矛盾规则？
+- [ ] 是否有过时信息？
+- [ ] 是否有重复发布事故？
+
+---
+
+### 📅 每周检查（每周日凌晨）
+
+**深度审计**:
+```bash
+# 每周运行完整审计
+bash /root/.openclaw/workspace/scripts/audit-memory.sh
+```
+
+**检查项**:
+- [ ] 运行完整 MEMORY.md 审计
+- [ ] 检查所有 Retain 条目
+- [ ] 清理临时性信息
+- [ ] 更新文档索引
+
+**任务跟踪**:
+- [ ] 检查任务完成情况
+- [ ] 验证决策记录
+- [ ] 审查事故日志
+
+---
+
+### 📅 每月检查（每月1号）
+
+**全面清理**:
+```bash
+# 每月生成清理报告
+bash /root/.openclaw/workspace/scripts/cleanup-report.sh
+
+# 归档旧日志
+bash /root/.openclaw/workspace/scripts/archive-old-logs.sh
+```
+
+**系统优化**:
+- [ ] 生成完整清理报告
+- [ ] 归档 30 天以上日志
+- [ ] 清理旧归档（90 天+）
+- [ ] 更新统计数据
+
+---
 

@@ -1,0 +1,1027 @@
+Vol.1 讲了怎么把 OpenClaw 配对、装 Skill、跑子Agent。
+如果你读完 Vol.1 之后还有这些问题——
+「怎么让 Agent 自己定时跑，不用我每次去触发」 「部署在服务器上是不是有安全风险」 「多个 Agent 怎么互相通信」
+这篇就是写给你的。
+再送上，30 个技巧，7 个主题，每个都是 Vol.1 没覆盖到的方向。
+点赞，转发，收藏进入你的知识库。让OpenClaw读完可以直接自我开发升级。
+第一章：自动触发
+Tip 01｜Cron 的正确写法（以及两个会踩的坑）
+Cron 是 OpenClaw 原生内置的定时调度，不需要额外装任何东西。配置格式用标准 cron expression：
+{
+"cron"
+:
+{
+"jobs"
+:
+[
+{
+"schedule"
+:
+"0 9 * * 1-5"
+,
+"task"
+:
+"生成今日工作简报，汇总昨天的 GitHub PR 和 Jira 变更"
+,
+"model"
+:
+"anthropic/claude-sonnet-4-6"
+},
+{
+"schedule"
+:
+"0 17 * * 5"
+,
+"task"
+:
+"生成本周总结，输出到 Notion"
+,
+"model"
+:
+"anthropic/claude-opus-4-6"
+}
+]
+}
+}
+两个常踩的坑：
+第一，时区。
+0
+9
+*
+*
+1
+-
+5
+是 UTC 时间早 9 点，不是你本地的 9 点。加上
+timezone
+字段：
+{
+"schedule"
+:
+"0 9 * * 1-5"
+,
+"timezone"
+:
+"Asia/Shanghai"
+}
+第二，和
+proactive
+-
+agent
+Skill 的区别。proactive-agent 是让 Agent 在对话里自主触发下一步，Cron 是系统级定时——即使没有任何对话进行中，到时间就跑。两个不是同一回事，可以同时用。
+Tip 02｜Webhook：让外部服务叫醒你的 Agent
+Webhook 让你把 OpenClaw 接进任何外部服务。两个端点，用途不同：
+/hooks/
+wake
+— 简单唤醒，就是告诉 Agent「有事了」：
+curl
+-
+X POST https
+://
+your
+-
+gateway
+/
+hooks
+/
+wake \
+-
+H
+"x-openclaw-token: your-token"
+/hooks/
+agent
+— 完整触发，可以带消息、指定模型、指定回复频道：
+curl
+-
+X POST https
+://
+your
+-
+gateway
+/
+hooks
+/
+agent \
+-
+H
+"x-openclaw-token: your-token"
+\
+-
+H
+"Content-Type: application/json"
+\
+-
+d
+'{
+"message": "GitHub PR
+#142
+刚合并，请生成 code review 摘要",
+"model": "anthropic/claude-sonnet-4-6",
+"deliverTo": "telegram"
+}'
+把这个 URL 配到 GitHub 的 Webhook → merge event，就是 PR 合并自动触发 review。
+Tip 03｜Gmail Pub/Sub：邮件到达立即进 Agent
+新邮件自动摘要、自动分类、自动生成回复草稿，全程不需要手动触发。
+# Step 1：一键向导，处理 Google Cloud Pub/Sub 的配置
+openclaw webhooks gmail setup
+# Step 2：需要公网 HTTPS 接收推送，用 Tailscale Funnel 提供
+# （见第四章 Tailscale 配置）
+向导会帮你配好 Pub/Sub subscription、webhook endpoint、认证。配完后，邮件到达 → Pub/Sub 推送 → OpenClaw webhook → Agent 处理 → 结果推 Telegram。
+全程 0 人工。
+Tip 04｜Browser Control：Agent 操作真实浏览器
+这个功能藏得比较深，很多人装了 OpenClaw 不知道有它。OpenClaw 有一个专属的 Chrome 实例，Agent 可以直接控制：
+{
+"browser"
+:
+{
+"enabled"
+:
+true
+,
+"color"
+:
+"
+#FF4500
+"
+}
+}
+开启后，Agent 可以：
+browser_snapshot
+→
+截取当前页面结构（用于理解页面）
+browser_navigate
+→
+跳转到
+URL
+browser_click
+→
+点击元素
+browser_fill
+→
+填写表单字段
+browser_type
+→
+向输入框追加文字
+实际用途：抓取需要登录的网页内容、自动填报销单、定期截图竞品页面存档。
+不是无头浏览器，有界面，可以看到 Agent 在干什么。
+Tip 05｜Webhook Token：生成方式错了等于没有
+# 正确：加密随机生成
+openssl rand
+-
+hex
+32
+# 输出类似：a3f8b2c1d4e5...（64位十六进制）
+# 错误：手动想一个
+"my-secret-token-2026"
+两件事不要做：
+一，不要把带 token 的 webhook URL 发进群聊或写进公开文档。token 在 URL 里，截图就泄漏了。改用 header 传（
+x
+-
+openclaw
+-
+token
+）。
+二，不要在日志里打印 token。检查你的
+~
+/.openclaw/
+logs
+/
+有没有明文 token。
+第二章：多频道管理
+Tip 06｜DM pairing：2026 年 1 月改了默认值，很多教程没更新
+2026.1 之前（v2026.1.8 之前）：
+dmPolicy
+默认是
+open
+，陌生人直接能跟你的 Bot 对话。
+2026.1 之后：
+默认改成
+pairing
+。陌生人发消息，收到的是一串配对码，Bot 不处理他的消息，直到你批准。
+# 查看等待批准的配对请求
+openclaw pairing list
+# 批准某个用户
+openclaw pairing approve telegram abc123
+如果你上线后发现用户反映「Bot 没回复」，十有八九是这个原因——他们在等配对码，不知道要发给你。
+想恢复开放模式：
+{
+"channels"
+:
+{
+"telegram"
+:
+{
+"dmPolicy"
+:
+"open"
+,
+"allowFrom"
+:
+[
+"*"
+]
+}
+}
+}
+但在你真正清楚风险之前，不推荐这样做。
+Tip 07｜群组路由：默认拒绝，显式允许
+把 Bot 拉进群组之后，默认它什么都不响应。需要显式配置允许的群组：
+{
+"channels"
+:
+{
+"telegram"
+:
+{
+"groups"
+:
+{
+"-1001234567890"
+:
+{
+"requireMention"
+:
+true
+},
+"*"
+:
+false
+}
+}
+}
+}
+requireMention
+:
+true
+是关键——没有这个，Bot 会响应群里所有消息，很快被当做刷量机器人举报。
+Discord 用
+guilds
+字段，配置方式类似。
+Tip 08｜一个 Gateway 管所有频道
+不需要为每个频道开一个 Agent。一个 Gateway 可以同时接 Telegram + WhatsApp + Slack：
+{
+"channels"
+:
+{
+"telegram"
+:
+{
+"botToken"
+:
+"..."
+,
+"allowFrom"
+:
+[
+"your_telegram_id"
+]
+},
+"slack"
+:
+{
+"botToken"
+:
+"xoxb-..."
+,
+"appToken"
+:
+"xapp-..."
+}
+}
+}
+同一条指令发到任意频道，Agent 都会处理。结果默认回到发消息的频道，也可以通过
+deliverTo
+指定送到别的地方。
+Tip 09｜sessions
+send vs sessions
+spawn：别混用
+Vol.1 讲了
+sessions_spawn
+（异步下发任务给子 Agent），这里讲另一个：
+sessions_send
+（向指定 session 发消息）。
+用途完全不同：
+| | sessions
+spawn | sessions
+send | |-|----------------|---------------| | 场景 | 下发任务，等结果 | 向另一个 Agent 发消息 | | 同步 | 异步，spawn 后不等 | 可以等对方回复 | | 默认开关 | 默认开启 |
+默认关闭
+，需要配置 |
+开启 sessions_send：
+{
+"agents"
+:
+{
+"agentToAgent"
+:
+true
+}
+}
+什么时候用：你有一个「前台 Agent」负责对话，和一个「后台 Agent」负责处理数据，两者需要直接通信。用 sessions_send。
+Tip 10｜openclaw doctor：改配置后必跑
+每次改完配置，跑一遍：
+openclaw doctor
+它检查的内容包括：
+DM 策略是否有暴露风险
+Gateway token 强度
+allowFrom 是否过于宽松
+频道连接状态
+常见配置冲突
+经典场景：你把
+dmPolicy
+改成了 pairing，但忘了
+allowFrom
+还是
+[
+"*"
+]
+——doctor 检测出来，告诉你这两个设置互相矛盾。
+第三章：Agent 间通信
+Tip 11｜sessions
+list + sessions
+history：监控你的 Agent
+sessions_spawn
+跑起来之后，怎么知道进度？
+# 查看所有活跃 session
+sessions_list
+()
+# 返回：session ID、label、状态、开始时间、模型
+# 拿某个 session 的完整对话记录
+sessions_history
+(
+session_id
+=
+"q4-sales-analysis-2026"
+)
+# 返回：完整 transcript，可以看 Agent 做了什么决策
+把这两个工具想成
+ps aux
+和
+tail
+-
+f logfile
+。前者给概览，后者给细节。
+对于长时间跑的复杂任务，定期调用
+sessions_history
+可以提前发现 Agent 走偏了，不用等它跑完才知道。
+Tip 12｜多 Agent 拓扑：三种架构，按需选
+根据任务结构选拓扑，不是越复杂越好：
+星型（Vol.1 的 Fan-Out）：
+主 Agent 分发，子 Agent 并行独立跑，互不通信。适合任务之间没有依赖关系，比如「同时查四个数据源」。
+流水线：
+A 完成后把结果发给 B，B 处理后发给 C。用
+sessions_send
+实现。适合「研究→分析→撰写」这类顺序依赖的任务。
+# 流水线示例：A 完成后触发 B
+result_a
+=
+sessions_spawn
+(
+task
+=
+"抓取市场数据"
+,
+label
+=
+"data-fetch"
+)
+# A 完成后：
+sessions_send
+(
+to
+=
+"analyst-agent"
+,
+message
+=
+f
+"数据已就绪：{result_a}，请分析"
+)
+广播：
+主 Agent 把同一个消息发给多个专项 Agent。用多个
+sessions_spawn
+或
+sessions_send
+。适合「通知型」场景。
+Tip 13｜A2A Secure：现在是实验性功能，别用在生产
+OpenClaw 在 2026.2 推出了 A2A Secure Protocol——Agent 之间用 Ed25519 签名互相认证，有 Trust Registry 管理信任关系，还有 Dead Letter Queue 保障消息投递。
+听起来很完整。但目前它还没完全合并进主干，API 随时可能变。
+现在可以了解它，用于实验环境，但不建议用在你依赖的生产工作流里。等它进入 stable release 再迁移。
+Tip 14｜给你的 Agent 拓扑画个图
+在动手写代码之前，先画出来：
+用户
+(
+Telegram
+)
+↓
+前台
+Agent
+(
+sessions_send
+←→
+后台
+Agent
+)
+├──
+sessions_spawn
+→
+数据采集子
+Agent
+├──
+sessions_spawn
+→
+分析子
+Agent
+└──
+sessions_spawn
+→
+生成子
+Agent
+↓
+结果回
+Telegram
+搞清楚每条线用的是
+send
+还是
+spawn
+，哪些是同步等结果，哪些是异步通知。
+这个图画出来之前不要写代码，画出来之后 30 分钟能实现。不画的话可能调试两天。
+第四章：远程部署与生产安全
+安全研究人员扫描发现，公网上有超过 135,000 个 OpenClaw 实例没有任何认证或加密保护。其中很大一部分暴露了 API key、对话记录和 OAuth token，还有一部分直接允许在宿主机执行命令。
+Tip 15｜不要在主力机跑 Gateway
+你的主力 Mac 上有代码、文档、密码、SSH key。OpenClaw 的 Gateway 默认情况下可以执行 bash 命令，可以读写文件系统。如果配置出了问题，或者安装了一个有问题的 Skill，影响范围是整台机器。
+专用部署选项：
+Mac Mini（闲置的那台）
+Raspberry Pi 5（静音，低功耗，全年 $15 电费）
+Hetzner VPS（CAX11，€3.79/月，ARM，够用）
+DigitalOcean Droplet（$4/月起）
+如果非要在本地跑，至少锁定 bind 地址：
+{
+"gateway"
+:
+{
+"bind"
+:
+"127.0.0.1"
+}
+}
+只监听本地回环，不对外暴露任何端口。
+Tip 16｜Tailscale：安全远程访问的正确姿势
+Tailscale 给你一个私有网络，Gateway 只在这个网络里可见：
+{
+"gateway"
+:
+{
+"bind"
+:
+"loopback"
+,
+"tailscale"
+:
+{
+"mode"
+:
+"serve"
+}
+}
+}
+serve
+模式：只有你的 tailnet 设备能访问，公网不可见。日常使用足够了。
+funnel
+模式：可以从公网访问，但必须同时开密码保护：
+{
+"gateway"
+:
+{
+"auth"
+:
+{
+"mode"
+:
+"password"
+},
+"tailscale"
+:
+{
+"mode"
+:
+"funnel"
+}
+}
+}
+Funnel 没开密码不让启动，这是一个保护。TLS 证书由 Tailscale 自动管理，不需要自己搞 Let's Encrypt。
+Tip 17｜Docker Sandbox：群组消息进隔离容器
+这条配置在 ClawHavoc 事件之后成为必做项：
+{
+"agents"
+:
+{
+"defaults"
+:
+{
+"sandbox"
+:
+{
+"mode"
+:
+"non-main"
+}
+}
+}
+}
+non
+-
+main
+意思是：只有你自己的「main session」（直接跟 Agent 对话）不隔离，所有通过群组、频道、webhook 触发的会话都在独立 Docker 容器里跑。
+这样即使某个恶意 Skill 在群组里被触发，它能影响的最多是那个容器，碰不到你的主机文件系统。
+容器里的恶意代码碰不到宿主机文件系统。主会话不隔离是因为你自己用的时候需要读写本地文件，隔了反而不好用。
+Tip 18｜Gateway Token：生成和保护
+# 生成一个强 token
+openssl rand
+-
+hex
+32
+写进配置：
+{
+"gateway"
+:
+{
+"token"
+:
+"你生成的64位token"
+}
+}
+这个 token 控制谁能向你的 webhook 发请求，谁能通过 API 管理你的 Gateway。弱 token（
+123456
+、
+openclaw
+）意味着任何人猜到都能触发你的 Agent。
+Token 只放配置文件，不要出现在：
+代码里（用环境变量替代）
+群聊截图里
+公开的 GitHub 仓库里
+Tip 19｜openclaw security audit：上线前跑，升级后也跑
+# 基础审计
+openclaw security audit
+# 深度审计（实时探测 Gateway）
+openclaw security audit
+--
+deep
+它检查的问题包括：Gateway 绑在 0.0.0.0、token 太弱、allowFrom 过宽、浏览器控制暴露在公网、文件系统权限过松。
+OpenClaw 在 2026.2 前已经发布了 41 条安全通告。每次大版本升级后，某些安全默认值可能会变，旧配置需要更新。跑一遍 audit，10 分钟。
+Tip 20｜升级策略：按频道走，不要跳版本
+OpenClaw 的版本号格式是
+vYYYY
+.
+M
+.
+D
+，release 节奏很快。
+# 查看当前版本
+openclaw
+--
+version
+# 升级到 stable 最新
+openclaw update
+--
+channel stable
+# 升级前备份配置（重要）
+cp
+-
+r
+~/.
+openclaw
+/
+~/.
+openclaw
+-
+backup
+-
+$
+(
+date
++%
+Y
+%
+m
+%
+d
+)/
+2026 年 1 月到 2 月之间有几个 breaking change 集中在 DM 策略和 sandbox 配置上。如果你跳过了这段时间的某个版本直接升级，可能会发现原来能用的东西突然不工作了。
+按版本逐步升，升完跑
+openclaw doctor
+。
+第五章：Voice + Canvas
+Tip 21｜Voice Wake：用说话代替打字
+{
+"voice"
+:
+{
+"wake"
+:
+{
+"enabled"
+:
+true
+,
+"phrase"
+:
+"hey openclaw"
+}
+}
+}
+macOS 上，OpenClaw 菜单栏 App 在后台持续监听。说出唤醒词，对话开始。语音处理优先在本地进行（隐私保护），只有识别后的文字发给模型。
+iOS/Android 上，通过 Companion Node 连接到 Gateway，同样支持语音唤醒。
+适合场景：开车问路、做饭查菜谱、走路记事项。双手被占用但脑子没被占用的时候。
+Tip 22｜Talk Mode：双向语音对话
+{
+"voice"
+:
+{
+"talk"
+:
+{
+"enabled"
+:
+true
+}
+}
+}
+Talk Mode 用 ElevenLabs 做语音合成。Agent 的回复会被读出来，你也可以说话打断它（它在说话时开始识别你的声音，检测到后停止）。
+两个限制要知道：
+需要 ElevenLabs API Key，会产生额外费用
+不适合长文本回复。Agent 输出一篇 800 字的分析，全部读出来体验很差——用 Talk Mode 之前，在 SOUL.md 里加上「语音模式下回复控制在 3 句以内」
+Tip 23｜Canvas + A2UI：Agent 生成可交互界面
+Gateway 在
+/__openclaw__/
+canvas
+/
+路由下提供一个 Web 界面，Agent 可以往里面推内容：
+canvas
+.
+navigate
+→
+跳转到指定内容
+canvas
+.
+eval
+→
+在
+Canvas
+里执行
+JavaScript
+canvas
+.
+snapshot
+→
+截图当前
+Canvas
+状态
+A2UI（Abstract to UI）是基于 Canvas 的抽象层，让 Agent 能生成动态表单、图表、交互界面，不需要写前端代码。
+用途：Agent 生成本周项目状态仪表盘，你在浏览器里直接点击更新状态；Agent 生成一张对比图表，而不是输出一堆数字。
+iOS App 用 WKWebView 渲染 Canvas，手机上也能看。
+Tip 24｜Companion 节点：服务器跑逻辑，设备做感知
+Gateway 跑在远程 Linux 服务器（便宜、稳定）。macOS/iOS/Android 作为「节点」连接到 Gateway，提供本地能力：
+macOS
+节点提供：
+-
+system
+.
+run
+→
+在
+Mac
+上执行命令
+-
+system
+.
+notify
+→
+发送系统通知
+-
+camera
+.
+snap
+→
+拍照
+-
+screen
+.
+record
+→
+截屏
+iOS
+节点提供：
+-
+Canvas
+渲染
+-
+语音（麦克风
++
+扬声器）
+-
+摄像头
+实际效果：你在手机上说「帮我看看桌上这张纸写的什么」，Agent 让 iOS 节点调用摄像头拍照，照片发给模型识别，结果回到你的 Telegram。
+服务器负责推理，设备负责感知和输出。
+第六章：ECC 深度功能
+ECC Longform Guide 里有几个功能，不在 README 显眼位置，很多人没读到。
+Tip 25｜contexts/ 目录：按模式切换 AI 的工作状态
+ECC 的
+contexts
+/
+目录里有三个文件：
+contexts
+/
+dev
+.
+md
+→
+开发模式：注重代码质量和测试
+contexts
+/
+review
+.
+md
+→
+审查模式：批判性分析，找问题
+contexts
+/
+research
+.
+md
+→
+研究模式：全面探索，不急于结论
+在
+CLAUDE
+.
+md
+里引用：
+# CLAUDE.md
+Current
+mode
+:
+development
+@contexts
+/
+dev
+.
+md
+每次开始不同类型工作前，换一行注释就切换了 AI 的「心态」。不需要每次在对话里重新说明「你现在是代码审查模式」。
+开发时不想让 AI 啰嗦地分析背景，审查时不想让它只往好处说——contexts 解决这个问题。
+Tip 26｜Memory Persistence Hooks：跨 session 的记忆
+Claude Code 默认每次会话都是空白的。ECC 的 Memory Persistence Hooks 改变这个行为：
+SessionStart hook
+：会话开始时，自动加载
+~
+/.claude/
+projects
+/<
+project
+-
+hash
+>/
+memory
+.
+md
+里存的内容
+SessionEnd hook
+：会话结束时，提取本次对话里重要的决策和模式，追加进 memory 文件
+不需要手动操作。下次打开同一个项目，AI 记得上次定的架构决策、踩过的坑、进行到哪一步。
+ECC 安装完这个就自动开启。
+Tip 27｜Continuous Learning v2：团队级别的 AI 进化
+/
+instinct
+-
+status
+会显示 AI 从你的历史中学到了什么，每个 instinct 带置信度评分（0 到 1）：
+/
+instinct
+-
+status
+✓
+[
+0.92
+]
+这个项目用
+pnpm
+，不用
+npm
+✓
+[
+0.87
+]
+数据库列名用
+snake_case
+?
+[
+0.61
+]
+偏好函数式写法（置信度偏低，仍在学习）
+低于 0.7 的 instinct 标记为「仍在验证」，不会强制执行。
+三个命令：
+/
+instinct
+-
+status
+→
+查看学到了什么
+/
+instinct
+-
+export
+→
+导出成文件，分享给团队
+/
+evolve
+→
+把相关
+instincts
+聚类，升华成正式的
+Skill
+一个人踩过的坑，
+/
+instinct
+-
+export
+之后发给团队，所有人都规避了。这是 Continuous Learning v2 最有价值的地方。
+Tip 28｜Verification Loops：不只是跑测试，是持续确认方向
+写代码时，AI 经常会在实现到一半的时候「走偏」——你让它重构一个模块，它开始重写整个文件，还改了你没让它动的接口。
+Verification Loops 解决这个问题：
+# 开始重构之前，打一个 checkpoint
+/
+checkpoint
+# 让 AI 继续工作
+# 50 行之后，验证是否在预期轨道上
+/
+verify
+两种模式：
+checkpoint-based
+：线性任务，定期打快照，发现偏差立即回滚
+continuous
+：探索性任务，持续评估输出质量
+大文件重构、需要多步推进的迁移任务——用 checkpoint 模式，每完成一个逻辑单元就验证一次。
+第七章：工作流进化
+Tip 29｜Git Worktrees：真正的并行，不是假的
+Vol.1 讲了子 Agent 并行，那是在同一个会话里分发任务。Git Worktrees 是更彻底的并行——不同的 Agent 实例，在同一个仓库的不同工作目录里同时工作，互不干扰。
+# 创建两个独立工作目录
+git worktree add
+../
+project
+-
+bugfix bugfix
+/
+memory
+-
+leak
+git worktree add
+../
+project
+-
+feature feature
+/
+export
+-
+api
+# 在第一个目录跑修 bug 的 Agent
+cd
+../
+project
+-
+bugfix
+&&
+claude
+# 在第二个目录跑开发新功能的 Agent
+cd
+../
+project
+-
+feature
+&&
+claude
+两个 Claude Code 实例，同时工作，共享 git 历史，各自的文件不冲突。
+ECC 的 Longform Guide 叫这个「Cascade Method」——先用主分支的 Agent 做规划和架构决策，再 spawn 到各个 feature 分支并行实现。
+Tip 30｜/skill-create：从你的 git 历史提炼 Skill
+你的 git log 里有你反复做的事情，只是你没意识到。
+/
+skill
+-
+create
+# 分析当前仓库的 git 历史
+/
+skill
+-
+create
+--
+instincts
+# 同时生成 instinct 集合
+它会分析你的提交模式，找出重复出现的多文件变更序列（比如「每次加新 API 都要改 routes.ts + schema.ts + tests/ 里三个文件」），然后生成一个 SKILL.md，把这个流程变成可复用的 Skill。
+下次再加 API，直接触发这个 Skill，AI 自动按你的历史模式跑完整流程。
+对于有超过 10k commits 的大仓库，还可以用
+ecc
+.
+tools
+GitHub App，分析更深，还能自动开 PR。
+速查卡
+第一章
+自动触发（
+01
+–
+05
+）
+→
+Cron
+/
+Webhook
+/
+Gmail
+/
+Browser
+第二章
+多频道管理（
+06
+–
+10
+）
+→
+pairing
+/
+群组路由
+/
+doctor
+第三章
+Agent
+间通信（
+11
+–
+14
+）
+→
+sessions_list
+/
+send
+/
+拓扑设计
+第四章
+生产部署（
+15
+–
+20
+）
+→
+专用服务器
+/
+Tailscale
+/
+sandbox
+/
+audit
+第五章
+Voice
++
+Canvas
+（
+21
+–
+24
+）→
+语音唤醒
+/
+Talk
+Mode
+/
+A2UI
+/
+节点
+第六章
+ECC
+深度（
+25
+–
+28
+）
+→
+contexts
+/
+memory
+/
+learning v2
+/
+verification
+第七章
+工作流进化（
+29
+–
+30
+）
+→
+git worktrees
+/
+skill
+-
+create
+没看过 Vol.1？从这里开始：《OpenClaw 进阶手册：30 个你没人告诉你的使用技巧》
+不想自己配？TinyClaw 把本文的生产配置都预置好了，60 秒部署：tinyclaw.dev
+OpenClaw 官方文档：docs.openclaw.ai
+OpenClaw GitHub：github.com/openclaw/openclaw（219k ⭐）
+TinyClaw：tinyclaw.dev
+AgentPuter：agentputer.com
+数据来源：docs.openclaw.ai · OpenClaw GitHub 2026.2 · ECC v1.5.0

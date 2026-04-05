@@ -1,0 +1,95 @@
+# 自主进化系统 v7.0 配置文件
+# 集成 TradingAgents 特性
+
+agents:
+  # 大领导（主控 Agent）
+  leader:
+    model: glmcode/glm-4.7
+    role: 主控决策
+    description: 负责任务分配、协调和最终决策
+
+  # 小新（技术支持）
+  tech:
+    model: opencode/minimax-m2.5-free
+    role: 技术支持
+    description: 负责所有编程和技术相关任务
+
+  # 小蓝（工作日志）
+  log:
+    model: glmcode/glm-4.5-air
+    role: 日志管理
+    description: 负责工作日志记录和管理
+
+  # 设计专家
+  design:
+    model: glmcode/glm-4.6
+    role: 设计专家
+    description: 负责所有室内设计相关任务
+
+  # 挑战者 Agent（新增）
+  challenger:
+    model: glmcode/glm-4.7
+    role: 方案质疑
+    description: 专门负责质疑和挑战方案，发现潜在问题
+
+  # 审查 Agent（新增）
+  review:
+    model: glmcode/glm-4.7
+    role: 质量审查
+    description: 负责审查方案质量，发现问题并提供改进建议
+
+# 工作流程配置
+workflow:
+  # 是否启用辩论机制
+  enable_debate: false
+
+  # 最大辩论轮数
+  max_debate_rounds: 2
+
+  # 是否启用进度显示
+  enable_progress_display: true
+
+  # 是否启用分层决策
+  enable_layered_decision: false
+
+  # 决策层数
+  decision_layers: 5
+
+# 质量控制配置
+quality:
+  # 是否需要质量审查
+  require_review: false
+
+  # 是否自动修复错误
+  auto_fix_errors: true
+
+  # 最低置信度阈值
+  min_confidence: 0.7
+
+  # 质量评分阈值（0-100）
+  min_quality_score: 70
+
+# 性能配置
+performance:
+  # 是否启用并行执行
+  enable_parallel: false
+
+  # 最大并行 Agent 数量
+  max_parallel_agents: 3
+
+  # 是否启用缓存
+  enable_cache: true
+
+  # 缓存大小
+  cache_size: 128
+
+# 显示配置
+display:
+  # 进度更新间隔（秒）
+  progress_update_interval: 1
+
+  # 是否显示详细日志
+  verbose: true
+
+  # 是否显示调试信息
+  debug: false

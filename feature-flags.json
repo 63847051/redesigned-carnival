@@ -1,0 +1,111 @@
+{
+  "_comment": "OpenClaw Feature Flags - 功能开关配置",
+  "_version": "1.0.0",
+  "_updated": "2026-04-01",
+  
+  "flags": {
+    "PROACTIVE_MODE": {
+      "enabled": false,
+      "description": "主动模式 - Agent 主动发现问题并提出建议",
+      "code_status": "in_development",
+      "risk_level": "medium",
+      "notes": "需要完善 HEARTBEAT.md 的主动行为"
+    },
+    
+    "KAIROS_SCHEDULER": {
+      "enabled": false,
+      "description": "择时而动 - 自主守护进程，在合适的时刻执行任务",
+      "code_status": "planned",
+      "risk_level": "high",
+      "notes": "需要实现定时任务系统"
+    },
+    
+    "DAEMON_MODE": {
+      "enabled": false,
+      "description": "永不下班 - 24小时后台待命",
+      "code_status": "planned",
+      "risk_level": "high",
+      "notes": "需要实现守护进程"
+    },
+    
+    "TASK_AGENT_LOOP": {
+      "enabled": true,
+      "description": "任务内部的 Agent Loop - 微观层面循环推进",
+      "code_status": "ready",
+      "risk_level": "low",
+      "notes": "准备实施中"
+    },
+    
+    "AUTO_COMPRESSION": {
+      "enabled": true,
+      "description": "自动压缩 - 对话太长时自动压缩上下文",
+      "code_status": "implemented",
+      "risk_level": "low",
+      "notes": "已实现在 context-optimization/"
+    },
+    
+    "MEMORY_SEARCH": {
+      "enabled": true,
+      "description": "记忆搜索 - 智能记忆搜索系统",
+      "code_status": "implemented",
+      "risk_level": "low",
+      "notes": "已实现在 memory-search-glm/"
+    },
+    
+    "CLEAN_DESTROY_MODE": {
+      "enabled": false,
+      "description": "完全销毁模式 - 子 Agent 用完即毁，不保留历史",
+      "code_status": "planned",
+      "risk_level": "medium",
+      "notes": "可追溯性 vs 节省记忆的权衡"
+    },
+    
+    "LOOP_TRACKER": {
+      "enabled": false,
+      "description": "循环路径记录 - 记录 Agent Loop 的执行路径",
+      "code_status": "planned",
+      "risk_level": "low",
+      "notes": "便于调试和优化"
+    },
+    
+    "FAST_MICRO_LOOP": {
+      "enabled": false,
+      "description": "快速微观循环 - 秒级循环速度",
+      "code_status": "planned",
+      "risk_level": "medium",
+      "notes": "需要优化循环速度"
+    },
+    
+    "OPTIMIZED_CACHE": {
+      "enabled": false,
+      "description": "优化缓存 - 工具按字母表排序，配置用哈希值命名",
+      "code_status": "planned",
+      "risk_level": "low",
+      "notes": "可以提升性能"
+    }
+  },
+  
+  "groups": {
+    "experimental": {
+      "description": "实验性功能 - 开发中",
+      "flags": ["PROACTIVE_MODE", "KAIROS_SCHEDULER", "DAEMON_MODE"]
+    },
+    
+    "stable": {
+      "description": "稳定功能 - 已验证",
+      "flags": ["AUTO_COMPRESSION", "MEMORY_SEARCH", "TASK_AGENT_LOOP"]
+    },
+    
+    "optimization": {
+      "description": "优化功能 - 性能提升",
+      "flags": ["CLEAN_DESTROY_MODE", "LOOP_TRACKER", "FAST_MICRO_LOOP", "OPTIMIZED_CACHE"]
+    }
+  },
+  
+  "metadata": {
+    "total_flags": 10,
+    "enabled_count": 3,
+    "disabled_count": 7,
+    "last_review": "2026-04-01"
+  }
+}
