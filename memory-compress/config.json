@@ -1,0 +1,10 @@
+{
+  "preserve_recent": 10,
+  "max_tokens": 2000,
+  "min_messages": 20,
+  "todo_keywords": ["todo", "next", "pending", "remaining", "待办", "计划"],
+  "decision_keywords": ["决定", "选择", "采用", "方案", "规则"],
+  "summary_format": "markdown",
+  "include_timeline": true,
+  "max_timeline_items": 10
+}

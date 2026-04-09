@@ -1,0 +1,27 @@
+Key,Value
+generated_at,2026-04-08T06:50:03.221371
+date,2026-04-08
+health.generated_at,2026-04-08T06:48:28.430713
+health.health_score,70
+health.metrics.timestamp,2026-04-08T06:48:28.382830
+health.metrics.system.cpu,0.75
+health.metrics.system.uptime_hours,14
+health.metrics.memory.total_mb,1963
+health.metrics.memory.used_mb,1462
+health.metrics.memory.percent,74.5
+health.metrics.disk.total_gb,2
+health.metrics.disk.used_gb,49
+health.metrics.disk.percent,98
+health.metrics.logs.error_count,0
+health.metrics.logs.warning_count,0
+health.metrics.logs.info_count,0
+health.metrics.agent.active_sessions,0
+health.metrics.agent.memory_files,95
+health.metrics.health_score,70
+health.status,警告
+memory.total_scenes,3
+memory.total_memories,0
+memory.unique_tags,1
+memory.unique_categories,3
+memory.top_categories,"[{'category': '技术支持', 'count': 1}, {'category': '信息采集', 'count': 1}, {'category': 'AI交互', 'count': 1}]"
+summary,系统健康度: 70/100 (警告) | 内存使用: 74.5% | 磁盘使用: 98% | 场景记忆: 3 | 日志记忆: 0

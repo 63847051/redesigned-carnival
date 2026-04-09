@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-04-08T14:03:49.761833",
+  "wings": {
+    "wing_技术支持": {
+      "name": "技术支持",
+      "slug": "wing_技术支持",
+      "rooms": [
+        "room_系统使用咨询"
+      ]
+    },
+    "wing_信息采集": {
+      "name": "信息采集",
+      "slug": "wing_信息采集",
+      "rooms": [
+        "room_hackernews资讯"
+      ]
+    },
+    "wing_ai交互": {
+      "name": "AI交互",
+      "slug": "wing_ai交互",
+      "rooms": [
+        "room_协作模式设定"
+      ]
+    },
+    "wing_技术探索": {
+      "name": "技术探索",
+      "slug": "wing_技术探索",
+      "rooms": [
+        "room_mempalace研究"
+      ]
+    }
+  },
+  "rooms": {
+    "room_系统使用咨询": {
+      "name": "系统使用咨询",
+      "slug": "room_系统使用咨询",
+      "wing": "wing_技术支持",
+      "file": "技术支持-系统使用咨询.md"
+    },
+    "room_hackernews资讯": {
+      "name": "HackerNews资讯",
+      "slug": "room_hackernews资讯",
+      "wing": "wing_信息采集",
+      "file": "信息采集-HackerNews资讯.md"
+    },
+    "room_协作模式设定": {
+      "name": "协作模式设定",
+      "slug": "room_协作模式设定",
+      "wing": "wing_ai交互",
+      "file": "AI交互-协作模式设定.md"
+    },
+    "room_mempalace研究": {
+      "name": "MemPalace研究",
+      "slug": "room_mempalace研究",
+      "wing": "wing_技术探索",
+      "file": "技术探索-MemPalace研究.md"
+    }
+  },
+  "halls": {
+    "hall_facts": "决策和事实",
+    "hall_events": "事件和里程碑",
+    "hall_discoveries": "发现和洞察",
+    "hall_preferences": "偏好和习惯",
+    "hall_advice": "建议和方案"
+  },
+  "tunnels": {},
+  "statistics": {
+    "total_wings": 4,
+    "total_rooms": 4,
+    "total_tunnels": 0
+  }
+}

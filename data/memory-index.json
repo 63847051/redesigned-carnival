@@ -1,0 +1,45 @@
+{
+  "scenes": [
+    {
+      "path": "技术支持-系统使用咨询.md",
+      "type": "scene",
+      "category": "技术支持",
+      "tags": []
+    },
+    {
+      "path": "信息采集-HackerNews资讯.md",
+      "type": "scene",
+      "category": "信息采集",
+      "tags": []
+    },
+    {
+      "path": "AI交互-协作模式设定.md",
+      "type": "scene",
+      "category": "AI交互",
+      "tags": [
+        "m_1775545083378_ec304861"
+      ]
+    }
+  ],
+  "memories": [],
+  "statistics": {
+    "total_scenes": 3,
+    "total_memories": 0,
+    "unique_tags": 1,
+    "unique_categories": 3,
+    "top_categories": [
+      {
+        "category": "技术支持",
+        "count": 1
+      },
+      {
+        "category": "信息采集",
+        "count": 1
+      },
+      {
+        "category": "AI交互",
+        "count": 1
+      }
+    ]
+  }
+}

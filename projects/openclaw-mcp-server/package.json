@@ -1,0 +1,22 @@
+{
+  "name": "openclaw-mcp-server",
+  "version": "1.0.0",
+  "description": "OpenClaw MCP Server - 跨 Agent 协作的标准化接口",
+  "main": "src/openclaw_mcp_server/__init__.py",
+  "scripts": {
+    "start": "python -m openclaw_mcp_server",
+    "test": "pytest tests/",
+    "test:integration": "python tests/integration_test.py"
+  },
+  "keywords": [
+    "mcp",
+    "openclaw",
+    "agent",
+    "collaboration"
+  ],
+  "author": "OpenClaw Team",
+  "license": "MIT",
+  "dependencies": {
+    "python": ">=3.10"
+  }
+}

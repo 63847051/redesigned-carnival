@@ -1,0 +1,13 @@
+{
+  "prompt": "A dramatic movie poster for 'Let the Bullets Fly' (让子弹飞), Chinese action comedy film. The poster features a charismatic male protagonist in 1920s Chinese warlord attire - military uniform with peaked cap, confident expression, intense gaze, holding a Mauser pistol. Background shows misty mountainous landscape of Southern China with traditional architecture, warm golden sunset lighting creating dramatic atmosphere. The composition balances the central figure against vast mountain scenery, conveying themes of revolution, justice, and cunning. Typography style: bold Chinese characters '让子弹飞' in dynamic brush stroke font, smaller English text 'LET THE BULLETS FLY' below. Color palette: warm earth tones (ochre, sienna), deep red accents, misty blues, golden highlights. Style: epic Chinese cinema poster, dramatic lighting, strong contrast, heroic composition, film grain texture, cinematic quality.",
+  "negative_prompt": "modern clothing, contemporary setting, anime style, cartoon, low quality, blurry, deformed, oversaturated colors, flat lighting, studio background, digital clean look",
+  "style": "Epic Chinese cinema poster aesthetic, dramatic film lighting, heroic composition, warm earth tones with golden hour lighting, cinematic film grain, powerful visual narrative",
+  "composition": "Central heroic figure dominating the upper two-thirds, protagonist in 1920s warlord military uniform with peaked cap holding Mauser pistol, intense confident gaze directed at viewer, background of misty Southern China mountains with traditional architecture, bold Chinese title characters '让子弹飞' in dynamic brush stroke style at top, English subtitle below, rule of thirds balance between figure and landscape",
+  "lighting": "Warm golden hour sunset lighting creating dramatic atmosphere, rim lighting outlining the protagonist against mountain backdrop, soft mist filtering through mountain valleys, strong contrast between illuminated figure and shadowed background, cinematic film lighting",
+  "color_palette": "Warm earth tones (ochre, sienna, burnt orange), deep crimson red accents in title text, misty cool blues in mountain shadows, golden highlights on protagonist's face and uniform, rich saturated colors with film-like warmth",
+  "technical": {
+    "aspect_ratio": "2:3",
+    "quality": "high",
+    "detail_level": "highly detailed with cinematic film texture"
+  }
+}

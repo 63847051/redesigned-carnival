@@ -1,0 +1,8 @@
+{
+  "enable_cache_v3": true,
+  "enable_l1_hot": true,
+  "enable_l2_warm": true,
+  "enable_l3_cold": true,
+  "enable_compression": false,
+  "version": "1.0"
+}

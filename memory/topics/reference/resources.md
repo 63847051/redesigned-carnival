@@ -25,7 +25,7 @@ type: reference
 
 ## 学习资源
 
-### 学习文档（今天创建）
+### 学习文档（2026-04-06创建）
 
 1. ✅ OPEN-CLAUDECODE-ANALYSIS.md
 2. ✅ AUTO-DREAM-SOURCE-STUDY.md

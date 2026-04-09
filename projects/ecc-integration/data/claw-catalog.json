@@ -1,0 +1,24 @@
+{
+  "generated": "2026-04-07T22:56:10.295Z",
+  "agents": [],
+  "skills": [],
+  "commands": [],
+  "hooks": [
+    {
+      "name": "session-start.cjs",
+      "type": "hook",
+      "path": "hooks/session-start.cjs",
+      "size": 1119,
+      "modified": "2026-04-07T22:55:31.964Z"
+    }
+  ],
+  "rules": [],
+  "summary": {
+    "agents": 0,
+    "skills": 0,
+    "commands": 0,
+    "hooks": 1,
+    "rules": 0,
+    "total": 1
+  }
+}

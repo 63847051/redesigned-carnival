@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-04-08T19:14:27.353580",
+  "health_score": 75,
+  "metrics": {
+    "timestamp": "2026-04-08T19:14:27.316068",
+    "system": {
+      "cpu": 0.43,
+      "uptime_hours": 26
+    },
+    "memory": {
+      "total_mb": 1963,
+      "used_mb": 1815,
+      "percent": 92.5
+    },
+    "disk": {
+      "total_gb": 11,
+      "used_gb": 40,
+      "percent": 79
+    },
+    "logs": {
+      "error_count": 0,
+      "warning_count": 0,
+      "info_count": 0
+    },
+    "agent": {
+      "active_sessions": 0,
+      "memory_files": 95
+    },
+    "health_score": 75
+  },
+  "status": "警告"
+}
