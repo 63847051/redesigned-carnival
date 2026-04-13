@@ -1,0 +1,33 @@
+{
+  "health": {
+    "overall_healthy": true,
+    "checks": {
+      "disk_space": {
+        "healthy": true,
+        "free_percent": 20.762649100821164,
+        "free_gb": 10.368141174316406
+      },
+      "memory": {
+        "healthy": true,
+        "available_mb": 305.578125,
+        "percent": 84.4
+      },
+      "database_files": {
+        "healthy": true
+      }
+    },
+    "timestamp": "2026-04-12T23:14:51.464115"
+  },
+  "metrics": {
+    "knowledge_operations": {},
+    "snapshot_operations": {},
+    "cache_hit_rate": {}
+  },
+  "errors": {
+    "total_errors": 0,
+    "error_counts": {},
+    "most_common": []
+  },
+  "recent_errors": [],
+  "timestamp": "2026-04-12T23:14:51.464137"
+}

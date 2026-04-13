@@ -1,0 +1,122 @@
+{
+  "version": "1.0.0",
+  "integration": {
+    "name": "Hermes Agent Core",
+    "description": "自动进化 + 知识持久化 + 智能决策系统",
+    "enabled": true,
+    "auto_start": true
+  },
+  "core_modules": {
+    "learning": {
+      "enabled": true,
+      "auto_skill_creator": {
+        "enabled": true,
+        "trigger": "on_task_completion",
+        "min_confidence": 0.8
+      },
+      "auto_skill_improver": {
+        "enabled": true,
+        "trigger": "on_skill_usage",
+        "improvement_threshold": 5
+      },
+      "self_guidance": {
+        "enabled": true,
+        "trigger": "on_complex_task"
+      }
+    },
+    "modeling": {
+      "enabled": true,
+      "honcho_lite": {
+        "enabled": true,
+        "update_frequency": "daily",
+        "layers": ["identity", "preferences", "behavior", "relationships"]
+      }
+    },
+    "search": {
+      "enabled": true,
+      "fts5_search": {
+        "enabled": true,
+        "db_path": "/root/.openclaw/workspace/data/hermes_search.db",
+        "indexing": "auto"
+      },
+      "llm_summarizer": {
+        "enabled": true,
+        "max_length": 500,
+        "model": "glm-4.5-air"
+      }
+    },
+    "fuzzy_patch": {
+      "enabled": true,
+      "min_confidence": 0.7,
+      "auto_backup": true,
+      "backup_dir": "/root/.openclaw/workspace/data/backups"
+    },
+    "knowledge_persistence": {
+      "enabled": true,
+      "db_path": "/root/.openclaw/workspace/data/knowledge.db",
+      "auto_save": true,
+      "categories": ["project", "user", "system", "learning"]
+    },
+    "snapshot_atomic": {
+      "enabled": true,
+      "snapshot_dir": "/root/.openclaw/workspace/data/snapshots",
+      "auto_snapshot": true,
+      "keep_count": 10,
+      "auto_cleanup": true
+    }
+  },
+  "triggers": {
+    "on_task_completion": {
+      "enabled": true,
+      "actions": [
+        "extract_learning",
+        "update_knowledge",
+        "improve_skills"
+      ]
+    },
+    "on_session_start": {
+      "enabled": true,
+      "actions": [
+        "load_user_model",
+        "load_recent_context",
+        "check_updates"
+      ]
+    },
+    "on_session_end": {
+      "enabled": true,
+      "actions": [
+        "save_user_model",
+        "create_snapshot",
+        "compress_context"
+      ]
+    },
+    "on_error": {
+      "enabled": true,
+      "actions": [
+        "log_error",
+        "create_snapshot",
+        "notify_user"
+      ]
+    }
+  },
+  "performance": {
+    "cache_enabled": true,
+    "cache_size": 100,
+    "cache_ttl": 3600,
+    "async_operations": true,
+    "max_concurrent_ops": 5
+  },
+  "monitoring": {
+    "enabled": true,
+    "log_level": "info",
+    "log_path": "/root/.openclaw/workspace/logs/hermes.log",
+    "metrics_enabled": true,
+    "metrics_path": "/root/.openclaw/workspace/data/metrics.json"
+  },
+  "safety": {
+    "atomic_writes": true,
+    "state_locking": true,
+    "backup_before_changes": true,
+    "verification_after_write": true
+  }
+}

@@ -1,0 +1,61 @@
+2026-04-12 23:02:47,103 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:02:47,104 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:02:52,258 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:02:52,258 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:02:52,262 - HermesIntegration - INFO - 用户模型加载完成: default_user
+2026-04-12 23:02:57,833 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:02:57,833 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:02:57,834 - HermesIntegration - INFO - 用户模型加载完成: default_user
+2026-04-12 23:02:57,834 - HermesIntegration - INFO - 加载最近上下文: 0 个会话
+2026-04-12 23:02:57,834 - HermesIntegration - INFO - 任务完成: test_123
+2026-04-12 23:03:06,620 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:03:06,620 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:03:06,620 - HermesIntegration - INFO - 用户模型加载完成: default_user
+2026-04-12 23:03:06,620 - HermesIntegration - INFO - 加载最近上下文: 0 个会话
+2026-04-12 23:03:06,620 - HermesIntegration - INFO - 任务完成: test_123
+2026-04-12 23:03:06,620 - HermesIntegration - INFO - 任务完成，可用于技能创建: test_123
+2026-04-12 23:03:18,140 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:03:18,140 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:03:18,140 - HermesIntegration - INFO - 用户模型加载完成: default_user
+2026-04-12 23:03:18,140 - HermesIntegration - INFO - 加载最近上下文: 0 个会话
+2026-04-12 23:03:18,141 - HermesIntegration - INFO - 任务完成: test_123
+2026-04-12 23:03:18,141 - HermesIntegration - INFO - 任务完成，可用于技能创建: test_123
+2026-04-12 23:03:18,145 - HermesIntegration - INFO - 任务完成，可用于技能改进
+2026-04-12 23:03:18,145 - HermesIntegration - INFO - 会话结束: test_session
+2026-04-12 23:03:21,425 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:03:21,425 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:03:21,425 - HermesIntegration - INFO - 用户模型加载完成: default_user
+2026-04-12 23:03:21,425 - HermesIntegration - INFO - 加载最近上下文: 0 个会话
+2026-04-12 23:03:21,425 - HermesIntegration - INFO - 任务完成: test_123
+2026-04-12 23:03:21,425 - HermesIntegration - INFO - 任务完成，可用于技能创建: test_123
+2026-04-12 23:03:21,430 - HermesIntegration - INFO - 任务完成，可用于技能改进
+2026-04-12 23:03:21,430 - HermesIntegration - INFO - 会话结束: test_session
+2026-04-12 23:03:34,143 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:03:34,143 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:03:34,143 - HermesIntegration - INFO - 用户模型加载完成: default_user
+2026-04-12 23:03:34,143 - HermesIntegration - INFO - 加载最近上下文: 0 个会话
+2026-04-12 23:03:34,143 - HermesIntegration - INFO - 任务完成: test_123
+2026-04-12 23:03:34,143 - HermesIntegration - INFO - 任务完成，可用于技能创建: test_123
+2026-04-12 23:03:34,148 - HermesIntegration - INFO - 任务完成，可用于技能改进
+2026-04-12 23:03:34,148 - HermesIntegration - INFO - 会话结束: test_session
+2026-04-12 23:03:34,151 - HermesIntegration - INFO - 用户模型已更新
+2026-04-12 23:03:55,213 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:03:55,213 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:03:55,213 - HermesIntegration - INFO - 用户模型加载完成: default_user
+2026-04-12 23:03:55,213 - HermesIntegration - INFO - 加载最近上下文: 0 个会话
+2026-04-12 23:03:55,213 - HermesIntegration - INFO - 任务完成: test_123
+2026-04-12 23:03:55,213 - HermesIntegration - INFO - 任务完成，可用于技能创建: test_123
+2026-04-12 23:03:55,217 - HermesIntegration - INFO - 任务完成，可用于技能改进
+2026-04-12 23:03:55,217 - HermesIntegration - INFO - 会话结束: test_session
+2026-04-12 23:03:55,220 - HermesIntegration - INFO - 用户模型已更新
+2026-04-12 23:03:55,234 - HermesIntegration - INFO - 会话快照已创建
+2026-04-12 23:18:06,558 - HermesIntegration - INFO - Hermes 集成层初始化完成
+2026-04-12 23:18:06,559 - HermesIntegration - INFO - 会话开始: test_session
+2026-04-12 23:18:06,559 - HermesIntegration - INFO - 用户模型加载完成: default_user
+2026-04-12 23:18:06,559 - HermesIntegration - INFO - 加载最近上下文: 0 个会话
+2026-04-12 23:18:06,559 - HermesIntegration - INFO - 任务完成: test_123
+2026-04-12 23:18:06,559 - HermesIntegration - INFO - 任务完成，可用于技能创建: test_123
+2026-04-12 23:18:06,563 - HermesIntegration - INFO - 任务完成，可用于技能改进
+2026-04-12 23:18:06,564 - HermesIntegration - INFO - 会话结束: test_session
+2026-04-12 23:18:06,568 - HermesIntegration - INFO - 用户模型已更新
+2026-04-12 23:18:06,577 - HermesIntegration - INFO - 会话快照已创建

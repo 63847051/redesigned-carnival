@@ -1,0 +1,42 @@
+{
+  "snap_20260412_230355_2557414": {
+    "snapshot_id": "snap_20260412_230355_2557414",
+    "timestamp": "2026-04-12T23:03:55.229954",
+    "checksum": "e497a3c8ea02aa6ad70c4284149fa578181e3d9006a91f86dc3d4807e1786543",
+    "size": 10877,
+    "description": "Session end: test_session",
+    "tags": []
+  },
+  "snap_20260412_230938_2559575": {
+    "snapshot_id": "snap_20260412_230938_2559575",
+    "timestamp": "2026-04-12T23:09:38.314144",
+    "checksum": "749c65718be063523670c366a6c78764daac51ce4a3b30a279fc4fd8617c2e32",
+    "original_size": 28000,
+    "compressed_size": 124,
+    "compression_ratio": 0.004428571428571428,
+    "description": "Test compressed snapshot",
+    "tags": [],
+    "is_incremental": false,
+    "parent_snapshot": "snap_20260412_230355_2557414"
+  },
+  "snap_20260412_231744_2565463": {
+    "snapshot_id": "snap_20260412_231744_2565463",
+    "timestamp": "2026-04-12T23:17:44.407185",
+    "checksum": "5655499b5996504dcea30db8c390b5c0634d90137cbd9d92bf9f3add4651bc5c",
+    "original_size": 12000,
+    "compressed_size": 63,
+    "compression_ratio": 0.00525,
+    "description": "实际测试快照",
+    "tags": [],
+    "is_incremental": true,
+    "parent_snapshot": "snap_20260412_230938_2559575"
+  },
+  "snap_20260412_231806_2566223": {
+    "snapshot_id": "snap_20260412_231806_2566223",
+    "timestamp": "2026-04-12T23:18:06.574803",
+    "checksum": "e497a3c8ea02aa6ad70c4284149fa578181e3d9006a91f86dc3d4807e1786543",
+    "size": 10877,
+    "description": "Session end: test_session",
+    "tags": []
+  }
+}
